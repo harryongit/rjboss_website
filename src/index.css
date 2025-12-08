@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 240 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 15%;
+
+    /* Purple theme colors */
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 262 70% 45%;
+    --primary-light: 262 90% 70%;
+
+    --secondary: 262 40% 96%;
+    --secondary-foreground: 262 83% 58%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 45 93% 58%;
+    --accent-foreground: 240 10% 15%;
+
+    /* Status colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar colors - light purple */
+    --sidebar-background: 262 90% 97%;
+    --sidebar-foreground: 262 50% 25%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 262 80% 92%;
+    --sidebar-accent-foreground: 262 50% 25%;
+    --sidebar-border: 262 30% 90%;
+    --sidebar-ring: 262 83% 58%;
+    --sidebar-active: 142 76% 36%;
+
+    /* Table header accent */
+   
+    --table-header: 350 90% 96%;
+--table-header-foreground: 350 55% 30%;
+
+
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 240 10% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Purple theme colors - dark mode */
+    --primary: 262 83% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 262 70% 50%;
+    --primary-light: 262 90% 75%;
+
+    --secondary: 240 10% 15%;
+    --secondary-foreground: 262 83% 65%;
+
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 45 93% 58%;
+    --accent-foreground: 240 10% 10%;
+
+    /* Status colors */
+    --success: 142 76% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 240 10% 20%;
+    --input: 240 10% 20%;
+    --ring: 262 83% 65%;
+
+    /* Sidebar colors - deep purple */
+    --sidebar-background: 262 60% 15%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 262 83% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 262 50% 20%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 262 40% 25%;
+    --sidebar-ring: 262 83% 65%;
+    --sidebar-active: 142 76% 45%;
+
+    /* Table header accent */
+    --table-header: 265 60% 22%;
+    --table-header-foreground: 265 90% 88%;
+
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes slowPanZoom {
+  0% {
+    transform: scale(1) translateX(0px);
+  }
+  50% {
+    transform: scale(1.08) translateX(-15px);
+  }
+  100% {
+    transform: scale(1) translateX(0px);
+  }
+}
+
+.animate-slowPanZoom {
+  animation: slowPanZoom 18s ease-in-out infinite;
+}
+
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* SweetAlert2 Theme Support */
+.swal-dark-theme {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
+
+.swal-dark-theme .swal2-title {
+  color: hsl(var(--card-foreground)) !important;
+}
+
+.swal-dark-theme .swal2-content {
+  color: hsl(var(--card-foreground)) !important;
+}
+
+.swal-light-theme {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
+
+.swal-light-theme .swal2-title {
+  color: hsl(var(--card-foreground)) !important;
+}
+
+.swal-light-theme .swal2-content {
+  color: hsl(var(--card-foreground)) !important;
+}
+
+/* Dark mode backdrop */
+.dark .swal2-backdrop-show {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
