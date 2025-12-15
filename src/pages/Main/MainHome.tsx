@@ -52,48 +52,14 @@ const SattaMatkaWebsite = () => {
     { name: "KALYAN MORNING", result: "359-7", time: "11:15 AM - 12:15 PM" },
     { name: "MILAN MORNING", result: "137-15-456", time: "10:30 AM - 11:30 AM" },
     { name: "SRIDEVI", result: "579-14-347", time: "11:35 AM - 12:35 PM" },
-    { name: "MAIN BAZAR MORNING", result: "669-17-160", time: "11:15 AM - 12:15 PM" },
+    { name: "MAIN BAZAR MORNING ", result: "669-17-160", time: "11:15 AM - 12:15 PM" },
     { name: "MADHURI", result: "359-71-588", time: "11:45 AM - 12:45 PM" },
     { name: "PADMAVATHI", result: "128-19-144", time: "11:40 AM - 12:40 PM" },
     { name: "RAJDHANI MORNING", result: "157-33-670", time: "11:25 AM - 12:55 PM" },
     { name: "SRIDEVI MORNING", result: "118-00-127", time: "10:00 AM - 11:00 AM" },
     { name: "MAHARANI", result: "260-8", time: "12:15 PM - 02:15 PM" },
-    { name: "KARNATAKA DAY", result: "568-95-690", time: "10:00 AM - 11:00 AM" },
-    { name: "TIME BAZAR MORNING", result: "370-03-120", time: "11:10 AM - 12:10 PM" },
-    { name: "MAIN SRIDEVI DAY", result: "234-96-123", time: "01:05 PM - 02:05 PM" },
-    { name: "TIME BAZAR", result: "680-44-130", time: "01:00 PM - 02:00 PM" },
-    { name: "TARA MUMBAI DAY", result: "112-47-340", time: "01:35 PM - 03:00 PM" },
-    { name: "PRABHAT", result: "479-01-245", time: "01:30 PM - 03:00 PM" },
-    { name: "DIAMOND", result: "479-09-270", time: "01:30 PM - 03:00 PM" },
-    { name: "TIME BAZAR DAY", result: "800-86-114", time: "02:45 PM - 04:45 PM" },
-    { name: "MILAN DAY", result: "479-05-267", time: "03:00 PM - 05:00 PM" },
-    { name: "MAIN BAZAR DAY", result: "136-07-115", time: "03:35 PM - 05:35 PM" },
-    { name: "PUNA BAZAR", result: "568-99-234", time: "01:30 PM - 03:30 PM" },
-    { name: "NEW TIME BAZAR", result: "347-40-190", time: "01:00 PM - 02:00 PM" },
-    { name: "KALYAN", result: "560-17-250", time: "03:45 PM - 05:45 PM" },
-    { name: "SRIDEVI NIGHT", result: "347-43-256", time: "07:15 PM - 08:15 PM" },
-    { name: "DIAMOND NIGHT", result: "450-94-158", time: "08:00 PM - 09:00 PM" },
-    { name: "MADHURI NIGHT", result: "359-74-257", time: "06:45 PM - 07:45 PM" },
-    { name: "NIGHT TIME BAZAR", result: "177-56-259", time: "08:40 PM - 10:40 PM" },
-    { name: "TARA MUMBAI NIGHT", result: "178-69-289", time: "08:30 PM - 10:30 PM" },
-    { name: "MILAN NIGHT", result: "468-88-189", time: "09:05 PM - 11:05 PM" },
-    { name: "RAJDHANI NIGHT", result: "239-45-177", time: "09:35 PM - 11:45 PM" },
-    { name: "MAIN BAZAR", result: "366-59-577", time: "10:00 PM - 12:10 AM" },
-    { name: "SRIDEVI DAY", result: "550-02-679", time: "01:35 PM - 02:35 PM" },
-    { name: "MAIN SRIDEVI", result: "377-70-479", time: "11:45 AM - 12:45 PM" },
-    { name: "MAHARANI DAY", result: "357-51-399", time: "05:15 PM - 07:15 PM" },
-    { name: "PAREL DAY", result: "237-29-559", time: "02:00 PM - 04:00 PM" },
-    { name: "BOMBAY DAY", result: "477-80-226", time: "02:10 PM - 03:10 PM" },
-    { name: "SAHARA", result: "239-49-559", time: "01:30 PM - 02:30 PM" },
-    { name: "MUMBAI MORNING", result: "569-08-125", time: "01:40 PM - 02:40 PM" },
-    { name: "KALYAN NIGHT", result: "480-27-890", time: "09:30 PM - 11:30 PM" },
-    { name: "PRABHAT NIGHT", result: "238-37-340", time: "08:30 PM - 10:30 PM" },
-    { name: "MADHUR DAY", result: "455-43-300", time: "01:30 PM - 02:30 PM" },
-    { name: "MADHUR NIGHT", result: "240-62-679", time: "08:30 PM - 10:30 PM" },
-    { name: "OLD MAIN MUMBAI", result: "356-37-359", time: "09:35 PM - 11:35 PM" },
-    { name: "MAIN MUMBAI RK", result: "146-16-367", time: "09:30 PM - 11:50 AM" },
-    { name: "ROSE BAZAR NIGHT", result: "358-69-577", time: "10:00 PM - 12:02 AM" },
-    { name: "KAALI", result: "489-19-450", time: "11:20 PM - 01:35 AM" },
+  
+   
   ];
   const keywords = [
     "KALYAN MATKA",
@@ -160,7 +126,6 @@ const SattaMatkaWebsite = () => {
         <div className="p-3 space-y-3">
           <WelcomeBanner />
           <LuckyNumberCard />
-          <FinalAnkSection finalAnk={finalAnk} handleRefresh={handleRefresh} />
           <LiveResults liveMarkets={liveMarkets} refreshTime={refreshTime} handleRefresh={handleRefresh} />
           <NoticeSection />
         
@@ -172,6 +137,8 @@ const SattaMatkaWebsite = () => {
           <WeeklyLineChart weeklyLineData={weeklyLineData} />
           <WeeklyJodiChart />
           <FreeGameZone freeGames={freeGames} />
+          <FinalAnkSection finalAnk={finalAnk}  />
+
           <IntroductionSection />
           <FAQSection />
           <HindiFAQ />

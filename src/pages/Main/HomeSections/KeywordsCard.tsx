@@ -1,21 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 
-// Notice card with animated gradient
-const AnimatedNoticeCard = () => {
-  return (
-    <Card className="relative overflow-hidden rounded-xl border-2 border-blue-400 shadow-md">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-[length:400%_400%] animate-gradientShift z-0"></div>
-      
-      <CardContent className="py-3 text-center relative z-10">
-        <p className="text-sm text-white font-bold leading-relaxed">
-          Yeh he SMBoss ki ekmatra original website hain. Hamare jaise design ke bahut saare websites market mein hain. Kisi par bhi bharosa na kare. Yehi world famous ekmatra SMBoss website hain. Kisi par bhi SMBoss samajh ke result na dalvaye.
-        </p>
-      </CardContent>
-    </Card>
-  );
-};
+
 
 const KeywordsCard = ({ keywords }: { keywords: string[] }) => {
   return (
@@ -40,7 +26,7 @@ const SMBossInfoSection = () => {
 
   return (
     <div className="space-y-3">
-      <AnimatedNoticeCard />
+      
       <KeywordsCard keywords={keywords} />
     </div>
   );

@@ -1,37 +1,88 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { RefreshCw, TrendingUp } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 type FinalAnkItem = { market: string; ank: string };
 
-const FinalAnkSection = ({ finalAnk, handleRefresh }: { finalAnk: FinalAnkItem[]; handleRefresh: () => void }) => {
+const FinalAnkSection = ({
+  finalAnk = [
+    { market: "SRIDEVI", ank: "2" },
+    { market: "MUMBAI DAY", ank: "123" },
+    { market: "MILAN DAY", ank: "456" },
+    { market: "KALYAN", ank: "789" },
+  ],
+}: {
+  finalAnk?: FinalAnkItem[];
+}) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let scrollInterval: number;
+    let isPaused = false;
+
+    const startScroll = () => {
+      scrollInterval = window.setInterval(() => {
+        if (!isPaused && scrollContainer) {
+          scrollContainer.scrollTop += 1;
+
+          // Reset to top when reaching the bottom
+          if (scrollContainer.scrollTop >= scrollContainer.scrollHeight - scrollContainer.clientHeight) {
+            scrollContainer.scrollTop = 0;
+          }
+        }
+      }, 50);
+    };
+
+    startScroll();
+
+    scrollContainer.addEventListener('mouseenter', () => { isPaused = true; });
+    scrollContainer.addEventListener('mouseleave', () => { isPaused = false; });
+
+    return () => clearInterval(scrollInterval);
+  }, []);
+
   return (
-    <Card className="bg-white border-2 border-orange-300 shadow-lg">
-      <CardHeader className="bg-gradient-to-r from-orange-500 to-rose-500 text-white py-2">
-        <div className="flex justify-between items-center">
-          <CardTitle className="text-center text-sm font-black tracking-wide flex items-center justify-center gap-2 flex-1">
-            <TrendingUp className="h-4 w-4" />
-            FINAL ANK
-          </CardTitle>
-          <Button
-            size="sm"
-            onClick={handleRefresh}
-            className="bg-white/20 hover:bg-white/30 text-white border border-white/50 rounded-lg"
-          >
-            <RefreshCw className="h-4 w-4" />
-          </Button>
-        </div>
+    <Card className="bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 border-0 shadow-2xl relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-0 left-0 w-40 h-40 bg-rose-400 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-40 h-40 bg-amber-400 rounded-full blur-3xl"></div>
+      </div>
+
+      {/* Header */}
+      <CardHeader className="relative bg-gradient-to-r from-rose-600 via-orange-600 to-amber-600 text-white py-3">
+        <CardTitle className="text-center text-lg font-black tracking-wide flex items-center justify-center gap-2">
+          <Sparkles className="h-5 w-5 animate-pulse text-yellow-300" />
+         Final Ank
+          <Sparkles className="h-5 w-5 animate-pulse text-yellow-300" />
+        </CardTitle>
       </CardHeader>
-      <CardContent className="p-2">
-        <div className="grid grid-cols-2 gap-2">
-          {finalAnk.map((item, idx) => (
-            <div key={idx} className="bg-gradient-to-br from-orange-50 to-rose-50 p-2 rounded-lg border border-orange-200">
-              <p className="text-xs font-bold text-rose-800 mb-1 truncate">{item.market}</p>
-              <p className="text-2xl font-black text-orange-600">{item.ank}</p>
-            </div>
-          ))}
-        </div>
+
+      {/* Vertical scrolling list */}
+      <CardContent
+        ref={scrollRef}
+        className="h-64 overflow-y-auto no-scrollbar space-y-2 relative z-10 p-4"
+      >
+        <style>{`
+          .no-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
+
+        {finalAnk.map((item, idx) => (
+          <div
+            key={idx}
+            className="flex items-center justify-between bg-white/90 p-3 rounded-2xl shadow-md hover:shadow-lg transition-all cursor-pointer border border-orange-200"
+          >
+            <p className="text-sm font-semibold text-rose-700 truncate">{item.market}</p>
+            <p className="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-rose-500 to-pink-500">
+              {item.ank}
+            </p>
+          </div>
+        ))}
       </CardContent>
     </Card>
   );
