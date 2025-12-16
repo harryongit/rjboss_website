@@ -5,7 +5,7 @@ import { Phone, MessageCircle } from 'lucide-react';
 const NoticeSection = () => {
   // Phone & WhatsApp links with country code (+91 for India)
   const countryCode = "+91";
-  const phoneNumber = "8087715017";
+  const phoneNumber = "";
   const fullNumber = `${countryCode}${phoneNumber}`;
   const whatsappLink = `https://wa.me/${phoneNumber}`; // WhatsApp needs number without '+'
 

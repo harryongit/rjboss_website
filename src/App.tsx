@@ -23,6 +23,10 @@ import FreeFix from "@/pages/FreeFix";
 import ToastProvider from "@/components/ui/ToastProvider"; // ✅ import ToastProvider
 import AddFinalAnk from "./pages/Admin/AddFinalAnk";
 import UserUploadResult from "./pages/User/UserUploadResult";
+import About from "@/pages/Main/About";
+import Contact from "@/pages/Main/Contact";
+import PrivacyPolicy from "@/pages/Main/PrivacyPolicy";
+import TermsAndConditions from "@/pages/Main/TermsAndConditions";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +41,10 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<MainHome />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsAndConditions />} />
 
               <Route path="/admin/dashboard_smboss_login" element={<Login />} />
               <Route

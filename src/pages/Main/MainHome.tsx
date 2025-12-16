@@ -18,6 +18,8 @@ import FAQSection from '@/pages/Main/HomeSections/FAQSection';
 import HindiFAQ from '@/pages/Main/HomeSections/HindiFAQ';
 import FooterSection from '@/pages/Main/HomeSections/FooterSection';
 import FloatingRefreshButton from '@/pages/Main/HomeSections/FloatingRefreshButton';
+import JodiChartSection from './HomeSections/JodiChartSection';
+import PanelChartSection from './HomeSections/PanelChartSection';
 
 const SattaMatkaWebsite = () => {
   const [refreshTime, setRefreshTime] = useState(new Date().toLocaleTimeString());
@@ -136,12 +138,15 @@ const SattaMatkaWebsite = () => {
           <WeeklyPattiChart weeklyPatti={weeklyPatti} />
           <WeeklyLineChart weeklyLineData={weeklyLineData} />
           <WeeklyJodiChart />
-          <FreeGameZone freeGames={freeGames} />
+          
+        
+<JodiChartSection/>
+<PanelChartSection/>
+  <FreeGameZone freeGames={freeGames} />
           <FinalAnkSection finalAnk={finalAnk}  />
-
-          <IntroductionSection />
+          {/* <IntroductionSection /> */}
           <FAQSection />
-          <HindiFAQ />
+          {/* <HindiFAQ /> */}
           <FooterSection />
         </div>
 
