@@ -20,6 +20,8 @@ import FooterSection from '@/pages/Main/HomeSections/FooterSection';
 import FloatingRefreshButton from '@/pages/Main/HomeSections/FloatingRefreshButton';
 import JodiChartSection from './HomeSections/JodiChartSection';
 import PanelChartSection from './HomeSections/PanelChartSection';
+import MainBazaarChart from './HomeSections/MainBazaarChart';
+import SpecialGameZone from './HomeSections/SpecialGameZone';
 
 const SattaMatkaWebsite = () => {
   const [refreshTime, setRefreshTime] = useState(new Date().toLocaleTimeString());
@@ -139,10 +141,11 @@ const SattaMatkaWebsite = () => {
           <WeeklyLineChart weeklyLineData={weeklyLineData} />
           <WeeklyJodiChart />
           
-        
+         <FreeGameZone  freeGames={freeGames} />
+          <SpecialGameZone /> 
 <JodiChartSection/>
 <PanelChartSection/>
-  <FreeGameZone freeGames={freeGames} />
+
           <FinalAnkSection finalAnk={finalAnk}  />
           {/* <IntroductionSection /> */}
           <FAQSection />
