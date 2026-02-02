@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { useParams } from "react-router-dom";
 import HeaderLogo from "../HeaderLogo";
@@ -7,226 +7,65 @@ import ScrollToggleButton from "@/components/ui/ScrollToggleButton";
 import HomeButton from "@/components/ui/HomeButton";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
-
-// Define a PanelRecord type with day-wise winning flags
-type PanelRecord = {
-  date: string;
-  Mon: string[][];
-  MonWinning: boolean;
-  Tue: string[][];
-  TueWinning: boolean;
-  Wed: string[][];
-  WedWinning: boolean;
-  Thu: string[][];
-  ThuWinning: boolean;
-  Fri: string[][];
-  FriWinning: boolean;
-  Sat: string[][];
-  SatWinning: boolean;
-  Sun: string[][];
-  SunWinning: boolean;
-};
-
-// Example data with day-wise winning flags
-const data: PanelRecord[] = [
-  {
-    date: "02/01/2023 to 08/01/2023",
-    Mon: [["3", "8", "9"], ["00"], ["6", "1", "2"]],
-    MonWinning: true,
-    Tue: [["5", "6", "9"], ["70"], ["5", "5", "4"]],
-    TueWinning: false,
-    Wed: [["2", "6", "0"], ["44"], ["8", "7", "7"]],
-    WedWinning: true,
-    Thu: [["1", "9", "0"], ["10"], ["2", "3", "8"]],
-    ThuWinning: false,
-    Fri: [["4", "6", "9"], ["99"], ["1", "6", "0"]],
-    FriWinning: true,
-    Sat: [["8", "0", "0"], ["76"], ["7", "0", "3"]],
-    SatWinning: false,
-    Sun: [["3", "9", "9"], ["32"], ["4", "7", "6"]],
-    SunWinning: false,
-  },
-  {
-    date: "09/01/2023 to 15/01/2023",
-    Mon: [["3", "8", "9"], ["00"], ["6", "1", "2"]],
-    MonWinning: false,
-    Tue: [["5", "6", "9"], ["40"], ["5", "5", "4"]],
-    TueWinning: false,
-    Wed: [["2", "6", "0"], ["44"], ["8", "7", "7"]],
-    WedWinning: false,
-    Thu: [["1", "9", "0"], ["10"], ["2", "3", "8"]],
-    ThuWinning: true,
-    Fri: [["4", "6", "9"], ["99"], ["1", "6", "0"]],
-    FriWinning: true,
-    Sat: [["8", "0", "0"], ["76"], ["7", "0", "3"]],
-    SatWinning: false,
-    Sun: [["3", "9", "9"], ["32"], ["4", "7", "6"]],
-    SunWinning: false,
-  },
-  {
-  date: "16/01/2023 to 22/01/2023",
-  Mon: [["1", "2", "3"], ["11"], ["4", "5", "6"]],
-  MonWinning: true,
-  Tue: [["7", "8", "9"], ["22"], ["0", "1", "2"]],
-  TueWinning: true,
-  Wed: [["3", "4", "5"], ["33"], ["6", "7", "8"]],
-  WedWinning: false,
-  Thu: [["9", "0", "1"], ["44"], ["2", "3", "4"]],
-  ThuWinning: true,
-  Fri: [["5", "6", "7"], ["55"], ["8", "9", "0"]],
-  FriWinning: false,
-  Sat: [["1", "3", "5"], ["66"], ["7", "9", "0"]],
-  SatWinning: true,
-  Sun: [["2", "4", "6"], ["77"], ["8", "0", "1"]],
-  SunWinning: false,
-},
-{
-  date: "23/01/2023 to 29/01/2023",
-  Mon: [["4", "5", "6"], ["88"], ["7", "8", "9"]],
-  MonWinning: false,
-  Tue: [["0", "1", "2"], ["99"], ["3", "4", "5"]],
-  TueWinning: true,
-  Wed: [["6", "7", "8"], ["00"], ["9", "1", "2"]],
-  WedWinning: true,
-  Thu: [["3", "5", "7"], ["11"], ["9", "0", "2"]],
-  ThuWinning: false,
-  Fri: [["4", "6", "8"], ["22"], ["0", "1", "3"]],
-  FriWinning: true,
-  Sat: [["5", "7", "9"], ["33"], ["1", "2", "4"]],
-  SatWinning: false,
-  Sun: [["6", "8", "0"], ["44"], ["2", "3", "5"]],
-  SunWinning: true,
-},
-{
-  date: "30/01/2023 to 05/02/2023",
-  Mon: [["2", "3", "4"], ["55"], ["6", "7", "8"]],
-  MonWinning: false,
-  Tue: [["9", "0", "1"], ["66"], ["2", "3", "4"]],
-  TueWinning: true,
-  Wed: [["5", "6", "7"], ["77"], ["8", "9", "0"]],
-  WedWinning: false,
-  Thu: [["1", "2", "3"], ["88"], ["4", "5", "6"]],
-  ThuWinning: true,
-  Fri: [["7", "8", "9"], ["99"], ["0", "1", "2"]],
-  FriWinning: true,
-  Sat: [["3", "4", "5"], ["00"], ["6", "7", "8"]],
-  SatWinning: false,
-  Sun: [["9", "1", "3"], ["11"], ["5", "7", "8"]],
-  SunWinning: true,
-},
-{
-  date: "16/01/2023 to 22/01/2023",
-  Mon: [["1", "2", "3"], ["11"], ["4", "5", "6"]],
-  MonWinning: true,
-  Tue: [["7", "8", "9"], ["22"], ["0", "1", "2"]],
-  TueWinning: true,
-  Wed: [["3", "4", "5"], ["33"], ["6", "7", "8"]],
-  WedWinning: false,
-  Thu: [["9", "0", "1"], ["44"], ["2", "3", "4"]],
-  ThuWinning: true,
-  Fri: [["5", "6", "7"], ["55"], ["8", "9", "0"]],
-  FriWinning: false,
-  Sat: [["1", "3", "5"], ["66"], ["7", "9", "0"]],
-  SatWinning: true,
-  Sun: [["2", "4", "6"], ["77"], ["8", "0", "1"]],
-  SunWinning: false,
-},
-{
-  date: "23/01/2023 to 29/01/2023",
-  Mon: [["4", "5", "6"], ["88"], ["7", "8", "9"]],
-  MonWinning: false,
-  Tue: [["0", "1", "2"], ["99"], ["3", "4", "5"]],
-  TueWinning: true,
-  Wed: [["6", "7", "8"], ["00"], ["9", "1", "2"]],
-  WedWinning: true,
-  Thu: [["3", "5", "7"], ["11"], ["9", "0", "2"]],
-  ThuWinning: false,
-  Fri: [["4", "6", "8"], ["22"], ["0", "1", "3"]],
-  FriWinning: true,
-  Sat: [["5", "7", "9"], ["33"], ["1", "2", "4"]],
-  SatWinning: false,
-  Sun: [["6", "8", "0"], ["44"], ["2", "3", "5"]],
-  SunWinning: true,
-},
-{
-  date: "30/01/2023 to 05/02/2023",
-  Mon: [["2", "3", "4"], ["55"], ["6", "7", "8"]],
-  MonWinning: false,
-  Tue: [["9", "0", "1"], ["66"], ["2", "3", "4"]],
-  TueWinning: true,
-  Wed: [["5", "6", "7"], ["77"], ["8", "9", "0"]],
-  WedWinning: false,
-  Thu: [["1", "2", "3"], ["88"], ["4", "5", "6"]],
-  ThuWinning: true,
-  Fri: [["7", "8", "9"], ["99"], ["0", "1", "2"]],
-  FriWinning: true,
-  Sat: [["3", "4", "5"], ["00"], ["6", "7", "8"]],
-  SatWinning: false,
-  Sun: [["9", "1", "3"], ["11"], ["5", "7", "8"]],
-  SunWinning: true,
-},
-{
-  date: "16/01/2023 to 22/01/2023",
-  Mon: [["1", "2", "3"], ["11"], ["4", "5", "6"]],
-  MonWinning: true,
-  Tue: [["7", "8", "9"], ["22"], ["0", "1", "2"]],
-  TueWinning: true,
-  Wed: [["3", "4", "5"], ["33"], ["6", "7", "8"]],
-  WedWinning: false,
-  Thu: [["9", "0", "1"], ["44"], ["2", "3", "4"]],
-  ThuWinning: true,
-  Fri: [["5", "6", "7"], ["55"], ["8", "9", "0"]],
-  FriWinning: false,
-  Sat: [["1", "3", "5"], ["66"], ["7", "9", "0"]],
-  SatWinning: true,
-  Sun: [["2", "4", "6"], ["77"], ["8", "0", "1"]],
-  SunWinning: false,
-},
-{
-  date: "23/01/2023 to 29/01/2023",
-  Mon: [["4", "5", "6"], ["88"], ["7", "8", "9"]],
-  MonWinning: false,
-  Tue: [["0", "1", "2"], ["99"], ["3", "4", "5"]],
-  TueWinning: true,
-  Wed: [["6", "7", "8"], ["00"], ["9", "1", "2"]],
-  WedWinning: true,
-  Thu: [["3", "5", "7"], ["11"], ["9", "0", "2"]],
-  ThuWinning: false,
-  Fri: [["4", "6", "8"], ["22"], ["0", "1", "3"]],
-  FriWinning: true,
-  Sat: [["5", "7", "9"], ["33"], ["1", "2", "4"]],
-  SatWinning: false,
-  Sun: [["6", "8", "0"], ["44"], ["2", "3", "5"]],
-  SunWinning: true,
-},
-{
-  date: "30/01/2023 to 05/02/2023",
-  Mon: [["2", "3", "4"], ["55"], ["6", "7", "8"]],
-  MonWinning: false,
-  Tue: [["9", "0", "1"], ["66"], ["2", "3", "4"]],
-  TueWinning: true,
-  Wed: [["5", "6", "7"], ["77"], ["8", "9", "0"]],
-  WedWinning: false,
-  Thu: [["1", "2", "3"], ["88"], ["4", "5", "6"]],
-  ThuWinning: true,
-  Fri: [["7", "8", "9"], ["99"], ["0", "1", "2"]],
-  FriWinning: true,
-  Sat: [["3", "4", "5"], ["00"], ["6", "7", "8"]],
-  SatWinning: false,
-  Sun: [["9", "1", "3"], ["11"], ["5", "7", "8"]],
-  SunWinning: true,
-}
-
-
-];
+import { useMainWebsite } from "@/hooks/main/useMainWebsite";
+import { usePanelChart, PanelChartWeek, PanelChartDayData } from "@/hooks/main/usePanelChart";
+import { format } from "date-fns";
 
 // Array of days to iterate
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const PanelRecordChart = () => {
   const { marketName } = useParams();
-const isDoubleNumber = (num: string) =>
-  num.length === 2 && num[0] === num[1];
+  const decodedMarketName = decodeURIComponent(marketName || "RAKHI MORNING");
+
+  // 1. Fetch main website data to find market_id
+  const { data: mainData, isLoading: isMainLoading } = useMainWebsite();
+
+  const marketId = useMemo(() => {
+    if (!mainData?.data?.all_markets) return undefined;
+    const market = mainData.data.all_markets.find(
+      (m) => m.market_name.toLowerCase() === decodedMarketName.toLowerCase()
+    );
+    return market?.market_id;
+  }, [mainData, decodedMarketName]);
+
+  // 2. Fetch panel chart data
+  const { data: panelData, isLoading: isPanelLoading, refetch } = usePanelChart(marketId);
+
+  const isLoading = isMainLoading || (!!marketId && isPanelLoading);
+
+  const isDoubleNumber = (num: string) =>
+    num.length === 2 && num[0] === num[1];
+
+  // Helper to format date range
+  const formatDateRange = (start: string, end: string) => {
+    try {
+        const s = new Date(start);
+        const e = new Date(end);
+        return `${format(s, "dd/MM/yyyy")} to ${format(e, "dd/MM/yyyy")}`;
+    } catch {
+        return `${start} to ${end}`;
+    }
+  };
+
+  // Helper to process day data
+  const processDayData = (dayData?: PanelChartDayData) => {
+    if (!dayData) return [[""], [""], [""]];
+    
+    // open: "389" -> ["3", "8", "9"]
+    // jodi: "00" -> ["00"]
+    // close: "569" -> ["5", "6", "9"]
+    
+    const openArr = dayData.open ? dayData.open.split('') : [""];
+    const jodiArr = dayData.jodi ? [dayData.jodi] : ["**"]; // Use ** or similar for empty/closed
+    const closeArr = dayData.close ? dayData.close.split('') : [""];
+    
+    // If empty strings resulted from split, ensure they are filtered or handled
+    // But split('') on empty string returns []? No, returns [""] if string is "".
+    // If open is "***", split gives ["*", "*", "*"]
+    
+    return [openArr, jodiArr, closeArr];
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-violet-50">
@@ -237,16 +76,18 @@ const isDoubleNumber = (num: string) =>
           {/* Market Name & Refresh */}
           <div className="flex flex-col items-center mb-4 space-y-2">
             <div className="text-2xl font-extrabold text-black drop-shadow-lg text-center">
-              {decodeURIComponent(marketName || "RAKHI MORNING")}
+              {decodedMarketName}
             </div>
             <div className="text-xl font-bold uppercase tracking-wider text-black">
-              669-14-789
+              {panelData?.data?.result || "Loading..."}
             </div>
             <Button
               size="sm"
+              onClick={() => refetch()}
+              disabled={isLoading}
               className="flex items-center justify-center bg-white text-orange-600 border border-orange-600 font-bold rounded shadow-md px-4 py-2 hover:bg-white/80 transition-all duration-300"
             >
-              <RefreshCw className="h-4 w-4 mr-1" />
+              <RefreshCw className={`h-4 w-4 mr-1 ${isLoading ? "animate-spin" : ""}`} />
               Refresh Result
             </Button>
           </div>
@@ -255,7 +96,7 @@ const isDoubleNumber = (num: string) =>
           <Card className="border-2 border-orange-500 shadow-xl mt-4">
             <CardHeader className="bg-gradient-to-r from-orange-600 via-rose-600 to-pink-600 py-2">
               <CardTitle className="text-center text-white font-black tracking-wide text-lg">
-                🌅 {decodeURIComponent(marketName || "RAKHI MORNING")} PANEL CHART
+                🌅 {decodedMarketName} PANEL CHART
               </CardTitle>
             </CardHeader>
 
@@ -271,33 +112,47 @@ const isDoubleNumber = (num: string) =>
                     </tr>
                   </thead>
                   <tbody>
-                    {data.map((row, idx) => (
+                    {isLoading ? (
+                         <tr>
+                             <td colSpan={8} className="p-4 text-lg">Loading...</td>
+                         </tr>
+                    ) : (
+                        panelData?.data?.weeks.map((week, idx) => (
                       <tr key={idx}>
-                        <td className="border text-[9px] font-bold">{row.date}</td>
-                        {days.map((day) => {
-                          const dayData = row[day as keyof PanelRecord] as string[][];
-                          const dayWinning = row[`${day}Winning` as keyof PanelRecord] as boolean;
+                        <td className="border text-[9px] font-bold">
+                            {formatDateRange(week.start_date, week.end_date)}
+                        </td>
+                        {week.data.map((dayData, dayIdx) => {
+                          const [openArr, jodiArr, closeArr] = processDayData(dayData);
+                          
+                          // List of numbers to highlight
+                          const highlightedNumbers = [
+                            "00", "11", "22", "33", "44", "55", "66", "77", "88", "99",
+                            "05", "16", "27", "38", "49", "94", "83", "72", "61", "50"
+                          ];
+                          
+                          // Check if Jodi matches highlighted numbers
+                          const highlightRed = dayData?.jodi && highlightedNumbers.includes(dayData.jodi); 
 
                           return (
-                            <td key={day} className="border ">
+                            <td key={dayIdx} className="border ">
                               <div className="flex justify-center gap-2">
-                                {dayData?.map((cell, i) => (
+                                {[openArr, jodiArr, closeArr].map((cell, i) => (
                                   <div
                                     key={i}
                                     className="flex flex-col justify-center items-center"
                                     style={{ minHeight: "3rem" }}
                                   >
-                                    {cell.map((num) => (
+                                    {cell.map((num, nIdx) => (
                                       <span
-  key={num}
-  className={`
-    ${dayWinning ? "text-red-600 font-bold" : ""}
-    ${isDoubleNumber(num) ? "text-[11px]" : "text-[9px]"}
-  `}
->
-  {num}
-</span>
-
+                                        key={nIdx}
+                                        className={`
+                                            ${highlightRed ? "text-red-600 font-bold" : ""}
+                                            ${isDoubleNumber(num) ? "text-[11px]" : "text-[9px]"}
+                                        `}
+                                        >
+                                        {num}
+                                        </span>
                                     ))}
                                   </div>
                                 ))}
@@ -305,8 +160,12 @@ const isDoubleNumber = (num: string) =>
                             </td>
                           );
                         })}
+                         {/* Fill remaining cells if week data is incomplete (should be 7) */}
+                         {Array.from({ length: 7 - (week.data?.length || 0) }).map((_, i) => (
+                            <td key={`empty-${i}`} className="border"></td>
+                         ))}
                       </tr>
-                    ))}
+                    )))}
                   </tbody>
                 </table>
               </div>

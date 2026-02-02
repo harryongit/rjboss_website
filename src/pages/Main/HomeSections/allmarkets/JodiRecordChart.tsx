@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { useParams } from "react-router-dom";
 import HeaderLogo from "../HeaderLogo";
@@ -7,57 +7,48 @@ import ScrollToggleButton from "@/components/ui/ScrollToggleButton";
 import HomeButton from "@/components/ui/HomeButton";
 import { RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useMainWebsite } from "@/hooks/main/useMainWebsite";
+import { useJodiChart } from "@/hooks/main/useJodiChart";
 
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-
-const data = [
-  ["69","14","11","21","73","23","12"],
-  ["87","60","76","65","94","09","28"],
-  ["87","44","11","69","60","11","21"],
-  ["56","69","96","90","92","20","18"],
-  ["10","88","05","83","32","80","37"],
-  ["09","99","23","78","70","10","00"],
-  ["13","16","68","81","43","77","73"],
-  ["31","62","86","98","90","16","61"],
-  ["52","09","65","22","20","20","29"],
-  ["84","73","08","33","33","21","56"],
-  ["83","14","26","88","02","33","72"],
-  ["98","14","45","19","53","22","39"],
-  ["60","27","85","71","83","97","30"],
-   ["69","14","11","21","73","23","12"],
-  ["87","60","76","65","94","09","28"],
-  ["87","44","11","69","60","11","21"],
-  ["56","69","96","90","92","20","18"],
-  ["10","88","05","83","32","80","37"],
-  ["09","99","23","78","70","10","00"],
-  ["13","16","68","81","43","77","73"],
-  ["31","62","86","98","90","16","61"],
-  ["52","09","65","22","20","20","29"],
-  ["84","73","08","33","33","21","56"],
-  ["83","14","26","88","02","33","72"],
-  ["98","14","45","19","53","22","39"],
-  ["60","27","85","71","83","97","30"],
-];
 
 /* 🎯 Winning highlight logic */
 const getNumberStyle = (num: string) => {
   const n = parseInt(num, 10);
+  if (isNaN(n)) return "text-black";
 
+  // List of numbers to highlight
+  const highlightedNumbers = [
+    "00", "11", "22", "33", "44", "55", "66", "77", "88", "99",
+    "05", "16", "27", "38", "49", "94", "83", "72", "61", "50"
+  ];
 
-
-if (n >= 90) {
-return "bg-red-500/20 text-red-700  ";
-
-
-}
-
-
+  if (highlightedNumbers.includes(num)) {
+    return "bg-red-500/20 text-red-700 font-bold";
+  }
 
   return "text-black";
 };
 
 const JodiRecordChart = () => {
   const { marketName } = useParams();
+  const decodedMarketName = decodeURIComponent(marketName || "RAKHI MORNING");
+
+  // 1. Fetch main website data to find market_id
+  const { data: mainData, isLoading: isMainLoading } = useMainWebsite();
+
+  const marketId = useMemo(() => {
+    if (!mainData?.data?.all_markets) return undefined;
+    const market = mainData.data.all_markets.find(
+      (m) => m.market_name.toLowerCase() === decodedMarketName.toLowerCase()
+    );
+    return market?.market_id;
+  }, [mainData, decodedMarketName]);
+
+  // 2. Fetch jodi chart data
+  const { data: jodiData, isLoading: isJodiLoading, refetch } = useJodiChart(marketId);
+
+  const isLoading = isMainLoading || (!!marketId && isJodiLoading);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-violet-50">
@@ -69,21 +60,22 @@ const JodiRecordChart = () => {
    <div className=" flex flex-col items-center justify-center bg-gray-50 px-4">
   {/* Market Name */}
   <div className="text-2xl font-extrabold tracking-wide drop-shadow-lg text-black text-center">
-    {decodeURIComponent(marketName || "RAKHI MORNING")}
+    {decodedMarketName}
   </div>
 
   {/* Result */}
   <div className="text-xl font-bold uppercase tracking-wider text-black mb-2 text-center">
-    669-14-789
+    {jodiData?.data?.result || "Loading..."}
   </div>
 
   {/* Refresh Result Button */}
   <Button
     size="sm"
-    // onClick={handleRefresh}
+    onClick={() => refetch()}
+    disabled={isLoading}
     className="flex items-center justify-center bg-white text-orange-600 border border-orange-600 font-bold rounded shadow-md px-4 py-2 hover:bg-white/80 transition-all duration-300"
   >
-    <RefreshCw className="h-4 w-4 mr-1" />
+    <RefreshCw className={`h-4 w-4 mr-1 ${isLoading ? "animate-spin" : ""}`} />
     Refresh Result
   </Button>
 </div>
@@ -93,17 +85,9 @@ const JodiRecordChart = () => {
             {/* HEADER */}
             <CardHeader className="bg-gradient-to-r from-orange-600 via-rose-600 to-pink-600 py-2">
               <CardTitle className="text-center text-white font-black tracking-wide text-lg">
-                🌅 {decodeURIComponent(marketName || "RAKHI MORNING")} JODI CHART
+                🌅 {decodedMarketName} JODI CHART
               </CardTitle>
             </CardHeader>
-
-            {/* LEGEND */}
-            {/* <div className="flex justify-center gap-2 text-[11px] font-semibold py-1 bg-orange-50">
-              <span className="text-green-600">● Double</span>
-              <span className="text-red-600">● High</span>
-              <span className="text-indigo-600">● Medium</span>
-              <span className="text-black">● Special</span>
-            </div> */}
 
             <CardContent className="p-1">
               {/* DAYS */}
@@ -120,7 +104,17 @@ const JodiRecordChart = () => {
 
               {/* DATA GRID */}
               <div className="grid grid-cols-7">
-                {data.flat().map((num, idx) => (
+                {isLoading ? (
+                    <div className="col-span-7 p-4 text-center">Loading...</div>
+                ) : (
+                    jodiData?.data?.weeks.flatMap((week) => {
+                        // Ensure we always have 7 days
+                        const filledJodi = [...week.jodi];
+                        while(filledJodi.length < 7) {
+                            filledJodi.push("**"); // Placeholder for empty days
+                        }
+                        return filledJodi;
+                    }).map((num, idx) => (
                   <div
                     key={idx}
                     className={`
@@ -137,7 +131,7 @@ const JodiRecordChart = () => {
                   >
                     {num}
                   </div>
-                ))}
+                )))}
               </div>
             </CardContent>
           </Card>
