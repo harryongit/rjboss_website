@@ -1,13 +1,12 @@
 import React, { useMemo } from "react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import HeaderLogo from "../HeaderLogo";
 import FooterSection from "../FooterSection";
 import ScrollToggleButton from "@/components/ui/ScrollToggleButton";
 import HomeButton from "@/components/ui/HomeButton";
 import { RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useMainWebsite } from "@/hooks/main/useMainWebsite";
 import { useJodiChart } from "@/hooks/main/useJodiChart";
 
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -34,21 +33,16 @@ const JodiRecordChart = () => {
   const { marketName } = useParams();
   const decodedMarketName = decodeURIComponent(marketName || "RAKHI MORNING");
 
-  // 1. Fetch main website data to find market_id
-  const { data: mainData, isLoading: isMainLoading } = useMainWebsite();
-
-  const marketId = useMemo(() => {
-    if (!mainData?.data?.all_markets) return undefined;
-    const market = mainData.data.all_markets.find(
-      (m) => m.market_name.toLowerCase() === decodedMarketName.toLowerCase()
-    );
-    return market?.market_id;
-  }, [mainData, decodedMarketName]);
+  const { state } = useLocation();
+  const marketIdFromState = (state as any)?.marketId as number | undefined;
+  const marketId = useMemo(() => marketIdFromState, [marketIdFromState]);
 
   // 2. Fetch jodi chart data
   const { data: jodiData, isLoading: isJodiLoading, refetch } = useJodiChart(marketId);
 
-  const isLoading = isMainLoading || (!!marketId && isJodiLoading);
+  const isLoading = (!!marketId && isJodiLoading);
+  const dayCount = jodiData?.data?.days ?? 7;
+  const displayDays = days.slice(0, dayCount);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-violet-50">
@@ -91,8 +85,8 @@ const JodiRecordChart = () => {
 
             <CardContent className="p-1">
               {/* DAYS */}
-              <div className="grid grid-cols-7 text-center bg-orange-100 border-b border-orange-400">
-                {days.map((day) => (
+              <div className="grid text-center bg-orange-100 border-b border-orange-400" style={{ gridTemplateColumns: `repeat(${dayCount}, minmax(0, 1fr))` }}>
+                {displayDays.map((day) => (
                   <div
                     key={day}
                     className="text-sm font-bold text-black py-1 border border-orange-300"
@@ -103,18 +97,21 @@ const JodiRecordChart = () => {
               </div>
 
               {/* DATA GRID */}
-              <div className="grid grid-cols-7">
+              <div className="grid" style={{ gridTemplateColumns: `repeat(${dayCount}, minmax(0, 1fr))` }}>
                 {isLoading ? (
-                    <div className="col-span-7 p-4 text-center">Loading...</div>
+                    <div className="p-4 text-center" style={{ gridColumn: `1 / span ${dayCount}` }}>Loading...</div>
                 ) : (
-                    jodiData?.data?.weeks.flatMap((week) => {
+                    (jodiData?.data?.weeks?.flatMap((week) => {
                         // Ensure we always have 7 days
-                        const filledJodi = [...week.jodi];
-                        while(filledJodi.length < 7) {
+                        let filledJodi = [...week.jodi];
+                        if (filledJodi.length > dayCount) {
+                            filledJodi = filledJodi.slice(0, dayCount);
+                        }
+                        while(filledJodi.length < dayCount) {
                             filledJodi.push("**"); // Placeholder for empty days
                         }
                         return filledJodi;
-                    }).map((num, idx) => (
+                    }) ?? []).map((num, idx) => (
                   <div
                     key={idx}
                     className={`

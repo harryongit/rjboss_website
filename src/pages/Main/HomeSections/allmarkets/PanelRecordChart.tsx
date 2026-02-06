@@ -1,14 +1,13 @@
 import React, { useMemo } from "react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import HeaderLogo from "../HeaderLogo";
 import FooterSection from "../FooterSection";
 import ScrollToggleButton from "@/components/ui/ScrollToggleButton";
 import HomeButton from "@/components/ui/HomeButton";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
-import { useMainWebsite } from "@/hooks/main/useMainWebsite";
-import { usePanelChart, PanelChartWeek, PanelChartDayData } from "@/hooks/main/usePanelChart";
+import { usePanelChart, PanelChartDayData } from "@/hooks/main/usePanelChart";
 import { format } from "date-fns";
 
 // Array of days to iterate
@@ -18,21 +17,19 @@ const PanelRecordChart = () => {
   const { marketName } = useParams();
   const decodedMarketName = decodeURIComponent(marketName || "RAKHI MORNING");
 
-  // 1. Fetch main website data to find market_id
-  const { data: mainData, isLoading: isMainLoading } = useMainWebsite();
+  const { state } = useLocation();
+  const marketIdFromState = (state as any)?.marketId as number | undefined;
 
   const marketId = useMemo(() => {
-    if (!mainData?.data?.all_markets) return undefined;
-    const market = mainData.data.all_markets.find(
-      (m) => m.market_name.toLowerCase() === decodedMarketName.toLowerCase()
-    );
-    return market?.market_id;
-  }, [mainData, decodedMarketName]);
+    return marketIdFromState;
+  }, [marketIdFromState]);
 
   // 2. Fetch panel chart data
   const { data: panelData, isLoading: isPanelLoading, refetch } = usePanelChart(marketId);
 
-  const isLoading = isMainLoading || (!!marketId && isPanelLoading);
+  const isLoading = (!!marketId && isPanelLoading);
+
+  const daysColSpan = (panelData?.data?.days ?? 7) + 1;
 
   const isDoubleNumber = (num: string) =>
     num.length === 2 && num[0] === num[1];
@@ -106,7 +103,7 @@ const PanelRecordChart = () => {
                   <thead>
                     <tr className="bg-orange-100">
                       <th className="border px-2 py-1">Date</th>
-                      {days.map((day) => (
+                      {(days.slice(0, panelData?.data?.days ?? 7)).map((day) => (
                         <th key={day} className="border  px-2 py-1">{day}</th>
                       ))}
                     </tr>
@@ -114,10 +111,12 @@ const PanelRecordChart = () => {
                   <tbody>
                     {isLoading ? (
                          <tr>
-                             <td colSpan={8} className="p-4 text-lg">Loading...</td>
+                             <td colSpan={daysColSpan} className="p-4 text-lg">Loading...</td>
+
+
                          </tr>
                     ) : (
-                        panelData?.data?.weeks.map((week, idx) => (
+                        panelData?.data?.weeks?.map((week, idx) => (
                       <tr key={idx}>
                         <td className="border text-[9px] font-bold">
                             {formatDateRange(week.start_date, week.end_date)}
@@ -160,8 +159,8 @@ const PanelRecordChart = () => {
                             </td>
                           );
                         })}
-                         {/* Fill remaining cells if week data is incomplete (should be 7) */}
-                         {Array.from({ length: 7 - (week.data?.length || 0) }).map((_, i) => (
+                         {/* Fill remaining cells if week data is incomplete */}
+                         {Array.from({ length: Math.max(0, (panelData?.data?.days ?? 7) - (week.data?.length || 0)) }).map((_, i) => (
                             <td key={`empty-${i}`} className="border"></td>
                          ))}
                       </tr>

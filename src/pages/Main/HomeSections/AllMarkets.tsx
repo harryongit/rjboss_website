@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 
-type Market = { name: string; result: string; time: string; color?: string };
+type Market = { id?: number; name: string; result: string; time: string; color?: string };
 
 const AllMarkets = ({ allMarkets, handleRefresh }: { allMarkets: Market[]; handleRefresh: () => void }) => {
   const navigate = useNavigate();
@@ -88,7 +88,7 @@ const marketName = state?.marketName;
 <Button
   size="sm"
    onClick={() =>
-    navigate(`/jodi-records-chart/${encodeURIComponent(market.name)}`)
+    navigate(`/jodi-records-chart/${encodeURIComponent(market.name)}`, { state: { marketId: market.id } })
   }
   className="
     bg-gradient-to-r from-pink-500 to-rose-500
@@ -118,7 +118,7 @@ const marketName = state?.marketName;
     size="sm"
     
      onClick={() =>
-    navigate(`/panel-records-chart/${encodeURIComponent(market.name)}`)
+    navigate(`/panel-records-chart/${encodeURIComponent(market.name)}`, { state: { marketId: market.id } })
   }
     className="  bg-gradient-to-r from-pink-500 to-rose-500
     text-white

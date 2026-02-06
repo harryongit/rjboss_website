@@ -44,7 +44,7 @@ const SattaMatkaWebsite = () => {
 
   const allMarkets = useMemo(() => {
     const items = data?.data?.all_markets ?? [];
-    return items.map((m) => ({ name: m.market_name, result: m.result ?? 'loading', time: `${m.open_time ?? ''} - ${m.close_time ?? ''}`, color: m.color }));
+    return items.map((m) => ({ id: m.market_id, name: m.market_name, result: m.result ?? 'loading', time: `${m.open_time ?? ''} - ${m.close_time ?? ''}`, color: m.color }));
   }, [data?.data?.all_markets]);
 
   const finalAnk = useMemo(() => {
