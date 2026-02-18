@@ -17,7 +17,7 @@ const NoticeSection = () => {
 
       <CardContent className="py-3 text-center space-y-2">
   <p className="text-xs text-blue-900 font-semibold leading-relaxed">
-    अपना बाजार smboss.net वेबसाइट में डलवाने के लिए आज ही हमे कॉल या WhatsApp करे
+    अपना बाजार spdpboss.net वेबसाइट में डलवाने के लिए आज ही हमे कॉल या WhatsApp करे
   </p>
 
   {/* Buttons with spacing */}

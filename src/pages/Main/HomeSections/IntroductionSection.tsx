@@ -5,12 +5,12 @@ const IntroductionSection = () => {
   return (
     <Card className="bg-white border-2 border-indigo-400 shadow-lg">
       <CardHeader className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2">
-        <CardTitle className="text-center text-sm font-black tracking-wide">📖 ABOUT SMBoss SERVICE</CardTitle>
+        <CardTitle className="text-center text-sm font-black tracking-wide">📖 ABOUT SPDPBoss SERVICE</CardTitle>
       </CardHeader>
       <CardContent className="p-3">
         <div className="space-y-3 text-xs text-gray-700 leading-relaxed">
-          <p className="font-semibold text-indigo-900">Welcome to SMBoss, where entertainment takes center stage!</p>
-          <p>SMBoss.Service is your ultimate destination for everything related to the fascinating world of the Satta Matka. As the SMBoss is a leading authority in the realm of Matka Games, this is your Go-To Platform for any reliable information along with accurate Matka Results and expert guidance.</p>
+          <p className="font-semibold text-indigo-900">Welcome to SPDPBoss, where entertainment takes center stage!</p>
+          <p>SPDPBoss.Service is your ultimate destination for everything related to the fascinating world of the Satta Matka. As the SPDPBoss is a leading authority in the realm of Matka Games, this is your Go-To Platform for any reliable information along with accurate Matka Results and expert guidance.</p>
           <p>Whether you are a pro or a newcomer player the comprehensive collection of resources such as Kalyan Matka, Matka Result, and Mumbai Matka, will provide you with the thrilling and immersive experience.</p>
 
           <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-3 rounded-lg border border-amber-300 mt-3">

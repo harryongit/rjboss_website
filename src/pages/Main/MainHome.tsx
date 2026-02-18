@@ -57,7 +57,7 @@ const SattaMatkaWebsite = () => {
     "KALYAN MATKA TIPS",
     "SATTA MATKA",
     "MATKA.COM",
-    "SMBoss MATKA 143",
+    "SPDPBoss MATKA 143",
     "MAIN MATKA",
     "WORLD ME SABSE FAST SATTA MATKA RESULT",
   ];

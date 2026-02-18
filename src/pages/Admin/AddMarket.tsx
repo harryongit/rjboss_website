@@ -36,7 +36,7 @@ const AddMarket = () => {
     liveResultSequence: "",
     sequenceNumber: "",
     color: "",
-    domain: "smboss.net",
+    domain: "spdpboss.net",
   });
 
   const [markets, setMarkets] = useState([] as { id: number; gameName: string; openTime: string; closeTime: string }[]);
@@ -138,7 +138,7 @@ const AddMarket = () => {
         sequence: parseInt(formData.sequenceNumber ),
         live_result_sequence: formData.liveResultSequence ? parseInt(formData.liveResultSequence) : undefined,
         color: colorValue,
-        domain: 'smboss.net',
+        domain: 'spdpboss.net',
       };
       const resp = await createMutation.mutateAsync(payload);
       const apiMsg = resp?.message ?? 'Market created';
@@ -158,7 +158,7 @@ const AddMarket = () => {
         liveResultSequence: "",
         sequenceNumber: "",
         color: "",
-        domain: "smboss.net",
+        domain: "spdpboss.net",
       });
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Failed to create market';
@@ -478,7 +478,7 @@ const AddMarket = () => {
             <div className="space-y-2">
               <Label>Domain (Fixed)</Label>
               <Input
-                value="smboss.net"
+                value="spdpboss.net"
                 readOnly
                 className="bg-muted cursor-not-allowed"
               />

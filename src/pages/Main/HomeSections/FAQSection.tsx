@@ -1,23 +1,23 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-const SMBossInfoPage = () => {
+const SPDPBossInfoPage = () => {
   return (
     <div className="space-y-6 max-w-4xl mx-auto my-6 px-4">
       {/* Introduction Section */}
       <Card className="bg-white border-2 border-indigo-400 shadow-lg ">
         <CardHeader className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2">
           <CardTitle className="text-center text-sm font-black tracking-wide">
-            📖 ABOUT SMBOSS SERVICE
+            📖 ABOUT SPDPBOSS SERVICE
           </CardTitle>
         </CardHeader>
         <CardContent className="p-3 max-h-[450px] overflow-y-auto">
           <div className="space-y-3 text-xs text-gray-700 leading-relaxed">
             <p className="font-semibold text-indigo-900">
-              Welcome to SMBoss, where entertainment takes center stage!
+              Welcome to SPDPBoss, where entertainment takes center stage!
             </p>
             <p>
-              SMBoss.Service is your ultimate destination for everything related to the fascinating world of Satta Matka. As a leading authority in the Matka Games industry, we provide accurate Matka results, tips, and expert guidance to help players make informed decisions.
+              SPDPBoss.Service is your ultimate destination for everything related to the fascinating world of Satta Matka. As a leading authority in the Matka Games industry, we provide accurate Matka results, tips, and expert guidance to help players make informed decisions.
             </p>
             <p>
               Whether you are a pro or a newcomer, our resources like Kalyan Matka, Matka Result, and Mumbai Matka offer a thrilling and immersive experience.
@@ -60,7 +60,7 @@ const SMBossInfoPage = () => {
                 <li>• Start with smaller bets to understand patterns and improve strategies.</li>
                 <li>• Use charts and historical data to identify high-probability numbers.</li>
                 <li>• Manage your bankroll carefully to avoid unnecessary losses.</li>
-                <li>• Stay updated with trusted platforms like SMBoss for accurate tips.</li>
+                <li>• Stay updated with trusted platforms like SPDPBoss for accurate tips.</li>
               </ul>
             </div>
           </div>
@@ -84,10 +84,10 @@ const SMBossInfoPage = () => {
           answerHindi: "सट्टा मटका भारत में उत्पन्न हुआ और यह नंबर पर सट्टा लगाने वाले लोकप्रिय लॉटरी और जुआ खेलों में से एक है।",
         },
         {
-          question: "Who is SMBoss?",
-          questionHindi: "SMBoss कौन है?",
-          answer: "SMBoss is known for providing the best tips and guidance to players along with expert advice for informed decisions.",
-          answerHindi: "SMBoss खिलाड़ियों को सर्वश्रेष्ठ सुझाव और मार्गदर्शन प्रदान करने के लिए जाना जाता है।",
+          question: "Who is SPDPBoss?",
+          questionHindi: "SPDPBoss कौन है?",
+          answer: "SPDPBoss is known for providing the best tips and guidance to players along with expert advice for informed decisions.",
+          answerHindi: "SPDPBoss खिलाड़ियों को सर्वश्रेष्ठ सुझाव और मार्गदर्शन प्रदान करने के लिए जाना जाता है।",
         },
         {
           question: "What is Kalyan Matka?",
@@ -134,8 +134,8 @@ const SMBossInfoPage = () => {
         {
           question: "Where can I find expert tips?",
           questionHindi: "मुझे विशेषज्ञ सुझाव कहाँ मिल सकते हैं?",
-          answer: "SMBoss provides tips, strategies, and daily updates for players to make informed decisions.",
-          answerHindi: "SMBoss खिलाड़ियों को जानकार निर्णय लेने के लिए टिप्स, रणनीतियाँ और दैनिक अपडेट प्रदान करता है।",
+          answer: "SPDPBoss provides tips, strategies, and daily updates for players to make informed decisions.",
+          answerHindi: "SPDPBoss खिलाड़ियों को जानकार निर्णय लेने के लिए टिप्स, रणनीतियाँ और दैनिक अपडेट प्रदान करता है।",
         },
       ].map((faq, index) => (
         <div
@@ -158,4 +158,4 @@ const SMBossInfoPage = () => {
   );
 };
 
-export default SMBossInfoPage;
+export default SPDPBossInfoPage;

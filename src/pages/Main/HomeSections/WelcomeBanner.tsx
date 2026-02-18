@@ -22,7 +22,7 @@ const WelcomeSection = () => {
       {/* Right Text */}
       <div className="flex flex-col justify-center text-left">
         <p className="text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-700 to-orange-600 leading-snug">
-          🙏 Welcome to SMBoss International 🙏
+          🙏 Welcome to SPDPBoss International 🙏
         </p>
 
         <p className="text-orange-800 font-semibold text-sm mt-1">
@@ -43,16 +43,16 @@ const WelcomeSection = () => {
 
 
 
-      {/* ---------- CARD 2: SMBOSS MATKA DESCRIPTION ---------- */}
+      {/* ---------- CARD 2: SPDPBOSS MATKA DESCRIPTION ---------- */}
       <Card className="bg-gradient-to-br from-rose-50 to-orange-50 border-2 border-rose-300 shadow-md rounded-xl">
   <CardContent className="py-4">
 
     <p className="text-base font-bold text-rose-700 mb-2">
-      SmBoss Satta Matka Kalyan Matka Result
+      SpdpBoss Satta Matka Kalyan Matka Result
     </p>
 
     <p className="text-[10px] text-rose-900 leading-snug font-medium">
-  Welcome to India’s No.1 Satta Matka SMBoss.net platform. Get fast and accurate results for Kalyan, Main, Dadar, Milan, Rajdhani, and other markets. Daily free updates, guessing tips, and real-time market results are available. SMBoss App ensures the smoothest and fastest experience for all users.
+  Welcome to India’s No.1 Satta Matka SPDPBoss.net platform. Get fast and accurate results for Kalyan, Main, Dadar, Milan, Rajdhani, and other markets. Daily free updates, guessing tips, and real-time market results are available. SPDPBoss App ensures the smoothest and fastest experience for all users.
 </p>
 
 

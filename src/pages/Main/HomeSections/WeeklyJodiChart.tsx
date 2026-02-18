@@ -12,7 +12,7 @@ const WeeklyJodiChart = () => {
     <Card className="bg-white border-2 border-pink-300 shadow-md rounded-lg">
       <CardHeader className="bg-pink-500 text-white py-2 rounded-t-lg">
         <CardTitle className="text-center text-base font-bold tracking-tight">
-          🎯 SmBoss Net Weekly Jodi Chart <br />
+          🎯 SpdpBoss Net Weekly Jodi Chart <br />
           14-06-2025 To 20-07-2025 | Kalyan Milan Kalyan Night, Rajdhani Time, Main Bazar, Mumbai Royal Night Market
         </CardTitle>
       </CardHeader>

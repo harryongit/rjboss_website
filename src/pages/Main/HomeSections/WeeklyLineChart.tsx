@@ -6,7 +6,7 @@ const WeeklyLineChart = ({ weeklyLineData }: { weeklyLineData: { day: string; nu
     <Card className="bg-white border border-teal-300 shadow-sm rounded-lg">
       <CardHeader className="bg-teal-500 text-white py-1 rounded-t-lg">
         <CardTitle className="text-center text-base font-bold tracking-tight">
-          📊 SmBoss Net Weekly Line Open Or Close From 14-07-2025 To 20-07-2025 For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night
+          📊 SpdpBoss Net Weekly Line Open Or Close From 14-07-2025 To 20-07-2025 For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night
         </CardTitle>
       </CardHeader>
 

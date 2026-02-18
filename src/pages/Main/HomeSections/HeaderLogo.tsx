@@ -9,12 +9,12 @@ const HeaderLogo = () => {
         <div className="flex items-center justify-center gap-3 mb-1">
           <img 
             src={logo} 
-            alt="SMBOSS Logo" 
+            alt="SPDPBOSS Logo" 
             className="h-10 w-auto drop-shadow"
           />
 
           <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-orange-600 to-amber-600">
-            SMBOSS.NET
+            SPDPBOSS.NET
           </h1>
         </div>
 

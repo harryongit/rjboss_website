@@ -15,13 +15,13 @@ const KeywordsCard = ({ keywords }: { keywords: string[] }) => {
   );
 };
 
-const SMBossInfoSection = () => {
+const SPDPBossInfoSection = () => {
   const keywords = [
-    'SATTA MATKA', 'SMBoss SATTA MATKA', 'MATKA RESULT', 'KALYAN MATKA TIPS',
+    'SATTA MATKA', 'SPDPBoss SATTA MATKA', 'MATKA RESULT', 'KALYAN MATKA TIPS',
     'SATTA MATKA', 'MATKA.COM', 'MATKA PANA JODI TODAY', 'BATTA SATKA',
     'MATKA PATTI JODI NUMBER', 'MATKA RESULTS', 'MATKA CHART', 'MATKA JODI',
-    'SATTA COM', 'SMBoss SMBOSS', 'MATKA GAME', 'MATKA WAPKA', 'SMBoss TOP NO1',
-    'MATKA RESULT', 'KALYAN MATKA RESULT', 'SMBoss MATKA 143'
+    'SATTA COM', 'SPDPBoss SPDPBOSS', 'MATKA GAME', 'MATKA WAPKA', 'SPDPBoss TOP NO1',
+    'MATKA RESULT', 'KALYAN MATKA RESULT', 'SPDPBoss MATKA 143'
   ];
 
   return (
@@ -32,4 +32,4 @@ const SMBossInfoSection = () => {
   );
 };
 
-export default SMBossInfoSection;
+export default SPDPBossInfoSection;
