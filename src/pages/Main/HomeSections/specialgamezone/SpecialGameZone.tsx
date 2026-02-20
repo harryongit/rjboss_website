@@ -11,18 +11,6 @@ const specialGameItems = [
   "EverGreen Trick Zone And Matka Tricks By SpdpBoss",
 ];
 
-/* MATKA JODI ITEMS */
-const matkaJodiItems = [
-
-  "Matka Jodi Count Chart",
-  "Dhanvarsha Daily Fix Open To Close",
-  "Matka Jodi Family Chart",
-  "Penal Count Chart",
-  "Penal Total Chart",
-  "All 220 Card List",
-  
- 
-];
 
 import { useNavigate } from "react-router-dom";
 
@@ -47,6 +35,12 @@ const SpecialGameZone = () => {
                 if (item.toLowerCase() === "all market free fix game") {
                   navigate("/matka-free-open");
                 }
+                if (item.toLowerCase() === "ratan khatri fix panel chart") {
+                  navigate("/khatris-favourite-panna-chart");
+                }
+                if (item.toLowerCase() === "matka final number trick chart") {
+                  navigate("/matka-final-number-chart");
+                }
               }}
               className={`w-full px-1 py-1 text-center text-lg font-bold animate-gradient-text
                 ${index !== specialGameItems.length - 1 ? "border-b border-orange-400" : ""}
@@ -62,28 +56,7 @@ const SpecialGameZone = () => {
         </CardContent>
       </Card>
 
-      {/* MATKA JODI CARD */}
-      <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-400 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2">
-          <CardTitle className="text-center text-xl font-extrabold tracking-wide">
-            🎯 MATKA JODI LIST
-          </CardTitle>
-        </CardHeader>
-
-               <CardContent className="p-0">
-          {matkaJodiItems.map((item, index) => (
-            <div
-              key={index}
-              className={`px-1 py-1 text-center text-lg font-bold text-gray-800  animate-gradient-text
-                ${index !== matkaJodiItems.length - 1 ? "border-b border-blue-400" : ""}
-              `}
-            >
-              {item}
-            </div>
-          ))}
-        </CardContent>
-
-      </Card>
+    
     </div>
   );
 };

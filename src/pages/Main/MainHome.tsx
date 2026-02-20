@@ -21,7 +21,8 @@ import FloatingRefreshButton from '@/pages/Main/HomeSections/FloatingRefreshButt
 import JodiChartSection from './HomeSections/JodiChartSection';
 import PanelChartSection from './HomeSections/PanelChartSection';
 import MainBazaarChart from './HomeSections/MainBazaarChart';
-import SpecialGameZone from './HomeSections/SpecialGameZone';
+import SpecialGameZone from './HomeSections/specialgamezone/SpecialGameZone';
+import MatkaJodiList from './HomeSections/matkajodilist/MatkaJodiListSection';
 import FreeGuessingDaily from './HomeSections/FreeGuessingDaily';
 import TodayResultSection from './HomeSections/TodayResultSection';
 import RajeshreeStarLine from './HomeSections/RajeshreeStarLine';
@@ -135,6 +136,7 @@ const SattaMatkaWebsite = () => {
          
          <TodayResultSection />
           <SpecialGameZone /> 
+          <MatkaJodiList />
           <FreeGuessingDaily />
 <JodiChartSection/>
 <PanelChartSection/>

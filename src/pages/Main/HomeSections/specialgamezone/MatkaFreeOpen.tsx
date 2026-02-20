@@ -3,8 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDailyGuessingFreeFix } from "@/hooks/common/useDailyGuessingFreeFix";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
-import HeaderLogo from "./HomeSections/HeaderLogo";
-import FooterSection from "./HomeSections/FooterSection";
+import HeaderLogo from "../HeaderLogo";
+import FooterSection from "../FooterSection";
 import ScrollToggleButton from "@/components/ui/ScrollToggleButton";
 import HomeButton from "@/components/ui/HomeButton";
 
@@ -65,7 +65,7 @@ const MatkaFreeOpen = () => {
                       key={idx}
                       className="border-2 border-green-600 rounded-lg overflow-hidden shadow-md"
                     >
-                      <div className="bg-gradient-to-r from-green-600 to-emerald-700 text-white px-3 py-2 font-extrabold text-xs tracking-wide">
+                      <div className="bg-gradient-to-r from-green-600 to-emerald-700 text-white px-3 py-2 font-extrabold text-xs tracking-wide text-center">
                         ↪ {it.market_name.toUpperCase()}
                       </div>
 

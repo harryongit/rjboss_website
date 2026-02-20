@@ -30,7 +30,17 @@ import JodiRecordChart from "./pages/Main/HomeSections/allmarkets/JodiRecordChar
 import PanelRecordChart from "./pages/Main/HomeSections/allmarkets/PanelRecordChart";
 import AdminFreeFix from "@/pages/Admin/AdminFreeFix";
 import UserFreeFix from "./pages/User/UserFreeFix";
-import MatkaFreeOpen from "./pages/Main/MatkaFreeOpen";
+import MatkaFreeOpen from "./pages/Main/HomeSections/specialgamezone/MatkaFreeOpen";
+import KhatrisFavouritePannaChart from "./pages/Main/HomeSections/specialgamezone/KhatrisFavouritePannaChart";
+import MatkaFinalNumberChart from "./pages/Main/HomeSections/specialgamezone/MatkaFinalNumberChart";
+import All22CardPannaPanelPattiChart from "./pages/Main/HomeSections/matkajodilist/All22CardPannaPanelPattiChart";
+import MatkaJodiCountChart from "./pages/Main/HomeSections/matkajodilist/MatkaJodiCountChart";
+import PanelCountChart from "./pages/Main/HomeSections/matkajodilist/PanelCountChart";
+import PanelTotalChart from "./pages/Main/HomeSections/matkajodilist/PanelTotalChart";
+import JodiChartFamilyMatka from "./pages/Main/HomeSections/matkajodilist/JodiChartFamilyMatka";
+import FixOpenToCloseByDate from "./pages/Main/HomeSections/matkajodilist/FixOpenToCloseByDate";
+
+
 
 const queryClient = new QueryClient();
 
@@ -44,6 +54,8 @@ const App = () => (
           <BrowserRouter>
             <Routes>
                 <Route path="/" element={<MainHome />} />
+                 <Route path="/jodi-page/:marketName" element={<JodiRecordChart />} />
+                 <Route path="/panel-page/:marketName" element={<PanelRecordChart />} />
                  <Route path="/jodi-records-chart/:marketName" element={<JodiRecordChart />} />
                  <Route path="/panel-records-chart/:marketName" element={<PanelRecordChart />} />
                 <Route path="/about" element={<About />} />
@@ -51,8 +63,16 @@ const App = () => (
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsAndConditions />} />
                 <Route path="/matka-free-open" element={<MatkaFreeOpen />} />
-
+                <Route path="/khatris-favourite-panna-chart" element={<KhatrisFavouritePannaChart />} />
+                <Route path="/matka-final-number-chart" element={<MatkaFinalNumberChart />} />
+                <Route path="/all-22-card-panna-panel-patti-chart" element={<All22CardPannaPanelPattiChart />} />
+                <Route path="/matka-jodi-count-chart" element={<MatkaJodiCountChart />} />
+                <Route path="/panel-count-chart" element={<PanelCountChart />} />
+                <Route path="/panel-total-chart" element={<PanelTotalChart />} />
+                <Route path="/jodi-chart-family-matka" element={<JodiChartFamilyMatka />} />
+                <Route path="/fix-open-to-close-by-date" element={<FixOpenToCloseByDate />} />
                 <Route path="/admin/dashboard_spdpboss_login" element={<Login />} />
+                
                 <Route
                   path="/admin"
                   element={

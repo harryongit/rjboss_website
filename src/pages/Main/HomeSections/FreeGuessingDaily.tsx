@@ -28,7 +28,7 @@ const FreeGuessingDaily = () => {
             <RefreshCw className="h-4 w-4" />
           </Button>
         </div>
-        <div className="text-xs font-semibold opacity-90">OPEN TO CLOSE FIX ANK</div>
+        <div className="text-xs font-semibold opacity-90 text-center">OPEN TO CLOSE FIX ANK</div>
       </CardHeader>
       <CardContent className="p-3">
         {query.isFetching && (
