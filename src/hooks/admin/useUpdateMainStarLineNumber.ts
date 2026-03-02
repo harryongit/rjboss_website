@@ -3,7 +3,7 @@ import { api } from '@/lib/http';
 
 interface UpdateRequest {
   admin_id: number;
-  cmmstargold_number_id: number;
+  mainstarline_number_id: number;
   number: number;
   result_time: string;
 }
@@ -14,15 +14,15 @@ interface UpdateResponse {
 }
 
 async function putUpdate(body: UpdateRequest): Promise<UpdateResponse> {
-  const { data } = await api.put('/admin/update/cmmstargold_numberlist', body);
+  const { data } = await api.put('/admin/update/mainstarline_numberlist', body);
   if (data?.status_code !== 200) {
-    const message = typeof data?.message === 'string' ? data.message : 'Failed to update CMM Star Gold number';
+    const message = typeof data?.message === 'string' ? data.message : 'Failed to update Main Star Line number';
     throw new Error(message);
   }
   return data as UpdateResponse;
 }
 
-export function useUpdateCmmStarGoldNumber() {
+export function useUpdateMainStarLineNumber() {
   return useMutation<UpdateResponse, Error, UpdateRequest>({
     mutationFn: (body) => putUpdate(body),
   });

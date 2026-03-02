@@ -7,12 +7,12 @@ import { DataTable } from '@/components/common/DataTable';
 import { RefreshButton } from '@/components/ui/refresh-admin';
 import { Toast } from '@/components/ui/ToastProvider';
 import { confirmSwal } from '@/lib/ConfirmSwal';
-import { useListCmmStarGoldNumbers } from '@/hooks/admin/useListCmmStarGoldNumbers';
-import { useCreateCmmStarGoldNumber } from '@/hooks/admin/useCreateCmmStarGoldNumber';
-import { useUpdateCmmStarGoldNumber } from '@/hooks/admin/useUpdateCmmStarGoldNumber';
-import { useDeleteCmmStarGoldNumber } from '@/hooks/admin/useDeleteCmmStarGoldNumber';
+import { useListMainStarLineNumbers } from '@/hooks/admin/useListMainStarLineNumbers';
+import { useCreateMainStarLineNumber } from '@/hooks/admin/useCreateMainStarLineNumber';
+import { useUpdateMainStarLineNumber } from '@/hooks/admin/useUpdateMainStarLineNumber';
+import { useDeleteMainStarLineNumber } from '@/hooks/admin/useDeleteMainStarLineNumber';
 
-const AddTimeCmmStarGold = () => {
+const AddTimeMainStarLine = () => {
   let adminId = 1;
   try {
     const saved = localStorage.getItem('admin');
@@ -24,10 +24,10 @@ const AddTimeCmmStarGold = () => {
     adminId = 1;
   }
 
-  const listQuery = useListCmmStarGoldNumbers({ admin_id: adminId });
-  const createMutation = useCreateCmmStarGoldNumber();
-  const updateMutation = useUpdateCmmStarGoldNumber();
-  const deleteMutation = useDeleteCmmStarGoldNumber();
+  const listQuery = useListMainStarLineNumbers({ admin_id: adminId });
+  const createMutation = useCreateMainStarLineNumber();
+  const updateMutation = useUpdateMainStarLineNumber();
+  const deleteMutation = useDeleteMainStarLineNumber();
 
   const [rows, setRows] = useState([] as { id: number; number: number; resultTime: string }[]);
   const [form, setForm] = useState({ number: '', resultTime: '' });
@@ -36,7 +36,7 @@ const AddTimeCmmStarGold = () => {
   useEffect(() => {
     const items = listQuery.data?.data?.items ?? [];
     setRows(items.map((it: any) => ({
-      id: it.cmmstargold_number_id ?? it.cmmstargold_id,
+      id: it.mainstarline_number_id ?? it.mainstarline_number_id,
       number: Number(it.number),
       resultTime: it.result_time,
     })));
@@ -56,7 +56,7 @@ const AddTimeCmmStarGold = () => {
     });
     if (!confirmed) return;
     try {
-      const resp = await deleteMutation.mutateAsync({ admin_id: adminId, cmmstargold_number_id: row.id });
+      const resp = await deleteMutation.mutateAsync({ admin_id: adminId, mainstarline_number_id: row.id });
       Toast.success(resp.message || 'Deleted successfully');
       await listQuery.refetch();
     } catch (err: unknown) {
@@ -80,7 +80,7 @@ const AddTimeCmmStarGold = () => {
       if (editingId) {
         const resp = await updateMutation.mutateAsync({
           admin_id: adminId,
-          cmmstargold_number_id: editingId,
+          mainstarline_number_id: editingId,
           number: num,
           result_time: form.resultTime,
         });
@@ -111,7 +111,7 @@ const AddTimeCmmStarGold = () => {
     <div className="space-y-6">
       <Card>
         <CardHeader className="bg-primary/10">
-          <CardTitle className="text-primary">Add Time CMM Star Gold</CardTitle>
+          <CardTitle className="text-primary">Add Time Main Star Line</CardTitle>
         </CardHeader>
         <CardContent className="p-6">
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -131,7 +131,7 @@ const AddTimeCmmStarGold = () => {
       </Card>
 
       <DataTable
-        title="CMM Star Gold Time List"
+        title="Main Star Line Time List"
         columns={columns as any}
         data={rows}
         onEdit={onEdit}
@@ -142,4 +142,4 @@ const AddTimeCmmStarGold = () => {
   );
 };
 
-export default AddTimeCmmStarGold;
+export default AddTimeMainStarLine;

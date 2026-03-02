@@ -25,9 +25,9 @@ const defaultPageTitles: Record<string, string> = {
   "/admin/add-user-market": "Add User Market",
   "/admin/market-holiday": "Market Holiday",
   "/admin/add-time": "Add Time",
-  "/admin/add-time-cmmstargold": "Add Time CMM Star Gold",
+  "/admin/add-time-mainstarline": "Add Time Main Star Line",
   "/admin/upload-result": "Upload Result",
-  "/admin/upload-cmmstargold-result": "Upload Result CMM Star Gold",
+  "/admin/upload-mainstarline-result": "Upload Result Main Star Line",
   // "/admin/settings": "Settings",
 };
 

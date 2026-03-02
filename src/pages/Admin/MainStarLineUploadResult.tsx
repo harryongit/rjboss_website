@@ -8,13 +8,13 @@ import { DataTable } from '@/components/common/DataTable';
 import { Toast } from '@/components/ui/ToastProvider';
 import { confirmSwal } from '@/lib/ConfirmSwal';
 import { RefreshButton } from '@/components/ui/refresh-admin';
-import { useDropdownCmmStarGoldNumberList } from '@/hooks/admin/useDropdownCmmStarGoldNumberList';
-import { useListCmmStarGoldTodayResults } from '@/hooks/admin/useListCmmStarGoldTodayResults';
-import { useCreateCmmStarGoldResult } from '@/hooks/admin/useCreateCmmStarGoldResult';
-import { useDeleteCmmStarGoldResult } from '@/hooks/admin/useDeleteCmmStarGoldResult';
+import { useDropdownMainStarLineNumberList } from '@/hooks/admin/useDropdownMainStarLineNumberList';
+import { useListMainStarLineTodayResults } from '@/hooks/admin/useListMainStarLineTodayResults';
+import { useCreateMainStarLineResult } from '@/hooks/admin/useCreateMainStarLineResult';
+import { useDeleteMainStarLineResult } from '@/hooks/admin/useDeleteMainStarLineResult';
 import { Loader2 } from 'lucide-react';
 
-const CmmStarGoldUploadResult = () => {
+const MainStarLineUploadResult = () => {
   const [formData, setFormData] = useState({
     slotId: '',
     resultValue: '',
@@ -33,17 +33,17 @@ const CmmStarGoldUploadResult = () => {
     adminId = 1;
   }
 
-  const dropdownQuery = useDropdownCmmStarGoldNumberList({ admin_id: adminId });
-  const listQuery = useListCmmStarGoldTodayResults({ admin_id: adminId });
-  const createMutation = useCreateCmmStarGoldResult();
-  const deleteMutation = useDeleteCmmStarGoldResult();
+  const dropdownQuery = useDropdownMainStarLineNumberList({ admin_id: adminId });
+  const listQuery = useListMainStarLineTodayResults({ admin_id: adminId });
+  const createMutation = useCreateMainStarLineResult();
+  const deleteMutation = useDeleteMainStarLineResult();
 
   const slotMap = useMemo(() => {
     const items = dropdownQuery.data?.data?.items ?? [];
     const map = new Map<number, string>();
     items.forEach((it) => {
       const label = it.display_label ?? `${it.number} (${formatTimeLabel(it.result_time)})`;
-      map.set(it.cmmstargold_number_id, label);
+      map.set(it.mainstarline_number_id, label);
     });
     return map;
   }, [dropdownQuery.data]);
@@ -53,8 +53,8 @@ const CmmStarGoldUploadResult = () => {
     const items: any[] = Array.isArray(raw) ? raw : (raw?.items ?? []);
     setResults(items.map((r: any) => ({
       id: r.result_id,
-      slotId: r.cmmstargold_number_id,
-      slotLabel: slotMap.get(r.cmmstargold_number_id) ?? String(r.cmmstargold_number_id),
+      slotId: r.mainstarline_number_id,
+      slotLabel: slotMap.get(r.mainstarline_number_id) ?? String(r.mainstarline_number_id),
       value: r.result_value,
       datetime: r.result_datetime,
     })));
@@ -69,7 +69,7 @@ const CmmStarGoldUploadResult = () => {
     try {
       const resp = await createMutation.mutateAsync({
         admin_id: adminId,
-        cmmstargold_number_id: parseInt(formData.slotId, 10),
+        mainstarline_number_id: parseInt(formData.slotId, 10),
         result_value: formData.resultValue,
       });
       Toast.success(resp.message || 'Result uploaded successfully');
@@ -123,7 +123,7 @@ const CmmStarGoldUploadResult = () => {
                   </SelectTrigger>
                   <SelectContent>
                     {(dropdownQuery.data?.data?.items ?? []).map((it) => (
-                      <SelectItem key={it.cmmstargold_number_id} value={String(it.cmmstargold_number_id)}>
+                      <SelectItem key={it.mainstarline_number_id} value={String(it.mainstarline_number_id)}>
                         {it.display_label ?? `${it.number} (${formatTimeLabel(it.result_time)})`}
                       </SelectItem>
                     ))}
@@ -153,7 +153,7 @@ const CmmStarGoldUploadResult = () => {
       </Card>
 
       <DataTable
-        title="CMM Star Gold Today Results"
+        title="Main Star Line Today Results"
         columns={columns}
         data={results}
         onDelete={onDelete}
@@ -163,7 +163,7 @@ const CmmStarGoldUploadResult = () => {
   );
 };
 
-export default CmmStarGoldUploadResult;
+export default MainStarLineUploadResult;
 
 function formatTimeLabel(t: string): string {
   if (!t) return '';

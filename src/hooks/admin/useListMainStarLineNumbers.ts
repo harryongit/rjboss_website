@@ -6,8 +6,7 @@ interface ListRequest {
 }
 
 interface RawItem {
-  cmmstargold_number_id?: number;
-  cmmstargold_id?: number;
+  mainstarline_number_id?: number;
   number: number;
   result_time: string;
 }
@@ -19,17 +18,17 @@ interface ListResponse {
 }
 
 async function postList(body: ListRequest): Promise<ListResponse> {
-  const { data } = await api.post('/admin/list/cmmstargold_numberlist', body);
+  const { data } = await api.post('/admin/list/mainstarline_numberlist', body);
   if (data?.status_code !== 200) {
-    const message = typeof data?.message === 'string' ? data.message : 'Failed to fetch CMM Star Gold numbers';
+    const message = typeof data?.message === 'string' ? data.message : 'Failed to fetch Main Star Line numbers';
     throw new Error(message);
   }
   return data as ListResponse;
 }
 
-export function useListCmmStarGoldNumbers(req: ListRequest) {
+export function useListMainStarLineNumbers(req: ListRequest) {
   return useQuery<ListResponse, Error>({
-    queryKey: ['admin', 'cmmstargold', 'list', req.admin_id],
+    queryKey: ['admin', 'mainstarline', 'list', req.admin_id],
     queryFn: () => postList(req),
     enabled: !!req.admin_id,
   });

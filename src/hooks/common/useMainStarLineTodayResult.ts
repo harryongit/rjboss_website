@@ -13,7 +13,7 @@ interface TodayResponse {
 }
 
 async function getToday(): Promise<TodayResponse> {
-  const { data } = await api.get('/common/cmmstargoldresult/');
+  const { data } = await api.get('/common/mainstarlineresult/');
   if (data?.status_code !== 200) {
     const message = typeof data?.message === 'string' ? data.message : 'Failed to fetch today results';
     throw new Error(message);
@@ -21,9 +21,9 @@ async function getToday(): Promise<TodayResponse> {
   return data as TodayResponse;
 }
 
-export function useCmmStarGoldTodayResult() {
+export function useMainStarLineTodayResult() {
   return useQuery<TodayResponse, Error>({
-    queryKey: ['common', 'cmmstargold', 'today'],
+    queryKey: ['common', 'mainstarline', 'today'],
     queryFn: () => getToday(),
   });
 }

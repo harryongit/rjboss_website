@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { useCmmStarGoldPanelResults } from "@/hooks/common/useCmmStarGoldPanelResults";
+import { useMainStarLinePanelResults } from "@/hooks/common/useMainStarLinePanelResults";
 import { useNavigate } from "react-router-dom";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import HeaderLogo from "./HeaderLogo";
@@ -9,9 +9,9 @@ import HomeButton from "@/components/ui/HomeButton";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
 
-const CmmStarGoldPanelChart = () => {
+const MainStarLinePanelChart = () => {
   const navigate = useNavigate();
-  const { data, isFetching, refetch } = useCmmStarGoldPanelResults();
+  const { data, isFetching, refetch } = useMainStarLinePanelResults();
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
 
   const days = useMemo(() => normalizePanel(data?.data), [data]);
@@ -23,7 +23,7 @@ const CmmStarGoldPanelChart = () => {
 
         <div className="p-3 space-y-3">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-extrabold text-black drop-shadow-lg">CMM STAR GOLD Chart</div>
+            <div className="text-2xl font-extrabold text-black drop-shadow-lg">MAIN STAR LINE Chart</div>
             <div className="flex items-center gap-2">
               <Button
                 size="sm"
@@ -110,7 +110,7 @@ const CmmStarGoldPanelChart = () => {
   );
 };
 
-export default CmmStarGoldPanelChart;
+export default MainStarLinePanelChart;
 
 function to12Hour(t?: string): string {
   if (!t) return '';

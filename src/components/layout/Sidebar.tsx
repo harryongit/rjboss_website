@@ -21,8 +21,8 @@ const menuItems = [
 
   // { title: 'Settings', icon: Settings, path: '/admin/settings' },
   { title: 'Free Fix', icon: WandSparkles, path: '/admin/free-fix' },
-  { title: 'Add Time CMM Star Gold', icon: Clock, path: '/admin/add-time-cmmstargold' },
-  { title: 'Upload result of CMM Star Gold', icon: Upload, path: '/admin/upload-cmmstargold-result' },
+  { title: 'Add Time Main Star Line', icon: Clock, path: '/admin/add-time-mainstarline' },
+  { title: 'Upload result of Main Star Line', icon: Upload, path: '/admin/upload-mainstarline-result' },
 ];
 
 export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {

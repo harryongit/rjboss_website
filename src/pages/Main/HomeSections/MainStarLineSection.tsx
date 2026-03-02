@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from "react";
-import { useCmmStarGoldTodayResult } from "@/hooks/common/useCmmStarGoldTodayResult";
+import { useMainStarLineTodayResult } from "@/hooks/common/useMainStarLineTodayResult";
 import { useNavigate } from "react-router-dom";
 
-const CMMStarGoldSection = () => {
+const MainStarLineSection = () => {
   const [view] = useState<'today' | 'chart'>('today');
   const navigate = useNavigate();
-  const todayQuery = useCmmStarGoldTodayResult();
+  const todayQuery = useMainStarLineTodayResult();
 
   const todayItems = useMemo(() => {
     const raw: any = todayQuery.data?.data;
@@ -23,10 +23,10 @@ const CMMStarGoldSection = () => {
     <div className="mt-5 border-2 border-purple-700 rounded-xl overflow-hidden shadow-lg bg-white">
       <div className="bg-gradient-to-r from-purple-700 to-purple-500 text-white py-3 px-3 tracking-wide">
         <div className="flex items-center justify-between">
-          <span className="font-black text-2xl">CMM STAR GOLD</span>
+          <span className="font-black text-2xl">MAIN STAR LINE</span>
           <button
             className="px-3 py-1 rounded bg-white text-purple-700 font-semibold border border-white shadow-sm"
-            onClick={() => navigate('/cmm-star-gold-panel-chart')}
+            onClick={() => navigate('/main-star-line-panel-chart')}
           >
             Panel
           </button>
@@ -83,7 +83,7 @@ const CMMStarGoldSection = () => {
   );
 };
 
-export default CMMStarGoldSection;
+export default MainStarLineSection;
 
 function to12Hour(t?: string): string {
   if (!t) return '';

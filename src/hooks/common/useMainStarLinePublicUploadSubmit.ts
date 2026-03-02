@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { api } from '@/lib/http';
 
 interface SubmitRequest {
-  cmmstargold_number_id: number;
+  mainstarline_number_id: number;
   result_value: string;
 }
 
@@ -13,7 +13,7 @@ interface SubmitResponse {
 }
 
 async function postSubmit(body: SubmitRequest): Promise<SubmitResponse> {
-  const { data } = await api.post('/common/cmmstargold_resultupload_publiclink', body);
+  const { data } = await api.post('/common/mainstarline_resultupload_publiclink', body);
   if (data?.status_code !== 201) {
     const message = typeof data?.message === 'string' ? data.message : 'Failed to upload result';
     throw new Error(message);
@@ -21,7 +21,7 @@ async function postSubmit(body: SubmitRequest): Promise<SubmitResponse> {
   return data as SubmitResponse;
 }
 
-export function useCmmStarGoldPublicUploadSubmit() {
+export function useMainStarLinePublicUploadSubmit() {
   return useMutation<SubmitResponse, Error, SubmitRequest>({
     mutationFn: (body) => postSubmit(body),
   });

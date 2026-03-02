@@ -12,7 +12,7 @@ interface DeleteResponse {
 }
 
 async function del(body: DeleteRequest): Promise<DeleteResponse> {
-  const { data } = await api.delete('/admin/delete/cmmstargold_result', { data: body });
+  const { data } = await api.delete('/admin/delete/mainstarline_result', { data: body });
   if (data?.status_code !== 200) {
     const message = typeof data?.message === 'string' ? data.message : 'Failed to delete result';
     throw new Error(message);
@@ -20,7 +20,7 @@ async function del(body: DeleteRequest): Promise<DeleteResponse> {
   return data as DeleteResponse;
 }
 
-export function useDeleteCmmStarGoldResult() {
+export function useDeleteMainStarLineResult() {
   return useMutation<DeleteResponse, Error, DeleteRequest>({
     mutationFn: (body) => del(body),
   });

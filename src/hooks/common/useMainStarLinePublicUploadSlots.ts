@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from '@/lib/http';
 
 interface SlotItem {
-  cmmstargold_number_id: number;
+  mainstarline_number_id: number;
   number: number;
   result_time: string;
   display_label: string;
@@ -16,7 +16,7 @@ interface SlotsResponse {
 }
 
 async function getSlots(): Promise<SlotsResponse> {
-  const { data } = await api.get('/common/cmmstargold_resultupload_publiclink');
+  const { data } = await api.get('/common/mainstarline_resultupload_publiclink');
   if (data?.status_code !== 200) {
     const message = typeof data?.message === 'string' ? data.message : 'Failed to fetch upload slots';
     throw new Error(message);
@@ -24,9 +24,9 @@ async function getSlots(): Promise<SlotsResponse> {
   return data as SlotsResponse;
 }
 
-export function useCmmStarGoldPublicUploadSlots() {
+export function useMainStarLinePublicUploadSlots() {
   return useQuery<SlotsResponse, Error>({
-    queryKey: ['common', 'cmmstargold', 'public_upload_slots'],
+    queryKey: ['common', 'mainstarline', 'public_upload_slots'],
     queryFn: () => getSlots(),
   });
 }

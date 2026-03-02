@@ -3,7 +3,7 @@ import { api } from '@/lib/http';
 
 interface DeleteRequest {
   admin_id: number;
-  cmmstargold_number_id: number;
+  mainstarline_number_id: number;
 }
 
 interface DeleteResponse {
@@ -12,15 +12,15 @@ interface DeleteResponse {
 }
 
 async function del(body: DeleteRequest): Promise<DeleteResponse> {
-  const { data } = await api.delete('/admin/delete/cmmstargold_numberlist', { data: body });
+  const { data } = await api.delete('/admin/delete/mainstarline_numberlist', { data: body });
   if (data?.status_code !== 200) {
-    const message = typeof data?.message === 'string' ? data.message : 'Failed to delete CMM Star Gold number';
+    const message = typeof data?.message === 'string' ? data.message : 'Failed to delete Main Star Line number';
     throw new Error(message);
   }
   return data as DeleteResponse;
 }
 
-export function useDeleteCmmStarGoldNumber() {
+export function useDeleteMainStarLineNumber() {
   return useMutation<DeleteResponse, Error, DeleteRequest>({
     mutationFn: (body) => del(body),
   });

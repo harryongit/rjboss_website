@@ -13,7 +13,7 @@ import AddUserMarket from "./pages/Admin/AddUserMarket";
 import MarketHoliday from "./pages/Admin/MarketHoliday";
 import Settings from "./pages/Admin/Settings";
 import AddTime from "./pages/Admin/AddTime";
-import AddTimeCmmStarGold from "./pages/Admin/AddTimeCmmStarGold";
+import AddTimeMainStarLine from "./pages/Admin/AddTimeMainStarLine";
 import UploadResult from "./pages/Admin/UploadResult";
 import NotFound from "./pages/NotFound";
 import MainHome from "@/pages/Main/MainHome";
@@ -30,9 +30,9 @@ import TermsAndConditions from "@/pages/Main/TermsAndConditions";
 import JodiRecordChart from "./pages/Main/HomeSections/allmarkets/JodiRecordChart";
 import PanelRecordChart from "./pages/Main/HomeSections/allmarkets/PanelRecordChart";
 import AdminFreeFix from "@/pages/Admin/AdminFreeFix";
-import CmmStarGoldUploadResult from "./pages/Admin/CmmStarGoldUploadResult";
-import CmmStarGoldPanelChart from "./pages/Main/HomeSections/CmmStarGoldPanelChart";
-import CmmStarGoldPublicUpload from "./pages/Main/CmmStarGoldPublicUpload";
+import MainStarLineUploadResult from "./pages/Admin/MainStarLineUploadResult";
+import MainStarLinePanelChart from "./pages/Main/HomeSections/MainStarLinePanelChart";
+import MainStarLinePublicUpload from "./pages/Main/MainStarLinePublicUpload";
 import UserFreeFix from "./pages/User/UserFreeFix";
 import MatkaFreeOpen from "./pages/Main/HomeSections/specialgamezone/MatkaFreeOpen";
 import KhatrisFavouritePannaChart from "./pages/Main/HomeSections/specialgamezone/KhatrisFavouritePannaChart";
@@ -75,8 +75,8 @@ const App = () => (
                 <Route path="/panel-total-chart" element={<PanelTotalChart />} />
                 <Route path="/jodi-chart-family-matka" element={<JodiChartFamilyMatka />} />
                 <Route path="/fix-open-to-close-by-date" element={<FixOpenToCloseByDate />} />
-                <Route path="/cmm-star-gold-panel-chart" element={<CmmStarGoldPanelChart />} />
-                <Route path="/cmm-star-gold-upload-public-link" element={<CmmStarGoldPublicUpload />} />
+                <Route path="/main-star-line-panel-chart" element={<MainStarLinePanelChart />} />
+                <Route path="/main-star-line-upload-public-link" element={<MainStarLinePublicUpload />} />
                 <Route path="/admin/dashboard_spdpboss_login" element={<Login />} />
                 
                 <Route
@@ -151,11 +151,11 @@ const App = () => (
                   }
                 />
                 <Route
-                  path="/admin/add-time-cmmstargold"
+                  path="/admin/add-time-mainstarline"
                   element={
                     <ProtectedRoute role="admin">
                       <DashboardLayout>
-                        <AddTimeCmmStarGold />
+                        <AddTimeMainStarLine />
                       </DashboardLayout>
                     </ProtectedRoute>
                   }
@@ -171,11 +171,11 @@ const App = () => (
                   }
                 />
                 <Route
-                  path="/admin/upload-cmmstargold-result"
+                  path="/admin/upload-mainstarline-result"
                   element={
                     <ProtectedRoute role="admin">
                       <DashboardLayout>
-                        <CmmStarGoldUploadResult />
+                        <MainStarLineUploadResult />
                       </DashboardLayout>
                     </ProtectedRoute>
                   }

@@ -18,7 +18,7 @@ interface PanelResponse {
 }
 
 async function getPanel(): Promise<PanelResponse> {
-  const { data } = await api.get('/common/cmmstargoldresult/panel');
+  const { data } = await api.get('/common/mainstarlineresult/panel');
   if (data?.status_code !== 200) {
     const message = typeof data?.message === 'string' ? data.message : 'Failed to fetch panel results';
     throw new Error(message);
@@ -26,9 +26,9 @@ async function getPanel(): Promise<PanelResponse> {
   return data as PanelResponse;
 }
 
-export function useCmmStarGoldPanelResults() {
+export function useMainStarLinePanelResults() {
   return useQuery<PanelResponse, Error>({
-    queryKey: ['common', 'cmmstargold', 'panel'],
+    queryKey: ['common', 'mainstarline', 'panel'],
     queryFn: () => getPanel(),
   });
 }

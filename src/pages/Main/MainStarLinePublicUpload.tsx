@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
-import { useCmmStarGoldPublicUploadSlots } from "@/hooks/common/useCmmStarGoldPublicUploadSlots";
-import { useCmmStarGoldPublicUploadSubmit } from "@/hooks/common/useCmmStarGoldPublicUploadSubmit";
+import { useMainStarLinePublicUploadSlots } from "@/hooks/common/useMainStarLinePublicUploadSlots";
+import { useMainStarLinePublicUploadSubmit } from "@/hooks/common/useMainStarLinePublicUploadSubmit";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import HeaderLogo from "./HomeSections/HeaderLogo";
 import FooterSection from "./HomeSections/FooterSection";
@@ -8,9 +8,9 @@ import ScrollToggleButton from "@/components/ui/ScrollToggleButton";
 import HomeButton from "@/components/ui/HomeButton";
 import { Button } from "@/components/ui/button";
 
-const CmmStarGoldPublicUpload = () => {
-  const slotsQuery = useCmmStarGoldPublicUploadSlots();
-  const submitMutation = useCmmStarGoldPublicUploadSubmit();
+const MainStarLinePublicUpload = () => {
+  const slotsQuery = useMainStarLinePublicUploadSlots();
+  const submitMutation = useMainStarLinePublicUploadSubmit();
   const [values, setValues] = useState<{ [key: number]: string }>({});
   const [pendingId, setPendingId] = useState<number | null>(null);
 
@@ -28,7 +28,7 @@ const CmmStarGoldPublicUpload = () => {
     if (!val || val.trim().length === 0) return;
     setPendingId(slotId);
     try {
-      await submitMutation.mutateAsync({ cmmstargold_number_id: slotId, result_value: val.trim() });
+      await submitMutation.mutateAsync({ mainstarline_number_id: slotId, result_value: val.trim() });
       setPendingId(null);
       await slotsQuery.refetch();
     } catch {
@@ -43,7 +43,7 @@ const CmmStarGoldPublicUpload = () => {
 
         <div className="p-3 space-y-3">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-extrabold text-black drop-shadow-lg">CMM STAR GOLD Public Upload</div>
+            <div className="text-2xl font-extrabold text-black drop-shadow-lg">MAIN STAR LINE Public Upload</div>
             <Button
               size="sm"
               disabled={slotsQuery.isFetching}
@@ -75,7 +75,7 @@ const CmmStarGoldPublicUpload = () => {
           {!slotsQuery.isFetching && !slotsQuery.isError && items.length > 0 && (
             <div className="grid gap-4 grid-cols-1">
               {items.map((slot: any) => (
-                <Card key={slot.cmmstargold_number_id} className="border-2 border-orange-500 shadow-xl">
+                <Card key={slot.mainstarline_number_id} className="border-2 border-orange-500 shadow-xl">
                   <CardHeader className="bg-gradient-to-r from-orange-600 via-rose-600 to-pink-600 py-2">
                     <CardTitle className="text-white font-black tracking-wide text-lg">
                       {slot.display_label}
@@ -91,15 +91,15 @@ const CmmStarGoldPublicUpload = () => {
                       <input
                         className="flex-1 border border-purple-700 rounded px-3 py-2"
                         placeholder="Enter result (e.g., 123-4)"
-                        value={values[slot.cmmstargold_number_id] ?? ""}
-                        onChange={(e) => handleChange(slot.cmmstargold_number_id, e.target.value)}
+                        value={values[slot.mainstarline_number_id] ?? ""}
+                        onChange={(e) => handleChange(slot.mainstarline_number_id, e.target.value)}
                       />
                       <Button
                         className="bg-green-600 hover:bg-green-700 text-white"
-                        disabled={submitMutation.isPending && pendingId === slot.cmmstargold_number_id}
-                        onClick={() => handleUpload(slot.cmmstargold_number_id)}
+                        disabled={submitMutation.isPending && pendingId === slot.mainstarline_number_id}
+                        onClick={() => handleUpload(slot.mainstarline_number_id)}
                       >
-                        {submitMutation.isPending && pendingId === slot.cmmstargold_number_id ? 'Submitting...' : 'Upload'}
+                        {submitMutation.isPending && pendingId === slot.mainstarline_number_id ? 'Submitting...' : 'Upload'}
                       </Button>
                     </div>
                   </CardContent>
@@ -117,4 +117,4 @@ const CmmStarGoldPublicUpload = () => {
   );
 };
 
-export default CmmStarGoldPublicUpload;
+export default MainStarLinePublicUpload;

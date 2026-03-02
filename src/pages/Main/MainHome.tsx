@@ -24,7 +24,7 @@ import MainBazaarChart from './HomeSections/MainBazaarChart';
 import SpecialGameZone from './HomeSections/specialgamezone/SpecialGameZone';
 import MatkaJodiList from './HomeSections/matkajodilist/MatkaJodiListSection';
 import FreeGuessingDaily from './HomeSections/FreeGuessingDaily';
-import CMMStarGoldSection from './HomeSections/CMMStarGoldSection';
+import MainStarLineSection from './HomeSections/MainStarLineSection';
 import RajeshreeStarLine from './HomeSections/RajeshreeStarLine';
 import KalyanStarLine from './HomeSections/KalyanStarLine';
 import MainBombayStarLine from './HomeSections/MainBombayStarLine';
@@ -124,7 +124,7 @@ const SattaMatkaWebsite = () => {
           <KeywordsCard />
           <AllMarkets allMarkets={allMarkets} handleRefresh={handleRefresh} />
           <HindiInfo />
-           <CMMStarGoldSection />
+           <MainStarLineSection />
           <WeeklyPattiChart weeklyPatti={weeklyPatti} />
           <WeeklyLineChart weeklyLineData={weeklyLineData} />
           <WeeklyJodiChart />

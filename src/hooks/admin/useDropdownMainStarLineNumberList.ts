@@ -6,7 +6,7 @@ interface DropdownRequest {
 }
 
 interface DropdownItem {
-  cmmstargold_number_id: number;
+  mainstarline_number_id: number;
   number: number;
   result_time: string;
   display_label?: string;
@@ -19,7 +19,7 @@ interface DropdownResponse {
 }
 
 async function postDropdown(body: DropdownRequest): Promise<DropdownResponse> {
-  const { data } = await api.post('/admin/dropdown/cmmstargold_numberlist', body);
+  const { data } = await api.post('/admin/dropdown/mainstarline_numberlist', body);
   if (data?.status_code !== 200) {
     const message = typeof data?.message === 'string' ? data.message : 'Failed to fetch time slots';
     throw new Error(message);
@@ -27,9 +27,9 @@ async function postDropdown(body: DropdownRequest): Promise<DropdownResponse> {
   return data as DropdownResponse;
 }
 
-export function useDropdownCmmStarGoldNumberList(req: DropdownRequest) {
+export function useDropdownMainStarLineNumberList(req: DropdownRequest) {
   return useQuery<DropdownResponse, Error>({
-    queryKey: ['admin', 'cmmstargold', 'dropdown', req.admin_id],
+    queryKey: ['admin', 'mainstarline', 'dropdown', req.admin_id],
     queryFn: () => postDropdown(req),
     enabled: !!req.admin_id,
   });
