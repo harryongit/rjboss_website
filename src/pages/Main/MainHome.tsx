@@ -37,6 +37,7 @@ const SattaMatkaWebsite = () => {
 
   const handleRefresh = async () => {
     await refetch();
+    window.location.reload();
   };
 
   const liveMarkets = useMemo(() => {
@@ -123,6 +124,17 @@ const SattaMatkaWebsite = () => {
         
           <KeywordsCard />
           <AllMarkets allMarkets={allMarkets} handleRefresh={handleRefresh} />
+          
+          <div className="bg-rose-50 border-2 border-rose-400 rounded-lg p-2 flex items-center justify-center gap-2 shadow-sm">
+            <span className="text-sm font-black italic text-black">Email for any inquiries Or Support:</span>
+            <a 
+              href="mailto:support@spdpboss.net" 
+              className="bg-orange-500 text-black px-3 py-0.5 rounded-full text-sm font-black border border-orange-600 shadow-sm"
+            >
+              support@spdpboss.net
+            </a>
+          </div>
+
           <HindiInfo />
            <MainStarLineSection />
           <WeeklyPattiChart weeklyPatti={weeklyPatti} />

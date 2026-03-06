@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone, MessageCircle, Mail } from 'lucide-react';
 
 const NoticeSection = () => {
   // Phone & WhatsApp links with country code (+91 for India)
   const countryCode = "+91";
-  const phoneNumber = "";
+  const phoneNumber = "8143175017";
   const fullNumber = `${countryCode}${phoneNumber}`;
   const whatsappLink = `https://wa.me/${phoneNumber}`; // WhatsApp needs number without '+'
 
@@ -40,6 +40,16 @@ const NoticeSection = () => {
     >
       <MessageCircle className="h-4 w-4" />
       WhatsApp करें
+    </a>
+  </div>
+
+  <div className="flex justify-center items-center mt-2">
+    <a
+      href="mailto:support@dpboss.net"
+      className="inline-flex items-center gap-2 text-blue-800 font-bold hover:text-blue-900 transition"
+    >
+      <Mail className="h-4 w-4" />
+      Email: support@spdpboss.net
     </a>
   </div>
 

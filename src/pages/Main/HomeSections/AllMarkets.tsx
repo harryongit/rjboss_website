@@ -57,13 +57,25 @@ const marketName = state?.marketName;
             </div>
           )}
           {allMarkets && allMarkets.length > 0 && allMarkets.map((market, idx) => {
+            const middleIndex = Math.floor(allMarkets.length / 2);
             const bg = normalizeColor(market.color);
             const baseClass = "px-3 py-1 rounded-lg border-2 border-orange-200 hover:border-rose-400 transition-all active:scale-[0.98]";
             const gradientClass = "bg-gradient-to-br from-rose-50 via-orange-50 to-amber-50";
             const cardClass = bg ? baseClass : `${gradientClass} ${baseClass}`;
             return (
+              <React.Fragment key={idx}>
+                {idx === middleIndex && (
+                  <div className="bg-rose-50 border-2 border-rose-400 rounded-lg p-2 flex items-center justify-center gap-2 shadow-sm my-2">
+                    <span className="text-sm font-black italic text-black uppercase">ADD YOUR GAME :</span>
+                    <a 
+                      href="mailto:support@spdpboss.net" 
+                      className="bg-orange-500 text-black px-3 py-0.5 rounded-full text-sm font-black border border-orange-600 shadow-sm"
+                    >
+                      support@spdpboss.net
+                    </a>
+                  </div>
+                )}
             <div
-              key={idx}
               className={cardClass}
               style={bg ? { backgroundColor: bg } : undefined}
             >
@@ -146,6 +158,7 @@ const marketName = state?.marketName;
 
 
             </div>
+            </React.Fragment>
           );
           })}
         </div>
