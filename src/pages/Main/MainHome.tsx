@@ -120,6 +120,28 @@ const SattaMatkaWebsite = () => {
           <WelcomeBanner />
           <LuckyNumberCard />
           <LiveResults liveMarkets={liveMarkets} refreshTime={refreshTime} handleRefresh={handleRefresh} />
+          
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+            <a 
+              href="/spdpboss-resultapp.apk" 
+              download
+              className="relative flex items-center justify-between bg-white border-2 border-red-500 rounded-xl p-3 shadow-lg hover:shadow-xl transition-all active:scale-[0.98]"
+            >
+              <div className="flex flex-col">
+                <span className="text-sm font-black text-red-600 animate-pulse">
+                  🔥 SPDPBoss Official App 🔥
+                </span>
+                <span className="text-[10px] font-bold text-gray-600">
+                  SPDPBoss Ka Bharosa - Fast Result
+                </span>
+              </div>
+              <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-4 py-2 rounded-lg font-black text-xs shadow-md flex items-center gap-2">
+                Download Now
+              </div>
+            </a>
+          </div>
+
           <NoticeSection />
         
           <KeywordsCard />
