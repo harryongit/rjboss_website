@@ -39,9 +39,21 @@ const PanelRecordChart = () => {
     try {
         const s = new Date(start);
         const e = new Date(end);
-        return `${format(s, "dd/MM/yyyy")} to ${format(e, "dd/MM/yyyy")}`;
+        return (
+          <div className="flex flex-col items-center leading-none py-1">
+            <span>{format(s, "dd/MM/yyyy")}</span>
+            <span className="text-[9px] font-bold lowercase">to</span>
+            <span>{format(e, "dd/MM/yyyy")}</span>
+          </div>
+        );
     } catch {
-        return `${start} to ${end}`;
+        return (
+          <div className="flex flex-col items-center leading-none py-1">
+            <span>{start}</span>
+            <span className="text-[7px] font-normal lowercase">to</span>
+            <span>{end}</span>
+          </div>
+        );
     }
   };
 
