@@ -7,7 +7,7 @@ const WelcomeSection = () => {
     <div className="space-y-4">
 
       {/* ---------- CARD 1: IMAGE + WELCOME MESSAGE ---------- */}
-      <Card className="bg-gradient-to-br from-amber-100 via-orange-100 to-rose-100 border-2 border-orange-400 shadow-lg rounded-xl">
+      <Card className="bg-gradient-to-br from-amber-100 via-peach to-rose-100 border-2 border-orange-400 shadow-lg rounded-xl">
   <CardContent className="py-4">
 
     <div className="flex items-center gap-4">
@@ -44,7 +44,7 @@ const WelcomeSection = () => {
 
 
       {/* ---------- CARD 2: SPDPBOSS MATKA DESCRIPTION ---------- */}
-      <Card className="bg-gradient-to-br from-rose-50 to-orange-50 border-2 border-rose-300 shadow-md rounded-xl">
+      <Card className="bg-peach border-2 border-rose-300 shadow-md rounded-xl">
   <CardContent className="py-4">
 
     <p className="text-base font-bold text-rose-700 mb-2">

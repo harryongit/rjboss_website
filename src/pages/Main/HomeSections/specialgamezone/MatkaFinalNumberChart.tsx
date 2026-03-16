@@ -7,8 +7,8 @@ import HomeButton from "@/components/ui/HomeButton";
 
 const MatkaFinalNumberChart = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-violet-50">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen bg-peach">
+      <div className="max-w-md mx-auto">
         <HeaderLogo />
 
         <div className="p-3 space-y-3">

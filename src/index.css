@@ -236,3 +236,14 @@ All colors MUST be HSL.
 }
 
 
+.rgb-animate {
+  background: linear-gradient(270deg, red, blue, green, yellow, purple);
+  background-size: 1000% 1000%;
+  animation: rgbMove 8s ease infinite;
+}
+
+@keyframes rgbMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

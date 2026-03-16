@@ -1,27 +1,47 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const WeeklyLineChart = ({ weeklyLineData }: { weeklyLineData: { day: string; number: string; span: number }[] }) => {
+const WeeklyLineChart = () => {
+
+  const getWeekRange = () => {
+    const today = new Date();
+
+    // get Monday
+    const day = today.getDay();
+    const diff = today.getDate() - day + (day === 0 ? -6 : 1);
+    const monday = new Date(today.setDate(diff));
+
+    // get Sunday
+    const sunday = new Date(monday);
+    sunday.setDate(monday.getDate() + 6);
+
+    const format = (date) =>
+      date.toLocaleDateString("en-GB").replace(/\//g, "-");
+
+    return `${format(monday)} To ${format(sunday)}`;
+  };
+
+  const weekRange = getWeekRange();
+
   return (
-    <Card className="bg-white border border-teal-300 shadow-sm rounded-lg">
-      <CardHeader className="bg-teal-500 text-white py-1 rounded-t-lg">
-        <CardTitle className="text-center text-base font-bold tracking-tight">
-          📊 SpdpBoss Net Weekly Line Open Or Close From 14-07-2025 To 20-07-2025 For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night
+    <Card className="bg-peach border border-red-600 shadow-sm rounded-none">
+      <CardHeader className="rgb-animate text-white py-1">
+        <CardTitle className="text-center text-lg font-extrabold italic leading-tight">
+          SpdpBoss Net Weekly Line Open Or Close From {weekRange} For
+          Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar,
+          Mumbai Royal Night, Kalyan Morning
         </CardTitle>
       </CardHeader>
 
-      <CardContent className="p-1">
-        <div className="grid grid-cols-1 gap-0 text-center">
-          {weeklyLineData.map((item) => (
-            <div
-              key={item.day}
-              className="flex flex-col items-center justify-center border border-teal-200 rounded-sm p-1 "
-             
-            >
-
-              <span className="text-lg font-bold text-cyan-700">{item.day} {item.number}</span>
-            </div>
-          ))}
+      <CardContent className="p-2">
+        <div className="flex flex-col items-center text-center text-blue-900 text-lg font-bold italic">
+          <div>Mon. 1-6-3-8</div>
+          <div>Tue. 2-7-3-8</div>
+          <div>Wed. 1-6-5-0</div>
+          <div>Thu. 2-7-3-8</div>
+          <div>Fri. 1-6-5-0</div>
+          <div>Sat. 2-7-3-8</div>
+          <div>Sun. 3-8-4-9</div>
         </div>
       </CardContent>
     </Card>

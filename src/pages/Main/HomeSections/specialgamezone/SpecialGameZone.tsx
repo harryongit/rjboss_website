@@ -18,8 +18,8 @@ const SpecialGameZone = () => {
   return (
     <div className="space-y-6">
       {/* SPECIAL GAME ZONE CARD */}
-      <Card className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-400 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-yellow-600 to-orange-600 text-white py-2">
+      <Card className="bg-peach border-2 border-blue-900 shadow-lg rounded-lg">
+        <CardHeader className="bg-red-600 text-white py-2">
           <CardTitle className="text-center text-xl font-extrabold tracking-wide">
             🏆 SPECIAL GAME ZONE
           </CardTitle>
@@ -41,15 +41,12 @@ const SpecialGameZone = () => {
                   navigate("/matka-final-number-chart");
                 }
               }}
-              className={`w-full px-1 py-1 text-center text-lg font-bold animate-gradient-text
-                ${index !== specialGameItems.length - 1 ? "border-b border-orange-400" : ""}
+              className={`w-full px-1 py-2 text-center text-lg font-bold text-pink-700
+                ${index !== specialGameItems.length - 1 ? "border-b border-red-400" : ""}
               `}
             >
               {item}
             </button>
-
-
-
 
           ))}
         </CardContent>

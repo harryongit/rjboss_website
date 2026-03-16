@@ -34,7 +34,7 @@ const marketName = state?.marketName;
   };
 
   return (
-    <Card className="bg-white border-2 border-orange-400 shadow-lg">
+    <Card className="bg-peach border-2 border-orange-400 shadow-lg">
       <CardHeader className="bg-gradient-to-r from-orange-600 to-rose-600 text-white py-2">
         <div className="flex justify-between items-center">
           <CardTitle className="text-center text-lg font-black tracking-wide flex-1">📊 ALL MARKETS</CardTitle>
@@ -52,7 +52,7 @@ const marketName = state?.marketName;
       <CardContent className="p-2">
         <div className="space-y-2">
           {(!allMarkets || allMarkets.length === 0) && (
-            <div className="text-center text-orange-700 font-semibold bg-orange-50 border border-orange-200 rounded-md p-2">
+            <div className="text-center text-orange-700 font-semibold bg-peach border border-orange-200 rounded-md p-2">
               No markets available right now.
             </div>
           )}
@@ -60,12 +60,12 @@ const marketName = state?.marketName;
             const middleIndex = Math.floor(allMarkets.length / 2);
             const bg = normalizeColor(market.color);
             const baseClass = "px-3 py-1 rounded-lg border-2 border-orange-200 hover:border-rose-400 transition-all active:scale-[0.98]";
-            const gradientClass = "bg-gradient-to-br from-rose-50 via-orange-50 to-amber-50";
+            const gradientClass = "bg-peach";
             const cardClass = bg ? baseClass : `${gradientClass} ${baseClass}`;
             return (
               <React.Fragment key={idx}>
                 {idx === middleIndex && (
-                  <div className="bg-rose-50 border-2 border-rose-400 rounded-lg p-2 flex items-center justify-center gap-2 shadow-sm my-2">
+                  <div className="bg-peach border-2 border-rose-400 rounded-lg p-2 flex items-center justify-center gap-2 shadow-sm my-2">
                     <span className="text-sm font-black italic text-black uppercase">ADD YOUR GAME :</span>
                     <a 
                       href="mailto:support@spdpboss.net" 
@@ -87,7 +87,7 @@ const marketName = state?.marketName;
               </div>
 
               {/* Result */}
-              <div className={(bg ? "bg-transparent" : "bg-white/70") + " rounded-md p-1 mb-1"}>
+              <div className={(bg ? "bg-transparent" : "bg-peach") + " rounded-md p-1 mb-1"}>
                 <p className="text-2xl text-center font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-700 to-orange-600">
                   {market.result}
                 </p>

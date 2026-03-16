@@ -1,27 +1,54 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const WeeklyPattiChart = ({ weeklyPatti }: { weeklyPatti: { number: string; values: string }[] }) => {
+const WeeklyPattiChart = () => {
+
+  const getWeekRange = () => {
+    const today = new Date();
+
+    // get Monday
+    const day = today.getDay();
+    const diff = today.getDate() - day + (day === 0 ? -6 : 1);
+    const monday = new Date(today.setDate(diff));
+
+    // get Sunday
+    const sunday = new Date(monday);
+    sunday.setDate(monday.getDate() + 6);
+
+    const format = (date) =>
+      date.toLocaleDateString("en-GB").replace(/\//g, "-");
+
+    return `${format(monday)} To ${format(sunday)}`;
+  };
+
+  const weekRange = getWeekRange();
+
+  const pattiData = `1=>128-470-579-678
+2=>589-246-129-660
+3=>580-157-238-256
+4=>149-130-220-158
+5=>249-159-690-113
+6=>123-358-169-880
+7=>467-890-269-368
+8=>288-134-378-125
+9=>478-135-450-559
+0=>160-550-479-118`;
+
   return (
-    <Card className="bg-white border-2 border-purple-400 shadow-lg">
-      <CardHeader className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2">
-        <CardTitle className="text-center text-base font-black tracking-wide">
-          📅 SpdpBoss Net Weekly Patti Or Panel Chart From 14-07-2024 To 20-07-2025 For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night
+    <Card className="bg-peach border border-red-600 shadow-sm rounded-none">
+      
+      <CardHeader className="rgb-animate text-white py-1">
+        <CardTitle className="text-center text-lg font-extrabold italic leading-tight">
+          SpdpBoss Net Weekly Patti Or Penal Chart From {weekRange} Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night, Kalyan Morning
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-3">
-        <div className="flex flex-col items-center">
-          {weeklyPatti.map((item) => (
-            <div
-              key={item.number}
-              className="flex items-center justify-center bg-gradient-to-r from-purple-100 to-indigo-100 p-2 border-b border-purple-300 w-full max-w-md rounded-md"
-            >
-              <span className="text-lg font-extrabold text-purple-800 mr-2">{item.number} ⇒</span>
-              <span className="text-lg font-bold text-indigo-700">{item.values}</span>
-            </div>
-          ))}
+
+      <CardContent className="p-2">
+        <div className="text-center text-blue-900 text-lg font-bold italic whitespace-pre-line">
+          {pattiData}
         </div>
       </CardContent>
+
     </Card>
   );
 };

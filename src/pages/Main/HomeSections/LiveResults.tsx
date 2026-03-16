@@ -7,13 +7,14 @@ type LiveMarket = { name: string; result: string; time: string; status: string; 
 
 const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets: LiveMarket[]; refreshTime: string; handleRefresh: () => void }) => {
   return (
-    <Card className="bg-white border-3 border-rose-500 shadow-xl">
-    <CardHeader className="bg-gradient-to-r from-rose-600 via-pink-600 to-orange-600 text-white py-3">
+     <Card className="border border-red-500 bg-peach shadow-none rounded-none">
+    <CardHeader className="bg-gradient-to-r from-pink-600 to-fuchsia-600 text-white text-center py-3">
       <div className="flex justify-between items-center">
         
         <div className="flex-1 text-center">
-          <CardTitle className="text-lg font-black tracking-wide flex items-center justify-center gap-2 mb-1">
-            💥 LIVE RESULT 💥
+          <CardTitle className="text-xl font-black tracking-wide flex items-center justify-center gap-2 mb-1">
+            ☔ LIVE RESULT ☔
+
           </CardTitle>
   
           <p className="text-xs font-semibold flex items-center justify-center gap-1">
@@ -33,22 +34,22 @@ const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets:
     </CardHeader>
   
     {/* ⭐ Proper Display of Message */}
-    <p className="text-center text-rose-700 font-bold text-md py-2 bg-rose-50 border-b border-rose-200">
-      ⭐ Sabse Tezz Live Update Yahi Milega ⭐
+    <p className="text-center text-center font-bold text-black text-md py-2 border-b border-rose-200">
+      ⭐ Sabse Tezz Live Result Yahi Milega ⭐
     </p>
     <CardContent className="p-2 space-y-2">
   {(!liveMarkets || liveMarkets.length === 0) && (
-    <div className="text-center text-rose-700 font-semibold bg-rose-50 border border-rose-200 rounded-md p-2">
+    <div className="text-center text-rose-700 font-semibold border border-rose-200 rounded-md p-2">
       No live markets available at the moment.
     </div>
   )}
   {liveMarkets && liveMarkets.length > 0 && liveMarkets.map((market, idx) => (
     <div
       key={idx}
-      className="bg-gradient-to-br from-white via-rose-50 to-orange-50 p-2 rounded-xl border border-rose-300 shadow-sm relative overflow-hidden group hover:shadow-md transition-all text-center"
+      className="p-2 rounded-xl border border-rose-300 relative overflow-hidden group transition-all text-center"
     >
       {/* Hover gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500" />
+      <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500" />
 
       {/* Market Name + Refresh Button */}
       <div className="flex justify-center items-center gap-2 relative z-10 mb-1">
@@ -65,7 +66,7 @@ const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets:
       </div>
 
       {/* Market Result */}
-      <div className="bg-white/80 rounded-lg p-2 shadow-inner relative z-10">
+      <div className="p-2 relative z-10">
         <p className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-700 to-orange-600 text-center tracking-wide">
           {market.result}
         </p>

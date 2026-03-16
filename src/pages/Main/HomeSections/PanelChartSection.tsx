@@ -1,21 +1,20 @@
 import React from "react";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
-const PanelChartSection = () => {
+const PanelChartSection: React.FC = () => {
   const panelCharts = [
     "Time Panel Chart",
     "Sridevi Panel Chart",
     "Kalyan Morning Panel Chart",
-    "Madhuri Panel Chart",
-    "Padmavathi Panel Chart",
-    "Kalyan Panel Chart",
-    "Sridevi Night Panel Chart",
-    "Kalyan Night Panel Chart",
+    "Madhuri Penal Chart",
+    "Padmavathi Penal Chart",
+    "Kalyan Penal Chart",
+    "Sridevi Night Penal Chart",
+    "Kalyan Night Penal Chart",
     "Old Main Mumbai Panel Chart",
-    "Main Bazar Panel Chart",
+    "Main Bazar Penal Chart",
     "Milan Morning Panel Chart",
-    "Milan Day Panel Chart",
-    "Milan Night Panel Chart",
+    "Milan Day Penal Chart",
+    "Milan Night Penal Chart",
     "Madhuri Night Panel Chart",
     "Rajdhani Night Panel Chart",
     "Madhur Morning Day Chart",
@@ -23,36 +22,26 @@ const PanelChartSection = () => {
   ];
 
   return (
-    <Card className="mt-6 border-2 border-blue-400 shadow-xl">
-      <CardHeader className="bg-gradient-to-r from-blue-600 to-cyan-600 py-2">
-        <CardTitle className="text-center text-xl font-extrabold text-white tracking-wide">
-          📊 MATKA PANEL CHARTS
-        </CardTitle>
-      </CardHeader>
+    <div className="mt-6 border-2 border-pink-500 rounded-xl overflow-hidden bg-peach">
 
-      <div className="p-3 space-y-2">
+      {/* HEADER */}
+      <div className="bg-pink-600 text-white text-center py-2 text-xl font-extrabold tracking-wide rounded-t-xl">
+        MATKA PANEL CHART
+      </div>
+
+      {/* LIST */}
+      <div>
         {panelCharts.map((chart, index) => (
           <div
             key={index}
-            className="group flex items-center gap-3 px-4 py-2.5 rounded-full
-                       bg-gradient-to-r from-blue-50 to-cyan-50
-                       shadow-sm hover:shadow-md cursor-pointer
-                       transition-all duration-200"
+            className="text-center py-2 border-t border-blue-700
+                       text-blue-900 text-lg font-bold italic"
           >
-            {/* glowing dot */}
-            <span className="relative flex h-3.5 w-3.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-70"></span>
-              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-blue-600"></span>
-            </span>
-
-            {/* text */}
-            <p className="text-xl font-semibold leading-tight text-gray-800">
-              {chart}
-            </p>
+            {chart}
           </div>
         ))}
       </div>
-    </Card>
+    </div>
   );
 };
 

@@ -1,32 +1,46 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const WeeklyJodiChart = () => {
-  const jodis = [
-    '23', '28', '73', '78', '41', '46', '91', '96',
-    '10', '15', '60', '65', '24', '29', '74', '79',
-    '31', '86', '13', '68', '44', '49', '94', '99'
-  ];
+
+  const getWeekRange = () => {
+    const today = new Date();
+
+    // get Monday
+    const day = today.getDay();
+    const diff = today.getDate() - day + (day === 0 ? -6 : 1);
+    const monday = new Date(today.setDate(diff));
+
+    // get Sunday
+    const sunday = new Date(monday);
+    sunday.setDate(monday.getDate() + 6);
+
+    const format = (date) =>
+      date.toLocaleDateString("en-GB").replace(/\//g, "-");
+
+    return `${format(monday)} To ${format(sunday)}`;
+  };
+
+  const weekRange = getWeekRange();
+
+  const jodiData = `34 39 84 89
+03 08 53 58
+51 56 65 60
+13 63 81 36
+40 45 90 95
+12 17 21 26`;
 
   return (
-    <Card className="bg-white border-2 border-pink-300 shadow-md rounded-lg">
-      <CardHeader className="bg-pink-500 text-white py-2 rounded-t-lg">
-        <CardTitle className="text-center text-base font-bold tracking-tight">
-          🎯 SpdpBoss Net Weekly Jodi Chart <br />
-          14-06-2025 To 20-07-2025 | Kalyan Milan Kalyan Night, Rajdhani Time, Main Bazar, Mumbai Royal Night Market
+    <Card className="bg-[#e9b886] border border-red-600 shadow-sm rounded-none">
+      <CardHeader className="rgb-animate text-white py-1">
+        <CardTitle className="text-center text-lg font-extrabold italic leading-tight">
+          SpdpBoss Net Weekly Jodi Chart From {weekRange} For Kalyan Milan Kalyan Night, Rajdhani Time, Main Bazar, Mumbai Royal Night Market, Kalyan Morning
         </CardTitle>
       </CardHeader>
 
       <CardContent className="p-2">
-        <div className="grid grid-cols-4 gap-1">
-          {jodis.map((jodi, idx) => (
-            <div
-              key={idx}
-              className="bg-pink-50 border border-pink-200 text-pink-700 text-lg font-bold rounded flex items-center justify-center py-1"
-            >
-              {jodi}
-            </div>
-          ))}
+        <div className="text-center text-blue-900 text-lg font-bold italic whitespace-pre-line">
+          {jodiData}
         </div>
       </CardContent>
     </Card>

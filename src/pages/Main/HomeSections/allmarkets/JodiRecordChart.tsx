@@ -45,7 +45,7 @@ const JodiRecordChart = () => {
   const displayDays = days.slice(0, dayCount);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-violet-50">
+    <div className="min-h-screen bg-peach">
       <div className="max-w-md mx-auto">
         <HeaderLogo />
 
@@ -85,7 +85,7 @@ const JodiRecordChart = () => {
 
             <CardContent className="p-1">
               {/* DAYS */}
-              <div className="grid text-center bg-orange-100 border-b border-orange-400" style={{ gridTemplateColumns: `repeat(${dayCount}, minmax(0, 1fr))` }}>
+              <div className="grid text-center bg-peach font-black text-black border-b border-orange-400" style={{ gridTemplateColumns: `repeat(${dayCount}, minmax(0, 1fr))` }}>
                 {displayDays.map((day) => (
                   <div
                     key={day}

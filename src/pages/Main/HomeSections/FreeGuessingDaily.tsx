@@ -1,12 +1,25 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useDailyGuessingFreeFix } from "@/hooks/common/useDailyGuessingFreeFix";
-import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useDailyGuessingFreeFix } from "@/hooks/common/useDailyGuessingFreeFix";
 
-const FreeGuessingDaily = () => {
+type GuessingItem = {
+  market_name: string;
+  single?: string;
+  panna?: string;
+  jodi?: string;
+};
+
+
+
+const FreeGuessingDaily: React.FC = () => {
   const query = useDailyGuessingFreeFix();
-  const items = query.data?.data?.items ?? [];
+
+  const apiItems: GuessingItem[] = query.data?.data?.items ?? [];
+
+  // show dummy markets if API empty
+  const items = apiItems.length > 0 ? apiItems : [];
+
   const today = new Date();
   const dd = String(today.getDate()).padStart(2, "0");
   const mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -14,55 +27,62 @@ const FreeGuessingDaily = () => {
   const dateStr = `${dd}/${mm}/${yyyy}`;
 
   return (
-    <Card className="bg-white border-2 border-rose-400 shadow-lg">
-      <CardHeader className="bg-gradient-to-r from-orange-400 to-orange-600 text-white py-2">
-        <div className="flex justify-between items-center">
-          <CardTitle className="text-center text-lg font-black tracking-wide flex-1">
-            ✓DATE: {dateStr} • FREE GUESSING DAILY
-          </CardTitle>
-          <Button
-            size="sm"
-            onClick={() => { void query.refetch(); }}
-            className="bg-white/20 hover:bg-white/30 text-white border border-white/50 rounded-lg"
-          >
-            <RefreshCw className="h-4 w-4" />
-          </Button>
-        </div>
-        <div className="text-xs font-semibold opacity-90 text-center">OPEN TO CLOSE FIX ANK</div>
-      </CardHeader>
-      <CardContent className="p-3">
+    <div className="max-w-3xl mx-auto bg-[#f6c79b] border-2 border-pink-500 rounded-md overflow-hidden shadow-md">
+
+      {/* HEADER */}
+      <div className="bg-pink-600 text-white text-center py-2 font-extrabold text-lg tracking-wide">
+        FREE GAME ZONE OPEN-CLOSE
+      </div>
+
+      {/* DATE + REFRESH */}
+      <div className="relative border-2 border-pink-500 mx-2 my-2 rounded-md text-center font-bold bg-[#f6c79b] py-2 space-y-1">
+        <div>✓ DATE: {dateStr}</div>
+        <div>FREE GUESSING DAILY</div>
+        <div>OPEN TO CLOSE FIX ANK</div>
+
+        <Button
+          size="icon"
+          onClick={() => query.refetch()}
+          className="absolute right-2 top-2 bg-green-600 hover:bg-green-700 text-white rounded-md"
+        >
+          <RefreshCw
+            size={16}
+            className={query.isFetching ? "animate-spin" : ""}
+          />
+        </Button>
+      </div>
+
+      {/* MARKETS GRID */}
+      <div className="grid grid-cols-2 gap-2 p-2">
+
         {query.isFetching && (
-          <div className="text-center text-rose-700 font-semibold bg-rose-50 border border-rose-200 rounded-md p-2">
+          <div className="col-span-2 text-center text-red-600 font-semibold py-4">
             Loading...
           </div>
         )}
-        {!query.isFetching && items.length === 0 && (
-          <div className="text-center text-rose-700 font-semibold bg-rose-50 border border-rose-200 rounded-md p-2">
-            No guessing available right now.
-          </div>
-        )}
-        {!query.isFetching && items.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {items.map((it, idx) => (
-              <div
-                key={idx}
-                className="rounded-xl border-2 border-green-700 bg-gradient-to-br from-green-600 to-green-700 text-white p-0 overflow-hidden"
-              >
-                <div className="px-3 py-2 font-extrabold text-sm tracking-wide flex items-center gap-2">
-                  ↪ {it.market_name.toUpperCase()}
-                </div>
-                <div className="bg-white text-green-900 p-3 text-center font-bold">
-                  <div className="text-base leading-7">{it.single}</div>
-                  <div className="text-base leading-7">{it.panna}</div>
-                  <div className="text-base leading-7">{it.jodi}</div>
-                
-                </div>
+
+        {!query.isFetching &&
+          items.map((it: GuessingItem, idx: number) => (
+            <div
+              key={idx}
+              className="border-2 border-green-700 rounded-lg overflow-hidden bg-[#f6c79b] shadow-md"
+            >
+              {/* MARKET TITLE */}
+              <div className="bg-green-700 text-white text-center font-extrabold py-2 text-sm sm:text-base rounded-b-xl">
+                ↪ {it.market_name?.toUpperCase()}
               </div>
-            ))}
-          </div>
-        )}
-      </CardContent>
-    </Card>
+
+              {/* NUMBERS */}
+              <div className="text-center text-blue-900 font-bold py-3 leading-6 text-xs sm:text-sm whitespace-pre-wrap">
+                <div>{it.single}</div>
+                <div>{it.panna}</div>
+                <div>{it.jodi}</div>
+              </div>
+            </div>
+          ))}
+
+      </div>
+    </div>
   );
 };
 

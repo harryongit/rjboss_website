@@ -5,8 +5,8 @@ import LuckyNumberCard from '@/pages/Main/HomeSections/LuckyNumberCard';
 import FinalAnkSection from '@/pages/Main/HomeSections/FinalAnkSection';
 import LiveResults from '@/pages/Main/HomeSections/LiveResults';
 import AllMarkets from '@/pages/Main/HomeSections/AllMarkets';
-import HindiInfo from '@/pages/Main/HomeSections/HindiInfo';
 import NoticeSection from '@/pages/Main/HomeSections/NoticeSection';
+import WhatsAppSection from '@/pages/Main/HomeSections/WhatsAppSection';
 
 import KeywordsCard from '@/pages/Main/HomeSections/KeywordsCard';
 import WeeklyPattiChart from '@/pages/Main/HomeSections/WeeklyPattiChart';
@@ -64,55 +64,11 @@ const SattaMatkaWebsite = () => {
     "MAIN MATKA",
     "WORLD ME SABSE FAST SATTA MATKA RESULT",
   ];
-  const weeklyPatti = [
-    { number: "1", values: "137-489-560-146" },
-    { number: "2", values: "156-679-570-138" },
-    { number: "3", values: "670-139-148-355" },
-    { number: "4", values: "257-149-699-455" },
-    { number: "5", values: "357-113-258-140" },
-    { number: "6", values: "367-169-556-259" },
-    { number: "7", values: "368-458-890-133" },
-    { number: "8", values: "378-134-567-125" },
-    { number: "9", values: "478-559-469-126" },
-    { number: "0", values: "578-136-550-145" },
-  ];
-  const freeGames = [
-    {
-      name: "MILAN MORNING",
-      number: "1-6-3-8",
-      boldNumbers: "470-358-346-468-558",
-      smallNumbers: "13-18-63-68-31-36-81-86",
-    },
-    {
-      name: "KALYAN MORNING",
-      number: "4-9-1-6",
-      boldNumbers: "257-270-227-114-367-257",
-      smallNumbers: "41-46-91-96-14-19-64-69",
-    },
-    {
-      name: "PUNA BAZAR",
-      number: "1-5-9",
-      boldNumbers: "128-245-159-258-135-289",
-      smallNumbers: "13-18-53-58-93-98",
-    },
-    {
-      name: "SRIDEVI NIGHT",
-      number: "2-3-8-0",
-      boldNumbers: "129-148-134-370",
-      smallNumbers: "22-27-33-38-88-83-00-05",
-    },
-  ];
-  const weeklyLineData = [
-    { day: "Mon.", number: "1-6-2-7", span: 1 },
-    { day: "Tue.", number: "4-9-5-0", span: 1 },
-    { day: "Wed.", number: "2-7-3-8", span: 1 },
-    { day: "Thu.", number: "1-6-5-0", span: 1 },
-    { day: "Fri.", number: "3-8-4-9", span: 1 },
-    { day: "Sat.", number: "4-9-5-0", span: 1 },
-    { day: "Sun.", number: "1-6-3-8", span: 2 }, // col-span-2
-  ];
+ 
+ 
+  
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-white to-rose-50">
+    <div className="min-h-screen bg-peach">
       <div className="max-w-md mx-auto">
         <HeaderLogo />
 
@@ -120,7 +76,7 @@ const SattaMatkaWebsite = () => {
           <WelcomeBanner />
           <LuckyNumberCard />
           <LiveResults liveMarkets={liveMarkets} refreshTime={refreshTime} handleRefresh={handleRefresh} />
-          
+          <WhatsAppSection />
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <a 
@@ -147,7 +103,7 @@ const SattaMatkaWebsite = () => {
           <KeywordsCard />
           <AllMarkets allMarkets={allMarkets} handleRefresh={handleRefresh} />
           
-          <div className="bg-rose-50 border-2 border-rose-400 rounded-lg p-2 flex items-center justify-center gap-2 shadow-sm">
+          <div className="bg-peach border-2 border-rose-400 rounded-lg p-2 flex items-center justify-center gap-2 shadow-sm">
             <span className="text-sm font-black italic text-black">Email for any inquiries Or Support:</span>
             <a 
               href="mailto:support@spdpboss.net" 
@@ -157,21 +113,21 @@ const SattaMatkaWebsite = () => {
             </a>
           </div>
 
-          <HindiInfo />
            <MainStarLineSection />
-          <WeeklyPattiChart weeklyPatti={weeklyPatti} />
-          <WeeklyLineChart weeklyLineData={weeklyLineData} />
+            <SpecialGameZone /> 
+          <MatkaJodiList />
+          <WeeklyPattiChart />
+          <WeeklyLineChart />
           <WeeklyJodiChart />
-          
-         <FreeGameZone  freeGames={freeGames} />
+           <FreeGuessingDaily />
+         <FreeGameZone />
          {/* <RajeshreeStarLine />
          <KalyanStarLine/>
          <MainBombayStarLine/> */}
          
         
-          <SpecialGameZone /> 
-          <MatkaJodiList />
-          <FreeGuessingDaily />
+         
+         
 <JodiChartSection/>
 <PanelChartSection/>
 

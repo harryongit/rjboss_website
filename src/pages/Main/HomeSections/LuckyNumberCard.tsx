@@ -4,7 +4,7 @@ import { Sparkles } from 'lucide-react';
 
 const LuckyNumberCard = () => {
   return (
-    <Card className="bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-100 border-4 border-rose-600 shadow-2xl relative overflow-hidden max-w-sm mx-auto">
+    <Card className="bg-gradient-to-br from-yellow-100 via-amber-100 to-peach border-4 border-rose-600 shadow-2xl relative overflow-hidden max-w-sm mx-auto">
       {/* Subtle radial glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,200,100,0.4),transparent)] rounded-xl"></div>
 

@@ -77,7 +77,7 @@ const PanelRecordChart = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-violet-50">
+    <div className="min-h-screen bg-peach">
       <div className="max-w-md mx-auto">
         <HeaderLogo />
 
@@ -113,7 +113,7 @@ const PanelRecordChart = () => {
               <div className="overflow-x-auto">
                 <table className="table-auto border-collapse w-full text-center">
                   <thead>
-                    <tr className="bg-orange-100">
+                    <tr className="bg-peach font-black text-black">
                       <th className="border px-2 py-1">Date</th>
                       {(days.slice(0, panelData?.data?.days ?? 7)).map((day) => (
                         <th key={day} className="border  px-2 py-1">{day}</th>

@@ -17,7 +17,7 @@ const MainStarLinePanelChart = () => {
   const days = useMemo(() => normalizePanel(data?.data), [data]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-violet-50">
+    <div className="min-h-screen bg-peach">
       <div className="max-w-md mx-auto">
         <HeaderLogo />
 

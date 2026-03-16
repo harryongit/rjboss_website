@@ -72,6 +72,12 @@ export default {
           header: "hsl(var(--table-header))",
           "header-foreground": "hsl(var(--table-header-foreground))",
         },
+        peach: {
+          DEFAULT: "#fecc98",
+        },
+        pink:{
+          DEFAULT: "#ff00a2",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -1,62 +1,66 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Phone, MessageCircle, Mail } from 'lucide-react';
+import React from "react";
+import { Phone, MessageCircle, Mail } from "lucide-react";
 
 const NoticeSection = () => {
-  // Phone & WhatsApp links with country code (+91 for India)
   const countryCode = "+91";
   const phoneNumber = "";
   const fullNumber = `${countryCode}${phoneNumber}`;
-  const whatsappLink = `https://wa.me/${phoneNumber}`; // WhatsApp needs number without '+'
 
   return (
-    <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-400 shadow-md rounded-xl">
-      <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2 rounded-t-xl">
-        <CardTitle className="text-center text-sm font-black">☆ NOTICE ☆</CardTitle>
-      </CardHeader>
+    <div className="flex justify-center p-3 ">
+      <div className="max-w-xl w-full rounded-xl border-2 border-red-600 bg-gradient-to-b from-orange-200 to-orange-300 shadow-lg overflow-hidden">
 
-      <CardContent className="py-3 text-center space-y-2">
-  <p className="text-xs text-blue-900 font-semibold leading-relaxed">
-    अपना बाजार spdpboss.net वेबसाइट में डलवाने के लिए आज ही हमे कॉल या WhatsApp करे
-  </p>
+        {/* Header */}
+        <div className="bg-red-600 text-white text-center font-black text-sm py-1 tracking-wide">
+          ☆ NOTICE ☆
+        </div>
 
-  {/* Buttons with spacing */}
-  <div className="flex justify-center items-center gap-3 mt-2">
-    {/* Call Button */}
-    <a
-      href={`tel:${fullNumber}`}
-      className="inline-flex items-center gap-1 bg-green-600 hover:bg-green-700 text-white font-bold px-4 py-2 rounded-lg shadow-md transition"
-    >
-      <Phone className="h-4 w-4" />
-      कॉल करें
-    </a>
+        {/* Content */}
+        <div className="text-center p-3 space-y-2">
+          <p className="text-sm font-bold text-black leading-relaxed">
+            अपना बाजार <span className="font-extrabold">spdpboss.net</span> वेबसाइट में डलवाने
+            के लिए आज ही हमें कॉल या WhatsApp करें
+          </p>
 
-    {/* WhatsApp Button */}
-    <a
-      href={`https://wa.me/${countryCode.replace('+','')}${phoneNumber}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-1 bg-teal-500 hover:bg-teal-600 text-white font-bold px-4 py-2 rounded-lg shadow-md transition"
-    >
-      <MessageCircle className="h-4 w-4" />
-      WhatsApp करें
-    </a>
-  </div>
+          {/* Buttons */}
+          <div className="flex justify-center gap-3 mt-2 flex-wrap">
 
-  <div className="flex justify-center items-center mt-2">
-    <a
-      href="mailto:support@dpboss.net"
-      className="inline-flex items-center gap-2 text-blue-800 font-bold hover:text-blue-900 transition"
-    >
-      <Mail className="h-4 w-4" />
-      Email: support@spdpboss.net
-    </a>
-  </div>
+            {/* Call */}
+            <a
+              href={`tel:${fullNumber}`}
+              className="flex items-center gap-1 bg-green-600 hover:bg-green-700 text-white font-bold px-4 py-2 rounded-lg shadow-md transition"
+            >
+              <Phone className="w-4 h-4" />
+              कॉल करें
+            </a>
 
-  <p className="text-xs text-gray-600 mt-1">शर्ते लागु</p>
-</CardContent>
+            {/* WhatsApp */}
+            <a
+              href={`https://wa.me/${countryCode.replace("+", "")}${phoneNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 bg-green-500 hover:bg-green-600 text-white font-bold px-4 py-2 rounded-lg shadow-md transition"
+            >
+              <MessageCircle className="w-4 h-4" />
+              WhatsApp करें
+            </a>
+          </div>
 
-    </Card>
+          {/* Email */}
+          <div className="flex justify-center items-center mt-1">
+            <a
+              href="mailto:support@spdpboss.net"
+              className="flex items-center gap-2 text-blue-700 font-bold hover:text-blue-900"
+            >
+              <Mail className="w-4 h-4" />
+              Email : support@spdpboss.net
+            </a>
+          </div>
+
+          <p className="text-sm font-bold text-black">शर्ते लागु</p>
+        </div>
+      </div>
+    </div>
   );
 };
 
