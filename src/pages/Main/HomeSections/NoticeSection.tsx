@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, MessageCircle, Mail } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
 
 const NoticeSection = () => {
   const countryCode = "+91";
@@ -7,30 +7,32 @@ const NoticeSection = () => {
   const fullNumber = `${countryCode}${phoneNumber}`;
 
   return (
-    <div className="flex justify-center p-3 ">
-      <div className="max-w-xl w-full rounded-xl border-2 border-red-600 bg-gradient-to-b from-orange-200 to-orange-300 shadow-lg overflow-hidden">
+    <div className="flex justify-center px-2 mt-2">
+
+      <div className="w-full max-w-[400px] border-[2px] border-red-500 rounded-[15px] overflow-hidden bg-[#f3c08c]">
 
         {/* Header */}
-        <div className="bg-red-600 text-white text-center font-black text-sm py-1 tracking-wide">
+        <div className="bg-red-600 text-white text-center font-bold text-[16px] py-1">
           ☆ NOTICE ☆
         </div>
 
         {/* Content */}
-        <div className="text-center p-3 space-y-2">
-          <p className="text-sm font-bold text-black leading-relaxed">
+        <div className="text-center p-3">
+
+          <p className="text-[14px] font-bold text-black leading-snug">
             अपना बाजार <span className="font-extrabold">spdpboss.net</span> वेबसाइट में डलवाने
             के लिए आज ही हमें कॉल या WhatsApp करें
           </p>
 
           {/* Buttons */}
-          <div className="flex justify-center gap-3 mt-2 flex-wrap">
+          <div className="flex justify-center gap-2 mt-2">
 
             {/* Call */}
             <a
               href={`tel:${fullNumber}`}
-              className="flex items-center gap-1 bg-green-600 hover:bg-green-700 text-white font-bold px-4 py-2 rounded-lg shadow-md transition"
+              className="flex items-center gap-1 px-3 py-[4px] bg-green-600 text-white text-[12px] font-bold rounded-[6px]"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-3 h-3" />
               कॉल करें
             </a>
 
@@ -39,27 +41,28 @@ const NoticeSection = () => {
               href={`https://wa.me/${countryCode.replace("+", "")}${phoneNumber}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 bg-green-500 hover:bg-green-600 text-white font-bold px-4 py-2 rounded-lg shadow-md transition"
+              className="flex items-center gap-1 px-3 py-[4px] bg-green-500 text-white text-[12px] font-bold rounded-[6px]"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-3 h-3" />
               WhatsApp करें
             </a>
+
           </div>
 
           {/* Email */}
-          <div className="flex justify-center items-center mt-1">
-            <a
-              href="mailto:support@spdpboss.net"
-              className="flex items-center gap-2 text-blue-700 font-bold hover:text-blue-900"
-            >
-              <Mail className="w-4 h-4" />
-              Email : support@spdpboss.net
-            </a>
-          </div>
+          <p className="text-blue-700 font-bold text-[13px] mt-2">
+            Email : support@spdpboss.net
+          </p>
 
-          <p className="text-sm font-bold text-black">शर्ते लागु</p>
+          {/* Footer */}
+          <p className="text-[13px] font-bold text-black mt-1">
+            शर्ते लागु
+          </p>
+
         </div>
+
       </div>
+
     </div>
   );
 };

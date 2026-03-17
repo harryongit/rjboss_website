@@ -1,69 +1,33 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import laxmiDevi from "@/assets/laxmi-devi.jpg";
+import laxmiDevi from "@/assets/laxmi-devi1.jpg";
 
-const WelcomeSection = () => {
+const WelcomeBanner = () => {
   return (
-    <div className="space-y-4">
+    <div className="flex justify-center px-3 mt-2">
 
-      {/* ---------- CARD 1: IMAGE + WELCOME MESSAGE ---------- */}
-      <Card className="bg-gradient-to-br from-amber-100 via-peach to-rose-100 border-2 border-orange-400 shadow-lg rounded-xl">
-  <CardContent className="py-4">
+      <div className="w-full max-w-[420px] border-[3px] border-red-500 rounded-[15px] bg-[#f3c08c] p-2 flex items-center">
 
-    <div className="flex items-center gap-4">
+        {/* Image */}
+        <img
+          src={laxmiDevi}
+          alt="Laxmi Devi"
+          className="w-[80px] h-[80px] rounded-[10px] border border-red-500 mr-2 object-contain bg-white"
+        />
 
-      {/* Left Image */}
-      <img
-        src={laxmiDevi}
-        alt="Laxmi Devi"
-        className="h-24 w-28 rounded-lg shadow-md object-cover border border-orange-300"
-      />
+        {/* Text */}
+        <div className="leading-tight">
+          <p className="font-bold italic text-sm">
+            !! Welcome to spdpboss international !!
+          </p>
+          <p className="font-bold italic text-sm">
+            !! Satta Matka Fast Result
+          </p>
+        </div>
 
-      {/* Right Text */}
-      <div className="flex flex-col justify-center text-left">
-        <p className="text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-700 to-orange-600 leading-snug">
-          🙏 Welcome to SPDPBoss International 🙏
-        </p>
-
-        <p className="text-orange-800 font-semibold text-sm mt-1">
-          ⚡ Satta Matka Fast Result ⚡
-        </p>
-
-        {/* Reduced Message */}
-        <p className="text-[11px] text-rose-700 font-medium leading-tight mt-1">
-          India’s No.1 Satta Matka fast result platform.
-        </p>
       </div>
-
-    </div>
-
-  </CardContent>
-</Card>
-
-
-
-
-      {/* ---------- CARD 2: SPDPBOSS MATKA DESCRIPTION ---------- */}
-      <Card className="bg-peach border-2 border-rose-300 shadow-md rounded-xl">
-  <CardContent className="py-4">
-
-    <p className="text-base font-bold text-rose-700 mb-2">
-      SpdpBoss Satta Matka Kalyan Matka Result
-    </p>
-
-    <p className="text-[10px] text-rose-900 leading-snug font-medium">
-  Welcome to India’s No.1 Satta Matka SPDPBoss.net platform. Get fast and accurate results for Kalyan, Main, Dadar, Milan, Rajdhani, and other markets. Daily free updates, guessing tips, and real-time market results are available. SPDPBoss App ensures the smoothest and fastest experience for all users.
-</p>
-
-
-  </CardContent>
-</Card>
-
-
-
 
     </div>
   );
 };
 
-export default WelcomeSection;
+export default WelcomeBanner;

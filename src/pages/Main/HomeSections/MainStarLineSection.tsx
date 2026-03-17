@@ -10,81 +10,135 @@ const MainStarLineSection = () => {
   const todayItems = useMemo(() => {
     const raw: any = todayQuery.data?.data;
     const items: any[] = Array.isArray(raw) ? raw : (raw?.items ?? []);
-    const sorted = items.slice().sort((a, b) => (a.result_time ?? '').localeCompare(b.result_time ?? ''));
-    return sorted.map((it) => ({ time: to12Hour(it.result_time), result: it.result ?? '--' }));
+    const sorted = items
+      .slice()
+      .sort((a, b) =>
+        (a.result_time ?? '').localeCompare(b.result_time ?? '')
+      );
+
+    return sorted.map((it) => ({
+      time: to12Hour(it.result_time),
+      result: it.result ?? '--',
+    }));
   }, [todayQuery.data]);
 
   const latestIndex = useMemo(() => {
-    const idx = todayItems.map((r) => r.result).lastIndexOf(todayItems.slice().reverse().find((r) => r.result !== "--")?.result);
+    const idx = todayItems
+      .map((r) => r.result)
+      .lastIndexOf(
+        todayItems
+          .slice()
+          .reverse()
+          .find((r) => r.result !== "--")?.result
+      );
     return idx < 0 ? todayItems.length - 1 : idx;
   }, [todayItems]);
 
   return (
-    <div className="mt-5 border-2 border-purple-700 rounded-xl overflow-hidden shadow-lg bg-white">
-      <div className="bg-gradient-to-r from-purple-700 to-purple-500 text-white py-3 px-3 tracking-wide">
-        <div className="flex items-center justify-between">
-          <span className="font-black text-2xl">MAIN STAR LINE</span>
-          <button
-            className="px-3 py-1 rounded bg-white text-purple-700 font-semibold border border-white shadow-sm"
-            onClick={() => navigate('/main-star-line-panel-chart')}
-          >
-            Panel
-          </button>
-        
-        </div>
+    <div className="mt-4 w-full max-w-md mx-auto">
+      
+      {/* HEADER (Yellow pill like image) */}
+      <div className="bg-yellow-400 border-2 border-black rounded-full text-center py-2 mb-2 shadow-md relative">
+        <span className="font-extrabold text-lg tracking-wider text-black">
+          MAIN STARLINE
+        </span>
+
+        <button
+          onClick={() => navigate('/main-star-line-panel-chart')}
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black text-yellow-400 text-xs px-2 py-[2px] rounded"
+        >
+          Panel
+        </button>
       </div>
 
-      {view === 'today' ? (
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse border border-purple-700 text-center">
+      {/* TABLE */}
+      {view === 'today' && (
+        <div className="border-2 border-red-600">
+          <table className="w-full border-collapse text-center text-sm">
+            
+            {/* HEAD */}
             <thead>
-              <tr className="bg-purple-100">
-                <th className="border border-purple-700 px-2 py-1">Time</th>
-                <th className="border border-purple-700 px-2 py-1">Result</th>
-                <th className="border border-purple-700 px-2 py-1">Time</th>
-                <th className="border border-purple-700 px-2 py-1">Result</th>
+              <tr className="bg-[#f3e5d8]">
+                <th className="border border-red-600 py-1 font-bold">Time</th>
+                <th className="border border-red-600 py-1 font-bold">Result</th>
+                <th className="border border-red-600 py-1 font-bold">Time</th>
+                <th className="border border-red-600 py-1 font-bold">Result</th>
               </tr>
             </thead>
+
+            {/* BODY */}
             <tbody>
               {Array.from({ length: Math.ceil(todayItems.length / 2) }).map((_, rowIndex) => {
                 const leftIndex = rowIndex * 2;
                 const rightIndex = leftIndex + 1;
+
                 const leftItem = todayItems[leftIndex];
                 const rightItem = todayItems[rightIndex];
+
                 const leftLatest = leftIndex === latestIndex;
                 const rightLatest = rightIndex === latestIndex;
+
                 return (
-                  <tr key={rowIndex}>
-                    <td className="border border-purple-700 px-2 py-1 font-bold">{leftItem?.time ?? ''}</td>
-                    <td className={`border border-purple-700 px-2 py-1 font-black text-2xl ${leftLatest ? "bg-red-500 text-white" : !leftItem || leftItem.result === "--" ? "bg-gray-200 text-gray-400" : "bg-yellow-100 text-black"}`}>
+                  <tr key={rowIndex} className="bg-[#f7caa2]">
+                    
+                    {/* LEFT TIME */}
+                    <td className="border border-red-600 py-1 font-bold text-black">
+                      {leftItem?.time ?? ''}
+                    </td>
+
+                    {/* LEFT RESULT */}
+                    <td
+                      className={`border border-red-600 py-1 text-lg font-extrabold ${
+                        leftLatest
+                          ? "bg-red-600 text-white"
+                          : !leftItem || leftItem.result === "--"
+                          ? "bg-gray-200 text-gray-400"
+                          : "text-black"
+                      }`}
+                    >
                       {leftItem?.result ?? ''}
                     </td>
+
+                    {/* RIGHT SIDE */}
                     {rightItem ? (
                       <>
-                        <td className="border border-purple-700 px-2 py-1 font-bold">{rightItem.time}</td>
-                        <td className={`border border-purple-700 px-2 py-1 font-black text-2xl ${rightLatest ? "bg-red-500 text-white" : rightItem.result === "--" ? "bg-gray-200 text-gray-400" : "bg-yellow-100 text-black"}`}>
+                        <td className="border border-red-600 py-1 font-bold text-black">
+                          {rightItem.time}
+                        </td>
+
+                        <td
+                          className={`border border-red-600 py-1 text-lg font-extrabold ${
+                            rightLatest
+                              ? "bg-red-600 text-white"
+                              : rightItem.result === "--"
+                              ? "bg-gray-200 text-gray-400"
+                              : "text-black"
+                          }`}
+                        >
                           {rightItem.result}
                         </td>
                       </>
                     ) : (
                       <>
-                        <td className="border border-purple-700 px-2 py-1"></td>
-                        <td className="border border-purple-700 px-2 py-1"></td>
+                        <td className="border border-red-600"></td>
+                        <td className="border border-red-600"></td>
                       </>
                     )}
                   </tr>
                 );
               })}
             </tbody>
+
           </table>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };
 
 export default MainStarLineSection;
 
+// ⏰ Time formatter (unchanged)
 function to12Hour(t?: string): string {
   if (!t) return '';
   const [h, m] = t.split(':');
@@ -93,5 +147,3 @@ function to12Hour(t?: string): string {
   const displayHour = hh % 12 === 0 ? 12 : hh % 12;
   return `${String(displayHour).padStart(2, '0')}:${m} ${suffix}`;
 }
-
-// panel normalization moved to dedicated page

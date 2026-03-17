@@ -3,24 +3,25 @@ import logo from "@/assets/logo.png";
 
 const HeaderLogo = () => {
   return (
-    <div className=" top-0 z-50 backdrop-blur-md shadow-md border-b-4 border-rose-500">
-      <div className="p-3 text-center">
+    <div className="top-0 z-50">
+      <div className="p-3 flex justify-center">
 
-        <div className="flex items-center justify-center gap-3 mb-1">
+        <div className="border-[3px] border-red-500 rounded-[15px] px-6 py-3 bg-[#f3c08c] font-bold flex items-center justify-center gap-3 w-full max-w-[420px]">
+          
+          {/* Logo */}
           <img 
             src={logo} 
             alt="SPDPBOSS Logo" 
-            className="h-10 w-auto drop-shadow"
+            className="h-10 w-auto"
           />
 
-          <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-orange-600 to-amber-600">
+          {/* Text */}
+          <span className="text-[22px] leading-none">
             SPDPBOSS.NET
-          </h1>
+          </span>
+
         </div>
 
-        <p className="text-xs text-rose-600 font-bold tracking-wide">
-          India's #1 Matka Result Website
-        </p>
       </div>
     </div>
   );

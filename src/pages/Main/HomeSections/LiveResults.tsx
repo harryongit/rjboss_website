@@ -18,19 +18,10 @@ const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets:
               ☔ LIVE RESULT ☔
             </CardTitle>
 
-            <p className="text-xs font-semibold flex items-center justify-center gap-1 mt-1">
-              <Clock className="h-3 w-3" />
-              Updated: {refreshTime}
-            </p>
+            
           </div>
 
-          <Button
-            size="sm"
-            onClick={handleRefresh}
-            className="bg-white/20 hover:bg-white/30 text-white border border-white/50 rounded-md px-2 py-1"
-          >
-            <RefreshCw className="h-4 w-4" />
-          </Button>
+         
         </div>
       </CardHeader>
 
@@ -71,13 +62,12 @@ const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets:
             )}
 
             {/* Refresh Button */}
-            <Button
-              size="sm"
-              onClick={handleRefresh}
-              className="mt-2 bg-purple-700 hover:bg-purple-800 text-white text-xs px-3 py-1 rounded-md"
-            >
-              Refresh
-            </Button>
+           <button
+  onClick={handleRefresh}
+  className="mt-2 px-2 py-[2px] bg-[#4b3dbb] text-white rounded-[8px] text-[12px] font-bold leading-none"
+>
+  Refresh
+</button>
           </div>
         ))}
       </CardContent>

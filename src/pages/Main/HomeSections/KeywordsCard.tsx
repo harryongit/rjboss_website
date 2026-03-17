@@ -1,15 +1,18 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
 
 const KeywordsCard = ({ keywords }: { keywords: string[] }) => {
   return (
-    <Card className="mt-3 bg-peach border-2 border-red-500 rounded-xl  shadow-sm">
-      <CardContent className="py-3 px-3 text-center">
-        <p className="text-xs md:text-sm text-blue-900 font-bold italic leading-relaxed uppercase">
+    <div className="flex justify-center px-2 mt-2">
+      
+      <div className="w-full max-w-[400px] border-[2px] border-red-500 rounded-[15px] bg-[#f3c08c] p-3 text-center">
+        
+        <p className="text-[13px] font-bold italic text-[#001a66] leading-snug uppercase">
           {keywords.join(" | ")}
         </p>
-      </CardContent>
-    </Card>
+
+      </div>
+
+    </div>
   );
 };
 
@@ -37,11 +40,7 @@ const SPDPBossInfoSection = () => {
     "MAIN MATKA",
   ];
 
-  return (
-    <div className="space-y-3">
-      <KeywordsCard keywords={keywords} />
-    </div>
-  );
+  return <KeywordsCard keywords={keywords} />;
 };
 
 export default SPDPBossInfoSection;
