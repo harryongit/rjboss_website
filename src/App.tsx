@@ -78,7 +78,7 @@ const App = () => (
                 <Route path="/fix-open-to-close-by-date" element={<FixOpenToCloseByDate />} />
                 <Route path="/main-star-line-panel-chart" element={<MainStarLinePanelChart />} />
                 <Route path="/main-star-line-upload-public-link" element={<MainStarLinePublicUpload />} />
-                <Route path="/admin/dashboard_spdpboss_login" element={<Login />} />
+                <Route path="/admin/dashboard_rjboss_login" element={<Login />} />
                 
                 <Route
                   path="/admin"

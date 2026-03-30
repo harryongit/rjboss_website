@@ -5,7 +5,7 @@ Disallow: /user/
 # Allow everything else
 Allow: /
 
-Sitemap: http://spdpboss.net/sitemap.xml
+Sitemap: http://rjboss.net/sitemap.xml
 User-agent: Googlebot
 Allow: /
 

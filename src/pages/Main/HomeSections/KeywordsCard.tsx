@@ -16,7 +16,7 @@ const KeywordsCard = ({ keywords }: { keywords: string[] }) => {
   );
 };
 
-const SPDPBossInfoSection = () => {
+const RJBossInfoSection = () => {
   const keywords = [
     "KALYAN MATKA",
     "MATKA RESULT",
@@ -43,4 +43,4 @@ const SPDPBossInfoSection = () => {
   return <KeywordsCard keywords={keywords} />;
 };
 
-export default SPDPBossInfoSection;
+export default RJBossInfoSection;

@@ -15,7 +15,7 @@ export const ProtectedRoute = ({ children, role = 'admin' }: ProtectedRouteProps
   }
 
   if (!authed) {
-    return <Navigate to={role === 'admin' ? '/admin/dashboard_spdpboss_login' : '/user/login'} replace />;
+    return <Navigate to={role === 'admin' ? '/admin/dashboard_rjboss_login' : '/user/login'} replace />;
   }
 
   return <>{children}</>;

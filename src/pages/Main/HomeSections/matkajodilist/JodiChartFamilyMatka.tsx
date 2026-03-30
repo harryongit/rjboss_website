@@ -83,7 +83,7 @@ const JodiChartFamilyMatka = () => {
     </div>
 
     <div className="whitespace-pre-line text-gray-800 leading-8 text-sm font-semibold">
-{`Hello, all the Satta Matka players on our platform spdpboss.services Today we are exploring a very important Jodi Chart. This is called the Matka Jodi Family Chart. So, according to the definition of the Matka Jodi Family Record, the Jodis, which are called the pairs of two numbers, can be divided into 11 different types of groups, based on their cut.
+{`Hello, all the Satta Matka players on our platform rjboss.services Today we are exploring a very important Jodi Chart. This is called the Matka Jodi Family Chart. So, according to the definition of the Matka Jodi Family Record, the Jodis, which are called the pairs of two numbers, can be divided into 11 different types of groups, based on their cut.
 
 So, whenever Jodis of the same family, they are considered to be related together, and they are almost the same. They have very minor differences. In terms of Satta Matka, we all know and believe that the pairs, the Jodis of the same family are named according to their family, for example, Today 31 is going to be made and maybe it becomes over 86, or any pair from the family 13 can be made, the cut of the pair can be made only from their family pair.
 

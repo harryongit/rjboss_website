@@ -65,7 +65,7 @@ const KhatrisFavouritePannaChart = () => {
            <CardContent className="p-4 text-gray-800 leading-7 space-y-4 text-sm">
   <p>
     Hello, all the Matka enthusiasts. Today we welcome you to our platform 
-    <strong> Spdpboss.Services</strong>. In this section, we will talk about 
+    <strong> Rjboss.Services</strong>. In this section, we will talk about 
     <strong> Khatri's Favourite Panna Chart</strong>.
   </p>
 

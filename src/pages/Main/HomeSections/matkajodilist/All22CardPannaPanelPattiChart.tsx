@@ -154,7 +154,7 @@ const All22CardPannaPanelPattiChart = () => {
           {/* Description Section */}
           <Card className="border shadow-md">
             <CardContent className="p-4 text-sm text-gray-800 leading-7 space-y-4">
-              <p>Hello everyone, how are you all? I hope you all are doing well. Welcome to spdpboss.Services Today we are exploring a very important page of our website, it will help you a lot to learn the Panna Panel and Patti Chart. So this page includes all 22 cards of Panna Panel Patti, in the form of a chart.</p>
+              <p>Hello everyone, how are you all? I hope you all are doing well. Welcome to rjboss.Services Today we are exploring a very important page of our website, it will help you a lot to learn the Panna Panel and Patti Chart. So this page includes all 22 cards of Panna Panel Patti, in the form of a chart.</p>
 
               <p>When you visit this page, you see on the top, there are panels written for every single digit like 1, 2, 3, 4, 5, 6, 7, 8, 9, and 0, and then below it, you will find another section, where you can see all 22 Satta Matka cards, and here you will find the complete sequence and the combinations of the panels.</p>
 

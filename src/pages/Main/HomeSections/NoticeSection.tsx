@@ -20,7 +20,7 @@ const NoticeSection = () => {
         <div className="text-center p-3">
 
           <p className="text-[14px] font-bold text-black leading-snug">
-            अपना बाजार <span className="font-extrabold">spdpboss.net</span> वेबसाइट में डलवाने
+            अपना बाजार <span className="font-extrabold">rjboss.net</span> वेबसाइट में डलवाने
             के लिए आज ही हमें कॉल या WhatsApp करें
           </p>
 
@@ -51,7 +51,7 @@ const NoticeSection = () => {
 
           {/* Email */}
           <p className="text-blue-700 font-bold text-[13px] mt-2">
-            Email : support@spdpboss.net
+            Email : support@rjboss.net
           </p>
 
           {/* Footer */}

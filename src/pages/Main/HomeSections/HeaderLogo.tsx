@@ -11,13 +11,13 @@ const HeaderLogo = () => {
           {/* Logo */}
           <img 
             src={logo} 
-            alt="SPDPBOSS Logo" 
+            alt="RJBOSS Logo" 
             className="h-10 w-auto"
           />
 
           {/* Text */}
           <span className="text-[22px] leading-none">
-            SPDPBOSS.NET
+            RJBOSS.NET
           </span>
 
         </div>

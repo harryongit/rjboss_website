@@ -82,7 +82,7 @@ const AllMarkets = ({
                     ADD YOUR GAME :
                   </span>
                   <span className="ml-1 bg-orange-500 px-2 py-[1px] rounded-full text-[10px] font-black border border-orange-700">
-                    support@spdpboss.net
+                    support@rjboss.net
                   </span>
                 </div>
               )}

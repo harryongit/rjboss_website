@@ -18,7 +18,7 @@ interface TopBarProps {
 }
 
 const defaultPageTitles: Record<string, string> = {
-  "/admin": "SPDP BOSS DASHBOARD",
+  "/admin": "RJ BOSS DASHBOARD",
   "/admin/add-market": "Add Market",
   "/admin/add-final-ank": "Add Final Ank",
   "/admin/user-register": "User Register",
@@ -79,7 +79,7 @@ export const TopBar = ({ onMenuClick, pageTitles }: TopBarProps) => {
       navigate(
         location.pathname.startsWith("/user")
           ? "/user/login"
-          : "/admin/dashboard_spdpboss_login"
+          : "/admin/dashboard_rjboss_login"
       );
     }
   };

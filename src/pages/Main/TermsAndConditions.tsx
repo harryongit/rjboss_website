@@ -8,10 +8,10 @@ import HomeButton from "@/components/ui/HomeButton";
 
 const TermsAndConditions = () => {
   useMeta({
-    title: "Terms and Conditions - SPDPBOSS.NET",
+    title: "Terms and Conditions - RJBOSS.NET",
     description:
-      "Read the terms and conditions of SPDPBOSS.NET. By using this website, you agree to these terms.",
-    keywords: "terms and conditions spdpboss, spdpboss terms, website terms",
+      "Read the terms and conditions of RJBOSS.NET. By using this website, you agree to these terms.",
+    keywords: "terms and conditions rjboss, rjboss terms, website terms",
   });
 
   return (
@@ -35,7 +35,7 @@ const TermsAndConditions = () => {
                     Introduction
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    Welcome to SPDPBOSS.NET. By accessing or using this website,
+                    Welcome to RJBOSS.NET. By accessing or using this website,
                     you agree to be bound by these Terms and Conditions. If you
                     do not agree with any part of these terms, please discontinue
                     use of the website.
@@ -48,7 +48,7 @@ const TermsAndConditions = () => {
                     Website Purpose
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    SPDPBOSS.NET is an informational and entertainment-only
+                    RJBOSS.NET is an informational and entertainment-only
                     platform. The website does not promote, support, or
                     facilitate gambling, betting, or any form of illegal
                     activity.
@@ -74,7 +74,7 @@ const TermsAndConditions = () => {
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
                     While we strive to provide accurate and timely information,
-                    SPDPBOSS.NET does not guarantee the completeness, reliability,
+                    RJBOSS.NET does not guarantee the completeness, reliability,
                     or accuracy of any content published on the website.
                   </p>
                 </div>
@@ -85,7 +85,7 @@ const TermsAndConditions = () => {
                     Limitation of Liability
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    SPDPBOSS.NET shall not be held liable for any direct or
+                    RJBOSS.NET shall not be held liable for any direct or
                     indirect losses, damages, or consequences resulting from
                     the use of or reliance on the information provided on this
                     website.
@@ -99,7 +99,7 @@ const TermsAndConditions = () => {
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
                     This website may contain links to third-party websites.
-                    SPDPBOSS.NET is not responsible for the content, accuracy, or
+                    RJBOSS.NET is not responsible for the content, accuracy, or
                     privacy practices of external sites.
                   </p>
                 </div>
@@ -110,7 +110,7 @@ const TermsAndConditions = () => {
                     Intellectual Property
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    All content, logos, text, and design elements on SPDPBOSS.NET
+                    All content, logos, text, and design elements on RJBOSS.NET
                     are the intellectual property of the website unless stated
                     otherwise. Unauthorized use is strictly prohibited.
                   </p>
@@ -122,7 +122,7 @@ const TermsAndConditions = () => {
                     Changes to Terms
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    SPDPBOSS.NET reserves the right to update or modify these Terms
+                    RJBOSS.NET reserves the right to update or modify these Terms
                     and Conditions at any time without prior notice. Continued
                     use of the website constitutes acceptance of the updated
                     terms.
@@ -157,7 +157,7 @@ const TermsAndConditions = () => {
                     Acceptance of Terms
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    By accessing SPDPBOSS.NET, you acknowledge that you have read,
+                    By accessing RJBOSS.NET, you acknowledge that you have read,
                     understood, and agreed to these Terms and Conditions in
                     full.
                   </p>

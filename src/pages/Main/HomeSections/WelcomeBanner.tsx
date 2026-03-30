@@ -17,7 +17,7 @@ const WelcomeBanner = () => {
         {/* Text */}
         <div className="leading-tight">
           <p className="font-bold italic text-sm">
-            !! Welcome to spdpboss international !!
+            !! Welcome to rjboss international !!
           </p>
           <p className="font-bold italic text-sm">
             !! Satta Matka Fast Result
