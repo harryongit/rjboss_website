@@ -38,7 +38,7 @@ const MainStarLineSection = () => {
     <div className="mt-4 w-full max-w-md mx-auto">
 
       {/* HEADER (Yellow pill like image) */}
-      <div className="bg-yellow-400 text-black text-center font-bold italic text-2xl py-1 rounded-xl border-2 border-black select-none" style={{
+      <div className="bg-yellow-400 text-black text-center font-bold italic text-2xl rounded-xl border-2 border-black select-none" style={{
         textShadow: '0 0 2px white, 0 0 2px white, 0 0 2px white',
       }}>
         MAIN STARLINE
@@ -52,10 +52,10 @@ const MainStarLineSection = () => {
             {/* HEAD */}
             <thead>
               <tr className="bg-[#f3e5d8]">
-                <th className="border border-red-600 py-1 font-bold">Time</th>
-                <th className="border border-red-600 py-1 font-bold">Result</th>
-                <th className="border border-red-600 py-1 font-bold">Time</th>
-                <th className="border border-red-600 py-1 font-bold">Result</th>
+                <th className="border border-red-600 font-bold">Time</th>
+                <th className="border border-red-600 font-bold">Result</th>
+                <th className="border border-red-600 font-bold">Time</th>
+                <th className="border border-red-600 font-bold">Result</th>
               </tr>
             </thead>
 
@@ -72,16 +72,16 @@ const MainStarLineSection = () => {
                 const rightLatest = rightIndex === latestIndex;
 
                 return (
-                  <tr key={rowIndex} className="bg-[#f7caa2]">
+                  <tr key={rowIndex}>
 
                     {/* LEFT TIME */}
-                    <td className="border border-red-600 py-1 font-bold text-black">
+                    <td className="border border-red-600 font-bold text-black">
                       {leftItem?.time ?? ''}
                     </td>
 
                     {/* LEFT RESULT */}
                     <td
-                      className={`border border-red-600 py-1 text-lg font-extrabold ${leftLatest
+                      className={`border border-red-600 text-lg font-extrabold ${leftLatest
                         ? "bg-red-600 text-white"
                         : !leftItem || leftItem.result === "--"
                           ? "bg-gray-200 text-gray-400"
@@ -94,13 +94,13 @@ const MainStarLineSection = () => {
                     {/* RIGHT SIDE */}
                     {rightItem ? (
                       <>
-                        <td className="border border-red-600 py-1 font-bold text-black">
+                        <td className="border border-red-600 font-bold text-black">
                           {rightItem.time}
                         </td>
 
                         <td
-                          className={`border border-red-600 py-1 text-lg font-extrabold ${rightLatest
-                            ? "bg-red-600 text-white"
+                          className={`border border-red-600 text-lg font-extrabold ${rightLatest
+                            ? ""
                             : rightItem.result === "--"
                               ? "bg-gray-200 text-gray-400"
                               : "text-black"

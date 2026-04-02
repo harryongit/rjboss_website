@@ -33,13 +33,13 @@ const Kalyan36bazarStarLine = () => {
   return (
     <div className="mt-6 border-2 border-red-600 rounded-lg overflow-hidden shadow-2xl bg-[#ffcca0]">
       {/* Header Section */}
-      <div className="bg-yellow-400 text-black text-center font-bold italic text-2xl py-1 rounded-xl border-2 border-black select-none flex items-center justify-between px-4" style={{
+      <div className="bg-yellow-400 text-black text-center font-bold italic text-2xl rounded-xl border-2 border-black select-none flex items-center justify-between px-4" style={{
         textShadow: '0 0 2px white, 0 0 2px white, 0 0 2px white',
       }}>
         <div className="flex-1 text-center pl-10">KALYAN 36 BAZAR</div>
         <button
           onClick={() => navigate('/kalyan-36-bazar-panel-chart')}
-          className="bg-black text-white text-[11px] font-black italic px-3 py-1 rounded-md border-2 border-gray-400 leading-none"
+          className="bg-black text-white text-[11px] font-black italic px-3  rounded-md border-2 border-gray-400 leading-none"
         >
           Chart
         </button>
@@ -70,10 +70,11 @@ const Kalyan36bazarStarLine = () => {
         <table className="w-full border-collapse text-center">
           <thead className="bg-white border-b-2 border-red-600">
             <tr>
-              <th className="border border-red-600 px-2 py-1.5 text-black font-black italic text-base">Time</th>
-              <th className="border border-red-600 px-2 py-1.5 text-black font-black italic text-base">Result</th>
-              <th className="border border-red-600 px-2 py-1.5 text-black font-black italic text-base">Time</th>
-              <th className="border border-red-600 px-2 py-1.5 text-black font-black italic text-base">Result</th>
+              <th className="border border-red-600 font-bold">Time</th>
+              <th className="border border-red-600 font-bold">Result</th>
+              <th className="border border-red-600 font-bold">Time</th>
+              <th className="border border-red-600 font-bold">Result</th>
+
             </tr>
           </thead>
           <tbody>
@@ -83,17 +84,17 @@ const Kalyan36bazarStarLine = () => {
 
               return (
                 <tr key={rowIndex} className="border-b border-red-600">
-                  <td className="border-r border-red-600 px-2 py-1 text-black font-[800] italic text-[15px]">{leftItem.time}</td>
-                  <td className="border-r border-red-600 px-2 py-1 text-red-600 font-[900] text-lg">{leftItem.result}</td>
+                  <td className="border-r border-red-600 text-black font-[800] italic text-[15px]">{leftItem.time}</td>
+                  <td className="border-r border-red-600 font-[900] text-lg">{leftItem.result}</td>
 
                   {rightItem ? (
                     <>
-                      <td className="border-r border-red-600 px-2 py-1 text-black font-[800] italic text-[15px]">{rightItem.time}</td>
-                      <td className="px-2 py-1 text-red-600 font-[900] text-lg">{rightItem.result}</td>
+                      <td className="border-r border-red-600 text-black font-[800] italic text-[15px]">{rightItem.time}</td>
+                      <td className=" font-[900] text-lg">{rightItem.result}</td>
                     </>
                   ) : (
                     <>
-                      <td className="border-r border-red-600 px-2 py-1"></td>
+                      <td className="border-r border-red-600"></td>
                       <td></td>
                     </>
                   )}

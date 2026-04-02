@@ -1,6 +1,5 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import HeaderLogo from "./HeaderLogo";
 import FooterSection from "./FooterSection";
 import ScrollToggleButton from "@/components/ui/ScrollToggleButton";
@@ -12,7 +11,6 @@ import { useKalyan36BazarPanelResults } from "@/hooks/common/useKalyan36BazarPan
 const Kalyan36BazarPanelChart = () => {
   const navigate = useNavigate();
   const { data, isFetching, refetch } = useKalyan36BazarPanelResults();
-  const [expanded, setExpanded] = useState<Record<number, boolean>>({});
 
   const days = useMemo(() => normalizePanel(data?.data), [data]);
 
@@ -44,61 +42,49 @@ const Kalyan36BazarPanelChart = () => {
             </div>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {days.length === 0 && (
               <div className="text-center text-purple-700 font-semibold bg-purple-50 border border-purple-200 rounded-md p-2">
                 No data available.
               </div>
             )}
             {days.map((day, idx) => (
-              <Card key={idx} className="border-2 border-red-600 shadow-xl mt-2 overflow-hidden">
-                <CardHeader className="bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 py-2">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-white font-black tracking-wide text-lg">
-                      {formatDate(day.date)}
-                    </CardTitle>
-                    <div className="flex items-center gap-2">
-                      <span className="bg-white text-orange-700 font-bold rounded-full px-2 py-1 text-xs">
-                        {day.results.length}
-                      </span>
-                      {day.results.length > 10 && (
-                        <Button
-                          size="sm"
-                          onClick={() => setExpanded((e) => ({ ...e, [idx]: !e[idx] }))}
-                          className="bg-white text-purple-700 border border-purple-600 font-bold rounded shadow-md px-3 py-1 hover:bg-white/80 transition-all duration-300"
-                        >
-                          {expanded[idx] ? "Collapse" : "Show All"}
-                        </Button>
-                      )}
+              <div key={idx} className="border-2 border-pink-400 rounded-lg overflow-hidden shadow-xl bg-[#fdeccb]">
+                {/* Purple Header */}
+                <div className="bg-[#4b0082] py-2 text-center border-b-2 border-pink-400">
+                  <h3 className="text-white font-black text-xl tracking-wider">
+                    {formatDateLong(day.date)}
+                  </h3>
+                </div>
+
+                {/* 4-Column Grid */}
+                <div className="grid grid-cols-4">
+                  {day.results.map((r, i) => (
+                    <div
+                      key={i}
+                      className="border-r border-b border-pink-400 p-2 flex flex-col items-center justify-center min-h-[60px]"
+                      style={{ 
+                        borderRightWidth: (i + 1) % 4 === 0 ? '0px' : '1px' 
+                      }}
+                    >
+                      <div className="text-[11px] font-[900] text-black leading-tight">
+                        {to12Hour(r.result_time)}
+                      </div>
+                      <div className="text-[13px] font-bold text-gray-800 leading-tight">
+                        {r.result === "" || r.result === "-" ? "***" : r.result}
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-0">
-                  <div className="overflow-x-auto max-h-80 overflow-y-auto">
-                    <table className="table-auto border-collapse w-full text-center">
-                      <thead>
-                        <tr className="bg-purple-100 sticky top-0">
-                          <th className="border border-purple-700 px-2 py-1">Time</th>
-                          <th className="border border-purple-700 px-2 py-1">Result</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {(expanded[idx] ? day.results : day.results.slice(0, 10)).map((r, i) => {
-                          const origIndex = day.results.indexOf(r);
-                          const li = latestIndex(day.results);
-                          const latest = origIndex === li;
-                          return (
-                            <tr key={i} className={latest ? "bg-red-500 text-white" : ""}>
-                              <td className={`border border-purple-700 px-2 py-1 font-bold ${latest ? "text-white" : ""}`}>{to12Hour(r.result_time)}</td>
-                              <td className={`border border-purple-700 px-2 py-1 font-black text-xl ${latest ? "text-white" : "text-black"}`}>{r.result}</td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                </CardContent>
-              </Card>
+                  ))}
+                  
+                  {/* Fill empty cells if not divisible by 4 */}
+                  {day.results.length % 4 !== 0 && 
+                    Array.from({ length: 4 - (day.results.length % 4) }).map((_, i) => (
+                      <div key={`empty-${i}`} className="border-r border-b border-pink-400 p-2 min-h-[60px]" 
+                           style={{ borderRightWidth: (day.results.length + i + 1) % 4 === 0 ? '0px' : '1px' }}></div>
+                    ))
+                  }
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -130,19 +116,13 @@ function normalizePanel(raw: any): { date: string; results: { result_time: strin
   }));
 }
 
-function formatDate(s?: string): string {
+function formatDateLong(s?: string): string {
   if (!s) return "";
-  if (s.includes("/")) return s;
   const d = new Date(s);
   if (isNaN(d.getTime())) return s;
-  const dd = String(d.getDate()).padStart(2, "0");
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const yyyy = d.getFullYear();
-  return `${dd}/${mm}/${yyyy}`;
-}
-
-function latestIndex(arr: { result_time: string; result: string }[]): number {
-  const rev = arr.slice().reverse().find((r) => r.result && r.result !== "--");
-  const idx = arr.map((r) => r.result).lastIndexOf(rev?.result);
-  return idx < 0 ? arr.length - 1 : idx;
+  return d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  });
 }
