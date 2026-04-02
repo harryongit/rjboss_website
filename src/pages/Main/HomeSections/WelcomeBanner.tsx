@@ -1,27 +1,31 @@
 import React from "react";
-import laxmiDevi from "@/assets/laxmi-devi1.jpg";
+import laxmiDevi from "@/assets/god.jpeg";
+
 
 const WelcomeBanner = () => {
   return (
-    <div className="flex justify-center px-3 mt-2">
+    <div className="flex justify-center ">
 
-      <div className="w-full max-w-[420px] border-[3px] border-red-500 rounded-[15px] bg-[#f3c08c] p-2 flex items-center">
+      <div className="w-full max-w-[420px] border-[3px] border-red-500 rounded-[15px] bg-[#f3c08c] p-1 flex items-center">
 
         {/* Image */}
         <img
           src={laxmiDevi}
           alt="Laxmi Devi"
-          className="w-[80px] h-[80px] rounded-[10px] border border-red-500 mr-2 object-contain bg-white"
+          className="w-[90px] h-[68px]  object-contain"
         />
 
         {/* Text */}
-        <div className="leading-tight">
-          <p className="font-bold italic text-sm">
-            !! Welcome to rjboss international !!
-          </p>
-          <p className="font-bold italic text-sm">
-            !! Satta Matka Fast Result
-          </p>
+        <div className="leading-tight text-center flex-1">
+         <p
+  className="font-bold italic text-black text-md"
+  style={{
+    textShadow: '0 0 1px white, 0 0 1px white, 0 0 1px white',
+  }}
+>
+  !! Welcome to rjboss international <br />
+  !! Satta Matka Fast Result
+</p>
         </div>
 
       </div>

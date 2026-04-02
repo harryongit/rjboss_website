@@ -44,6 +44,9 @@ import PanelCountChart from "./pages/Main/HomeSections/matkajodilist/PanelCountC
 import PanelTotalChart from "./pages/Main/HomeSections/matkajodilist/PanelTotalChart";
 import JodiChartFamilyMatka from "./pages/Main/HomeSections/matkajodilist/JodiChartFamilyMatka";
 import FixOpenToCloseByDate from "./pages/Main/HomeSections/matkajodilist/FixOpenToCloseByDate";
+import AddTimeKalyan36Bazar from "./pages/Admin/AddTimeKalyan36Bazar";
+import UploadKalyan36BazarResult from "./pages/Admin/UploadKalyan36BazarResult";
+import Kalyan36BazarPanelChart from "./pages/Main/HomeSections/Kalyan36BazarPanelChart";
 
 
 
@@ -77,6 +80,7 @@ const App = () => (
                 <Route path="/jodi-chart-family-matka" element={<JodiChartFamilyMatka />} />
                 <Route path="/fix-open-to-close-by-date" element={<FixOpenToCloseByDate />} />
                 <Route path="/main-star-line-panel-chart" element={<MainStarLinePanelChart />} />
+                <Route path="/kalyan-36-bazar-panel-chart" element={<Kalyan36BazarPanelChart />} />
                 <Route path="/main-star-line-upload-public-link" element={<MainStarLinePublicUpload />} />
                 <Route path="/admin/dashboard_rjboss_login" element={<Login />} />
                 
@@ -177,6 +181,26 @@ const App = () => (
                     <ProtectedRoute role="admin">
                       <DashboardLayout>
                         <MainStarLineUploadResult />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/add-time-kalyan36bazar"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <AddTimeKalyan36Bazar />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/upload-kalyan36bazar-result"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <UploadKalyan36BazarResult />
                       </DashboardLayout>
                     </ProtectedRoute>
                   }

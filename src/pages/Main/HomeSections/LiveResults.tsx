@@ -10,10 +10,11 @@ const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets:
     <Card className="border-2 border-red-500 bg-peach shadow-none rounded-md overflow-hidden">
 
       {/* Header */}
-      <CardHeader className="bg-pink text-white text-center py-2 rounded-b-2xl">
+
+      <CardHeader className="bg-pink text-white text-center py-2 rounded-xl border-4 border-white">
         <div className="flex justify-between items-center">
 
-          <div className="flex-1 text-center">
+          <div className="flex-1 text-center ">
             <CardTitle className="text-xl font-bold italic tracking-wide">
               ☔ LIVE RESULT ☔
             </CardTitle>

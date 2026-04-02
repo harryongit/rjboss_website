@@ -79,8 +79,11 @@ export default {
           DEFAULT: "#fecc98",
         },
         pink:{
-          DEFAULT: "#ff00a2",
+          DEFAULT: "#fe01a2",
         },
+        blue:{
+          DEFAULT: "#011798",
+        }
       },
       borderRadius: {
         lg: "var(--radius)",

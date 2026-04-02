@@ -1,4 +1,4 @@
-import { Home, PlusSquare, UserPlus, Users, Calendar, Settings, Clock, Upload, X ,Trophy,WandSparkles, Database } from 'lucide-react';
+import { Home, PlusSquare, UserPlus, Users, Calendar, Settings, Clock, Upload, X, Trophy, WandSparkles, Database } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
@@ -22,7 +22,9 @@ const menuItems = [
   // { title: 'Settings', icon: Settings, path: '/admin/settings' },
   { title: 'Free Fix', icon: WandSparkles, path: '/admin/free-fix' },
   { title: 'Add Time Main Star Line', icon: Clock, path: '/admin/add-time-mainstarline' },
-  { title: 'Upload result of Main Star Line', icon: Upload, path: '/admin/upload-mainstarline-result' },
+  { title: 'Upload Result Main Star Line', icon: Upload, path: '/admin/upload-mainstarline-result' },
+  { title: 'Add Time Kalyan 36 Bazar', icon: Clock, path: '/admin/add-time-kalyan36bazar' },
+  { title: 'Upload Result Kalyan 36 Bazar', icon: Upload, path: '/admin/upload-kalyan36bazar-result' },
   { title: 'Database Management', icon: Database, path: '/admin/database' },
 ];
 

@@ -36,26 +36,19 @@ const MainStarLineSection = () => {
 
   return (
     <div className="mt-4 w-full max-w-md mx-auto">
-      
-      {/* HEADER (Yellow pill like image) */}
-      <div className="bg-yellow-400 border-2 border-black rounded-full text-center py-2 mb-2 shadow-md relative">
-        <span className="font-extrabold text-lg tracking-wider text-black">
-          MAIN STARLINE
-        </span>
 
-        <button
-          onClick={() => navigate('/main-star-line-panel-chart')}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black text-yellow-400 text-xs px-2 py-[2px] rounded"
-        >
-          Panel
-        </button>
+      {/* HEADER (Yellow pill like image) */}
+      <div className="bg-yellow-400 text-black text-center font-bold italic text-2xl py-1 rounded-xl border-2 border-black select-none" style={{
+        textShadow: '0 0 2px white, 0 0 2px white, 0 0 2px white',
+      }}>
+        MAIN STARLINE
       </div>
 
       {/* TABLE */}
       {view === 'today' && (
         <div className="border-2 border-red-600">
           <table className="w-full border-collapse text-center text-sm">
-            
+
             {/* HEAD */}
             <thead>
               <tr className="bg-[#f3e5d8]">
@@ -80,7 +73,7 @@ const MainStarLineSection = () => {
 
                 return (
                   <tr key={rowIndex} className="bg-[#f7caa2]">
-                    
+
                     {/* LEFT TIME */}
                     <td className="border border-red-600 py-1 font-bold text-black">
                       {leftItem?.time ?? ''}
@@ -88,13 +81,12 @@ const MainStarLineSection = () => {
 
                     {/* LEFT RESULT */}
                     <td
-                      className={`border border-red-600 py-1 text-lg font-extrabold ${
-                        leftLatest
-                          ? "bg-red-600 text-white"
-                          : !leftItem || leftItem.result === "--"
+                      className={`border border-red-600 py-1 text-lg font-extrabold ${leftLatest
+                        ? "bg-red-600 text-white"
+                        : !leftItem || leftItem.result === "--"
                           ? "bg-gray-200 text-gray-400"
                           : "text-black"
-                      }`}
+                        }`}
                     >
                       {leftItem?.result ?? ''}
                     </td>
@@ -107,13 +99,12 @@ const MainStarLineSection = () => {
                         </td>
 
                         <td
-                          className={`border border-red-600 py-1 text-lg font-extrabold ${
-                            rightLatest
-                              ? "bg-red-600 text-white"
-                              : rightItem.result === "--"
+                          className={`border border-red-600 py-1 text-lg font-extrabold ${rightLatest
+                            ? "bg-red-600 text-white"
+                            : rightItem.result === "--"
                               ? "bg-gray-200 text-gray-400"
                               : "text-black"
-                          }`}
+                            }`}
                         >
                           {rightItem.result}
                         </td>

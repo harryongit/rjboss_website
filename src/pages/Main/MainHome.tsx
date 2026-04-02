@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import HeaderLogo from '@/pages/Main/HomeSections/HeaderLogo';
 import WelcomeBanner from '@/pages/Main/HomeSections/WelcomeBanner';
+import WhoWeAre from '@/pages/Main/HomeSections/WhoWeAre';
 import LuckyNumberCard from '@/pages/Main/HomeSections/LuckyNumberCard';
 
 import LiveResults from '@/pages/Main/HomeSections/LiveResults';
@@ -27,7 +28,7 @@ import FreeGuessingDaily from './HomeSections/FreeGuessingDaily';
 import MainStarLineSection from './HomeSections/MainStarLineSection';
 import RajeshreeStarLine from './HomeSections/RajeshreeStarLine';
 import KalyanStarLine from './HomeSections/KalyanStarLine';
-import MainBombayStarLine from './HomeSections/MainBombayStarLine';
+import Kalyan36bazarStarLine from './HomeSections/Kalyan36bazarStarLine';
 import { useMainWebsite } from '@/hooks/main/useMainWebsite';
 
 const SattaMatkaWebsite = () => {
@@ -64,23 +65,24 @@ const SattaMatkaWebsite = () => {
     "MAIN MATKA",
     "WORLD ME SABSE FAST SATTA MATKA RESULT",
   ];
- 
- 
-  
+
+
+
   return (
     <div className="min-h-screen bg-peach">
       <div className="max-w-md mx-auto">
         <HeaderLogo />
 
-        <div className="p-3 space-y-3">
+        <div className="px-2 space-y-1">
           <WelcomeBanner />
+          <WhoWeAre />
           <LuckyNumberCard />
           <LiveResults liveMarkets={liveMarkets} refreshTime={refreshTime} handleRefresh={handleRefresh} />
           <WhatsAppSection />
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            <a 
-              href="/rjboss-resultapp.apk" 
+            <a
+              href="/rjboss-resultapp.apk"
               download
               className="relative flex items-center justify-between bg-white border-2 border-red-500 rounded-xl p-3 shadow-lg hover:shadow-xl transition-all active:scale-[0.98]"
             >
@@ -99,39 +101,40 @@ const SattaMatkaWebsite = () => {
           </div>
 
           <NoticeSection />
-        
+
           <KeywordsCard />
           <AllMarkets allMarkets={allMarkets} handleRefresh={handleRefresh} />
-          
+
           <div className="bg-peach border-2 border-rose-400 rounded-lg p-2 flex items-center justify-center gap-2 shadow-sm">
             <span className="text-sm font-black italic text-black">Email for any inquiries Or Support:</span>
-            <a 
-              href="mailto:support@rjboss.net" 
+            <a
+              href="mailto:support@rjboss.net"
               className="bg-orange-500 text-black px-3 py-0.5 rounded-full text-sm font-black border border-orange-600 shadow-sm"
             >
               support@rjboss.net
             </a>
           </div>
 
-           <MainStarLineSection />
-            <SpecialGameZone /> 
+          <MainStarLineSection />
+          <Kalyan36bazarStarLine />
+          <SpecialGameZone />
           <MatkaJodiList />
           <WeeklyPattiChart />
           <WeeklyLineChart />
           <WeeklyJodiChart />
-           <FreeGuessingDaily />
-         <FreeGameZone />
-         {/* <RajeshreeStarLine />
-         <KalyanStarLine/>
-         <MainBombayStarLine/> */}
-         
-        
-         
-         
-<JodiChartSection/>
-<PanelChartSection/>
+          <FreeGuessingDaily />
+          <FreeGameZone />
+          {/* <RajeshreeStarLine />
+         <KalyanStarLine/>*/}
 
-         
+
+
+
+
+          <JodiChartSection />
+          <PanelChartSection />
+
+
           {/* <IntroductionSection /> */}
           <FAQSection />
           {/* <HindiFAQ /> */}
