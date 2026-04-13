@@ -3,11 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 /* SPECIAL GAME ITEMS */
 const specialGameItems = [
- 
+
   "All market free fix game",
   "Ratan Khatri Fix Panel Chart",
   "Matka Final Number Trick Chart",
- 
+
 ];
 
 
@@ -21,11 +21,11 @@ const SpecialGameZone = () => {
       <Card className="bg-peach border-2 border-blue-900 shadow-lg rounded-lg">
         <CardHeader className="bg-red-600 text-white py-2">
           <CardTitle className="text-center text-xl font-extrabold tracking-wide">
-            🏆 SPECIAL GAME ZONE
+            RJBOSS SPECIAL GAME ZONE
           </CardTitle>
         </CardHeader>
 
-         <CardContent className="p-0">
+        <CardContent className="p-0">
           {specialGameItems.map((item, index) => (
             <button
               type="button"
@@ -52,7 +52,7 @@ const SpecialGameZone = () => {
         </CardContent>
       </Card>
 
-    
+
     </div>
   );
 };

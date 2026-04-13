@@ -26,8 +26,11 @@ const JodiChartSection: React.FC = () => {
     <div className="mt-6 border-2 border-pink-500 rounded-xl overflow-hidden bg-peach">
 
       {/* HEADER */}
-      <div className="bg-pink-600 text-white text-center py-2 text-xl font-extrabold tracking-wide">
-        SATTA MATKA JODI CHART
+
+      <div className="satta-header-pink">
+        <h2 className="text-center text-white text-[16px] font-black uppercase m-0 leading-tight">
+          SATTA MATKA JODI CHART
+        </h2>
       </div>
 
       {/* LIST */}
@@ -35,8 +38,8 @@ const JodiChartSection: React.FC = () => {
         {charts.map((chart, index) => (
           <div
             key={index}
-            className="text-center py-2 border-t border-blue-700
-                       text-blue-900 text-lg font-bold italic"
+            className="text-center border-t border-blue-700
+                       text-blue-900 text-[22px] font-bold italic"
           >
             {chart}
           </div>

@@ -30,26 +30,18 @@ const FreeGuessingDaily: React.FC = () => {
     <div className="max-w-3xl mx-auto bg-[#f6c79b] border-2 border-pink-500 rounded-md overflow-hidden shadow-md">
 
       {/* HEADER */}
-      <div className="bg-pink-600 text-white text-center py-2 font-extrabold text-lg tracking-wide">
-        FREE GAME ZONE OPEN-CLOSE
+      <div className="satta-header-pink">
+        <h2 className="text-center text-white text-[16px] font-black uppercase m-0 leading-tight">
+          FREE GAME ZONE OPEN-CLOSE
+        </h2>
       </div>
 
       {/* DATE + REFRESH */}
-      <div className="relative border-2 border-pink-500 mx-2 my-2 rounded-md text-center font-bold bg-[#f6c79b] py-2 space-y-1">
+      <div className="text-[16px] relative border-2 border-pink-500 mx-2 my-2 rounded-md text-center font-bold bg-[#f6c79b] py-2 space-y-1">
         <div>✓ DATE: {dateStr}</div>
         <div>FREE GUESSING DAILY</div>
         <div>OPEN TO CLOSE FIX ANK</div>
 
-        <Button
-          size="icon"
-          onClick={() => query.refetch()}
-          className="absolute right-2 top-2 bg-green-600 hover:bg-green-700 text-white rounded-md"
-        >
-          <RefreshCw
-            size={16}
-            className={query.isFetching ? "animate-spin" : ""}
-          />
-        </Button>
       </div>
 
       {/* MARKETS GRID */}
@@ -68,7 +60,7 @@ const FreeGuessingDaily: React.FC = () => {
               className="border-2 border-green-700 rounded-lg overflow-hidden bg-[#f6c79b] shadow-md"
             >
               {/* MARKET TITLE */}
-              <div className="bg-green-700 text-white text-center font-extrabold py-2 text-sm sm:text-base rounded-b-xl">
+              <div className="bg-green-700 text-white text-center font-extrabold py-2 text-[22px] sm:text-base rounded-b-xl">
                 ↪ {it.market_name?.toUpperCase()}
               </div>
 

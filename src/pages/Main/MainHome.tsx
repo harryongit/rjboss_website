@@ -15,10 +15,9 @@ import WeeklyLineChart from '@/pages/Main/HomeSections/WeeklyLineChart';
 import WeeklyJodiChart from '@/pages/Main/HomeSections/WeeklyJodiChart';
 import FreeGameZone from '@/pages/Main/HomeSections/FreeGameZone';
 import IntroductionSection from '@/pages/Main/HomeSections/IntroductionSection';
-import FAQSection from '@/pages/Main/HomeSections/FAQSection';
-import HindiFAQ from '@/pages/Main/HomeSections/HindiFAQ';
+
 import FooterSection from '@/pages/Main/HomeSections/FooterSection';
-import FloatingRefreshButton from '@/pages/Main/HomeSections/FloatingRefreshButton';
+
 import JodiChartSection from './HomeSections/JodiChartSection';
 import PanelChartSection from './HomeSections/PanelChartSection';
 import MainBazaarChart from './HomeSections/MainBazaarChart';
@@ -135,13 +134,12 @@ const SattaMatkaWebsite = () => {
           <PanelChartSection />
 
 
-          {/* <IntroductionSection /> */}
-          <FAQSection />
-          {/* <HindiFAQ /> */}
+          <IntroductionSection />
+
           <FooterSection />
         </div>
 
-        <FloatingRefreshButton handleRefresh={handleRefresh} />
+
       </div>
     </div>
   );
