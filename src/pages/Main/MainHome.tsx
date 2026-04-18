@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { RefreshCw } from 'lucide-react';
 import HeaderLogo from '@/pages/Main/HomeSections/HeaderLogo';
 import WelcomeBanner from '@/pages/Main/HomeSections/WelcomeBanner';
 import WhoWeAre from '@/pages/Main/HomeSections/WhoWeAre';
@@ -78,7 +79,7 @@ const SattaMatkaWebsite = () => {
           <LuckyNumberCard />
           <LiveResults liveMarkets={liveMarkets} refreshTime={refreshTime} handleRefresh={handleRefresh} />
           <WhatsAppSection />
-          <div className="relative group">
+          {/* <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <a
               href="/rjboss-resultapp.apk"
@@ -97,7 +98,7 @@ const SattaMatkaWebsite = () => {
                 Download Now
               </div>
             </a>
-          </div>
+          </div> */}
 
           <NoticeSection />
 
@@ -115,7 +116,7 @@ const SattaMatkaWebsite = () => {
           </div>
 
           <MainStarLineSection />
-          <Kalyan36bazarStarLine />
+          {/* <Kalyan36bazarStarLine /> */}
           <SpecialGameZone />
           <MatkaJodiList />
           <WeeklyPattiChart />
@@ -124,7 +125,7 @@ const SattaMatkaWebsite = () => {
           <FreeGuessingDaily />
           <FreeGameZone />
           {/* <RajeshreeStarLine />
-         <KalyanStarLine/>*/}
+          <KalyanStarLine /> */}
 
 
 
@@ -138,9 +139,29 @@ const SattaMatkaWebsite = () => {
 
           <FooterSection />
         </div>
-
-
       </div>
+
+      <button
+        onClick={handleRefresh}
+        className=" satta-btn-purple text-[14px] fixed bottom-12 right-6 z-50 flex items-center gap-2 group active:scale-95 transition-all duration-200 animate-bounce-subtle"
+        style={{
+          background: 'linear-gradient(135deg, #000080 0%, #0047ab 100%)',
+          border: '2px solid #ffffff',
+          borderRadius: '12px',
+          padding: '12px 24px',
+          color: '#ffffff',
+          fontWeight: '900',
+          fontSize: '20px',
+          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3)',
+          letterSpacing: '1.5px',
+          textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+          cursor: 'pointer'
+        }}
+      >
+
+        REFRESH
+      </button>
+
     </div>
   );
 };

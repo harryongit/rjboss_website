@@ -13,7 +13,7 @@ const MainBazaarChart = () => {
     <div className="w-full max-w-4xl mx-auto border-2 border-orange-600 mt-6">
 
       {/* Header */}
-      <div className="bg-yellow-300 text-center font-extrabold text-lg text-[#0100fe] py-1 border-b-2 border-orange-600">
+      <div className="bg-yellow-300 text-center font-extrabold text-[25px] text-[#0100fe] border-b-2 border-orange-600">
         KALYAN NIGHT / MAIN BAZAR
       </div>
 

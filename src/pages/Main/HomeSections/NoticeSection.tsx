@@ -7,27 +7,26 @@ const NoticeSection = () => {
   const fullNumber = `${countryCode}${phoneNumber}`;
 
   return (
-    <div className="flex justify-center px-2 mt-2">
+    <div className="w-full mt-2">
 
-      <div className="w-full max-w-[400px] border-[2px] border-red-500 rounded-[15px] overflow-hidden bg-[#f3c08c]">
+      <div className="w-full border-2 border-red-600 rounded-lg overflow-hidden">
 
         {/* Header */}
-        <div className="bg-red-600 text-white text-center font-bold text-[16px] py-1">
+        <div className="bg-red-700 text-white text-center font-bold text-[16px] py-[2px]">
           ☆ NOTICE ☆
         </div>
 
         {/* Content */}
-        <div className="text-center p-3">
+        <div className="text-center px-2 py-2">
 
-          <p className="text-[14px] font-bold text-black leading-snug">
+          <p className="text-[16px] font-bold text-black leading-[1.3]">
             अपना बाजार <span className="font-extrabold">rjboss.net</span> वेबसाइट में डलवाने
             के लिए आज ही हमें कॉल या WhatsApp करें
           </p>
 
           {/* Buttons */}
-          <div className="flex justify-center gap-2 mt-2">
+          <div className="flex justify-center gap-2 mt-[4px]">
 
-            {/* Call */}
             <a
               href={`tel:${fullNumber}`}
               className="flex items-center gap-1 px-3 py-[4px] bg-green-600 text-white text-[12px] font-bold rounded-[6px]"
@@ -36,7 +35,6 @@ const NoticeSection = () => {
               कॉल करें
             </a>
 
-            {/* WhatsApp */}
             <a
               href={`https://wa.me/${countryCode.replace("+", "")}${phoneNumber}`}
               target="_blank"
@@ -49,20 +47,16 @@ const NoticeSection = () => {
 
           </div>
 
-          {/* Email */}
-          <p className="text-blue-700 font-bold text-[13px] mt-2">
+          <p className="text-blue-700 font-bold text-[13px] mt-[4px]">
             Email : support@rjboss.net
           </p>
 
-          {/* Footer */}
-          <p className="text-[13px] font-bold text-black mt-1">
+          <p className="text-[13px] font-bold text-black mt-[2px]">
             शर्ते लागु
           </p>
 
         </div>
-
       </div>
-
     </div>
   );
 };

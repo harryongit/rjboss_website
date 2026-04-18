@@ -58,13 +58,19 @@ const LuckyNumberCard = ({
       </div>
 
       {/* Content */}
-      <div className="grid grid-cols-2 gap-4 h-13">
+      <div className="grid grid-cols-2 gap-4 h-14">
         {/* Golden Ank */}
         <div className="text-center border-r-2 border-red-400 pr-4">
-          <p className="text-blue font-semibold italic text-[18px]" style={{
-            textShadow: '0 0 1px white, 0 0 1px white, 0 0 1px white',
-          }}>Golden Ank</p>
-          <p className="text-xl font-extrabold text-black tracking-widest mt-1">
+          <p
+            className="text-blue font-semibold italic text-[18px] leading-none"
+            style={{
+              textShadow: '0 0 1px white, 0 0 1px white, 0 0 1px white',
+            }}
+          >
+            Golden Ank
+          </p>
+
+          <p className="text-[22px] font-extrabold text-black tracking-widest leading-none">
             {goldenAnk}
           </p>
         </div>
