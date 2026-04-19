@@ -2,10 +2,10 @@ import React from "react";
 
 const IntroductionSection = () => {
   return (
-    <div className="max-w-4xl mx-auto space-y-6 my-6 px-2">
+    <div className="max-w-4xl mx-auto space-y-1 ">
       {/* CARD 1: OVERVIEW & HISTORY */}
       <div className="border-2 border-blue-700 bg-[#f6c79b] rounded-xl overflow-hidden">
-        <div className="max-h-[400px] overflow-y-auto px-4 py-6 text-[12px] font-bold leading-tight text-black space-y-4 text-center">
+        <div className="max-h-[240px] overflow-y-auto px-2 text-[12px] font-bold leading-tight text-black space-y-4 text-center">
           <h2 className="text-[18px] font-black italic underline decoration-blue-700 underline-offset-4 mb-4 uppercase">
             Introduction to RJBoss Service
           </h2>
@@ -57,7 +57,7 @@ const IntroductionSection = () => {
 
       {/* CARD 2: SEO & DEEP DIVE */}
       <div className="border-2 border-blue-700 bg-[#f6c79b] rounded-xl overflow-hidden">
-        <div className="max-h-[400px] overflow-y-auto px-4 py-6 text-[12px] font-bold leading-tight text-black space-y-4 text-center">
+        <div className="max-h-[240px] overflow-y-auto px-2 text-[12px] font-bold leading-tight text-black space-y-4 text-center">
           <h2 className="text-[18px] font-black italic underline decoration-red-700 underline-offset-4 mb-4 uppercase">
             RJBOSS Boston – Trusted Source for Satta Matka
           </h2>

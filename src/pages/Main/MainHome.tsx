@@ -78,7 +78,7 @@ const SattaMatkaWebsite = () => {
           <WhoWeAre />
           <LuckyNumberCard />
           <LiveResults liveMarkets={liveMarkets} refreshTime={refreshTime} handleRefresh={handleRefresh} />
-          <WhatsAppSection />
+          {/* <WhatsAppSection /> */}
           {/* <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <a

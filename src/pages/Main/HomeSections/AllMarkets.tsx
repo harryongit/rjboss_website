@@ -49,7 +49,7 @@ const AllMarkets = ({
 
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col">
       <div className="satta-header-pink">
         <h2 className="text-center text-white text-[16px] font-black uppercase m-0 leading-tight">
           WORLD ME SABSE FAST SATTA MATKA RESULT
@@ -65,7 +65,7 @@ const AllMarkets = ({
           )}
 
           {allMarkets?.map((market, idx) => {
-            const middleIndex = Math.floor(allMarkets.length / 2);
+            // const middleIndex = Math.floor(allMarkets.length / 2);
 
             const normalized = normalizeColor(market.color);
             const isWhite = normalized?.toLowerCase() === '#ffffff';
@@ -76,7 +76,7 @@ const AllMarkets = ({
 
             return (
               <React.Fragment key={idx}>
-                {/* MID BANNER */}
+                {/* MID BANNER
                 {idx === middleIndex && (
                   <div className="bg-yellow-200 border-y-[1px] border-red-600 text-center py-[3px]">
                     <span className="text-[10px] font-black italic uppercase">
@@ -86,7 +86,7 @@ const AllMarkets = ({
                       support@rjboss.net
                     </span>
                   </div>
-                )}
+                )} */}
 
                 {/* ROW */}
                 <div
@@ -145,7 +145,7 @@ const AllMarkets = ({
                   )}
 
                   <p className="satta-time-p m-0 flex justify-center items-center gap-1">
-                    <Clock className="h-3 w-3" />
+
                     {market.time}
                   </p>
                 </div>

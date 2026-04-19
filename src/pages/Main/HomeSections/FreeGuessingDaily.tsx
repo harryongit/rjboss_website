@@ -37,13 +37,11 @@ const FreeGuessingDaily: React.FC = () => {
       </div>
 
       {/* DATE + REFRESH */}
-      <div className="text-[16px] relative border-2 border-pink-500 mx-2 my-2 rounded-md text-center font-bold bg-[#f6c79b] py-2 space-y-1">
-        <div>✓ DATE: {dateStr}</div>
-        <div>FREE GUESSING DAILY</div>
-        <div>OPEN TO CLOSE FIX ANK</div>
-
+      <div className="text-[22px] relative border-2 border-pink-500 mx-2 my-2 rounded-md text-center font-bold bg-[#f6c79b] py-2 leading-tight">
+        <p>✓ DATE: {dateStr}</p>
+        <p>FREE GUESSING DAILY</p>
+        <p>OPEN TO CLOSE FIX ANK</p>
       </div>
-
       {/* MARKETS GRID */}
       <div className="grid grid-cols-2 gap-2 p-2">
 
