@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-const env = import.meta.env as unknown as { VITE_API_URL?: string };
-const baseURL = env.VITE_API_URL ?? 'https://rjbossbackend.net';
+const baseURL = 
+  process.env.NEXT_PUBLIC_API_URL ?? 
+  process.env.VITE_API_URL ?? 
+  'https://rjbossbackend.net';
 
 export const api = axios.create({
   baseURL,
   headers: { 'Content-Type': 'application/json' },
-});
+});

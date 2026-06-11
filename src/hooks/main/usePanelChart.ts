@@ -46,5 +46,7 @@ export function usePanelChart(marketId?: number) {
     queryKey: ['panelChart', marketId],
     queryFn: () => fetchPanelChart(marketId!),
     enabled: !!marketId,
+    refetchInterval: 30000,
+    refetchOnWindowFocus: true,
   });
 }

@@ -40,5 +40,7 @@ export function useJodiChart(marketId?: number) {
     queryKey: ['jodiChart', marketId],
     queryFn: () => fetchJodiChart(marketId!),
     enabled: !!marketId,
+    refetchInterval: 30000,
+    refetchOnWindowFocus: true,
   });
 }

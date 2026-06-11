@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { UserSidebar } from './UserSidebar';
 import { TopBar } from './TopBar';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '@/lib/router-compat';
 import { useUserProfile } from '@/hooks/user/useUserProfile';
 
 interface DashboardLayoutProps {

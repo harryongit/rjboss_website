@@ -48,10 +48,11 @@ async function fetchMainWebsite(): Promise<MainWebsiteResponse> {
     throw new Error(message);
   }
 }
-
 export function useMainWebsite() {
   return useQuery<MainWebsiteResponse, Error>({
     queryKey: ['website', 'liveResults'],
     queryFn: () => fetchMainWebsite(),
+    refetchInterval: 10000, // Poll every 10 seconds for live updates
+    refetchOnWindowFocus: true, // Force fresh data when user returns to the tab
   });
 }

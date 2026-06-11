@@ -1,5 +1,5 @@
 import { Home } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@/lib/router-compat";
 import { cn } from "@/lib/utils";
 
 type Props = {
