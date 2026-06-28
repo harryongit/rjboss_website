@@ -16,7 +16,7 @@ const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const PanelRecordChart = () => {
   const { marketName } = useParams();
-  const decodedMarketName = decodeURIComponent(marketName || "RAKHI MORNING");
+  const decodedMarketName = decodeURIComponent((marketName as string) || "");
 
   const { state } = useLocation();
   const marketIdFromState = (state as any)?.marketId as number | undefined;

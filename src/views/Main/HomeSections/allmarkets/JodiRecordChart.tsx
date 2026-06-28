@@ -33,14 +33,14 @@ const getNumberStyle = (num: string) => {
 
 const JodiRecordChart = () => {
   const { marketName } = useParams();
-  const decodedMarketName = decodeURIComponent(marketName || "RAKHI MORNING");
+  const decodedMarketName = decodeURIComponent((marketName as string) || "");
 
   const { state } = useLocation();
   const marketIdFromState = (state as any)?.marketId as number | undefined;
-  
+
   // Try loading all markets to match name to ID if state is empty
   const { data: mainData } = useMainWebsite();
-  
+
   const marketId = useMemo(() => {
     if (marketIdFromState) return marketIdFromState;
     const found = mainData?.data?.all_markets?.find(
@@ -94,13 +94,16 @@ const JodiRecordChart = () => {
             <span className="result-value">
               {jodiData?.data?.result || "---"}
             </span>
-            <div className="mt-1">
+            <div className="mt-2 flex flex-col items-center gap-1">
               <button
                 onClick={() => refetch()}
                 className="satta-btn-purple !text-[12px] !px-3 !py-1"
               >
                 Refresh Result
               </button>
+              <div className="text-[13px] font-bold text-red-700 animate-pulse mt-1">
+                "खबर लाइन चालू है":"सबसे तेज सबसे सही"
+              </div>
             </div>
           </div>
 
