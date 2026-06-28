@@ -3,6 +3,9 @@ import { QueryClient, dehydrate, HydrationBoundary } from "@tanstack/react-query
 import JodiRecordChart from "@/views/Main/HomeSections/allmarkets/JodiRecordChart";
 import { api } from "@/lib/http";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function Page({ params }: { params: Promise<{ marketName: string }> }) {
   const resolvedParams = await params;
   const decodedMarketName = decodeURIComponent(resolvedParams.marketName);

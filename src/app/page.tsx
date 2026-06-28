@@ -3,6 +3,9 @@ import { QueryClient, dehydrate, HydrationBoundary } from "@tanstack/react-query
 import SattaMatkaWebsite from "@/views/Main/MainHome";
 import { api } from "@/lib/http";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function Home() {
   const queryClient = new QueryClient();
 
